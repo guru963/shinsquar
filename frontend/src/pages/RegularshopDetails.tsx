@@ -40,12 +40,6 @@ const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose })
     setErrorMsg("");
 
     const coupon = generateCoupon();
-    const messageText =
-      `Hi! Here is your coupon from *${shopName}*.\n\n` +
-      `🛍️ *Product:* ${product.name}\n` +
-      `🎟️ *Coupon Code:* ${coupon}\n` +
-      `💸 *Discount:* ${product.discount}\n` +
-      `💰 *Price:* Rs.${product.price}`;
 
     try {
       const response = await fetch(

@@ -3,14 +3,12 @@ import {
   MapPin,
   Zap,
   Heart,
-  Clock,
   Search,
   Users,
   ShieldCheck,
   Handshake,
   BadgePercent,
   Cable,
-  CheckCircle2,
 } from "lucide-react";
 import aboutIllustration from "../assets/about-illustration.png";
 import hyperlocalIllustration from "../assets/hyperlocal-illustration.png";
@@ -33,38 +31,6 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ icon, text }) => (
     >
       {text}
     </p>
-  </div>
-);
-
-interface HyperlocalPointProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
-
-const HyperlocalPoint: React.FC<HyperlocalPointProps> = ({
-  icon,
-  title,
-  description,
-}) => (
-  <div className="flex items-start gap-4 group">
-    <div className="w-[48px] h-[48px] rounded-xl bg-white/15 flex items-center justify-center shrink-0 group-hover:bg-white/25 transition-all duration-300">
-      {icon}
-    </div>
-    <div>
-      <p
-        className="text-[16px] text-white"
-        style={{ fontFamily: "Poppins", fontWeight: 600 }}
-      >
-        {title}
-      </p>
-      <p
-        className="text-[13px] text-[#C7C9E0] mt-0.5"
-        style={{ fontFamily: "Poppins", fontWeight: 400 }}
-      >
-        {description}
-      </p>
-    </div>
   </div>
 );
 

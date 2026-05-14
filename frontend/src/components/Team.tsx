@@ -1,6 +1,5 @@
 import React from "react";
 import ceo from "../assets/CEO.png";
-import cto from "../assets/CTO.png";
 import waves from "../assets/waves.png";
 
 interface TeamMemberProps {

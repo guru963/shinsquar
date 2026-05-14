@@ -18,7 +18,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
 }) => {
   return (
     <div className="text-center" style={{ fontFamily: "Poppins" }}>
-      
+
       {/* Image */}
       <div className="w-[270px] h-[270px]  rounded-full overflow-hidden">
         <img
@@ -60,7 +60,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
 
 const TeamSection: React.FC = () => {
   return (
-    <section className="relative bg-[#F7F8FF] pt-[48px] pb-[72px]" >
+    <section id="team" className="relative bg-[#F7F8FF] pt-[48px] pb-[72px]" >
 
       {/* WAVES IMAGE */}
       <img
@@ -85,7 +85,7 @@ const TeamSection: React.FC = () => {
         </h2>
 
         {/* Team Members */}
-      <div className="flex flex-col md:flex-row justify-center items-center gap-50">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-50">
           <TeamMember
             image={ceo}
             name="Jayant Dhote"
@@ -94,13 +94,7 @@ const TeamSection: React.FC = () => {
 DPS Durg, IIT Guwahati Alumni`}
           />
 
-          <TeamMember
-            image={cto}
-            name="Kamal Sahare"
-            role="Co-founder"
-            description={`Ex-OYO Rooms, Fin-Tech
-KV Durg, IIT Ranchi Alumni`}
-          />
+
 
         </div>
 

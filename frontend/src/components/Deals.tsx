@@ -65,7 +65,7 @@ const DealCard: React.FC<DealCardProps> = ({ image, title, description, link }) 
 
 const DealsSection: React.FC = () => {
   return (
-    <section className="bg-[#FFFFFF] pt-[62px] pb-[138px]">
+    <section id="home" className="bg-[#FFFFFF] pt-[62px] pb-[138px]">
 
       <div className="max-w-[1200px] mx-auto text-center">
 

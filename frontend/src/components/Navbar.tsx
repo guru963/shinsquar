@@ -1,14 +1,47 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+
+/* ── navigation items ── */
+const navItems = [
+  { label: "Home", scrollTo: "home" },
+  { label: "About", scrollTo: "about" },
+  { label: "Team", scrollTo: "team" },
+  { label: "Contact us", scrollTo: "contact" },
+];
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  /* ── smooth scroll helper ── */
+  const handleNav = (item: (typeof navItems)[0]) => {
+    setIsOpen(false);
+
+    // If we're not on the home page, navigate there first
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const el = document.getElementById(item.scrollTo);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 150);
+      return;
+    }
+
+    // Already on home — just scroll
+    if (item.scrollTo === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const el = document.getElementById(item.scrollTo);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
-    <nav className="w-full bg-[#F7F8FF] shadow-[0px_1px_4px_rgba(12,12,13,0.05)] flex items-center px-[48px] relative">
-      
+    <nav className="w-full bg-[#F7F8FF] shadow-[0px_1px_4px_rgba(12,12,13,0.05)] flex items-center px-[48px] relative sticky top-0 z-50">
+
       {/* Container */}
       <div className="flex items-center justify-between w-full">
 
@@ -35,17 +68,16 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-10 text-gray-600 font-medium">
-          <Link to="/" className="hover:text-blue-600 transition">
-            Home
-          </Link>
-
-          <Link to="/team" className="hover:text-blue-600 transition">
-            Team
-          </Link>
-
-          <Link to="/contact" className="hover:text-blue-600 transition">
-            Contact us
-          </Link>
+          {navItems.map((item) => (
+            <button
+              key={item.label}
+              onClick={() => handleNav(item)}
+              className="hover:text-blue-600 transition cursor-pointer bg-transparent border-none"
+              style={{ fontFamily: "Poppins" }}
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
 
         {/* Mobile Menu Button */}
@@ -60,9 +92,16 @@ const Navbar: React.FC = () => {
       {/* Mobile Dropdown */}
       {isOpen && (
         <div className="absolute top-[95px] left-0 w-full bg-[#F7F8FF] border-t flex flex-col items-center gap-6 py-8 shadow-lg md:hidden">
-          <Link to="/" onClick={() => setIsOpen(false)}>Home</Link>
-          <Link to="/team" onClick={() => setIsOpen(false)}>Team</Link>
-          <Link to="/contact" onClick={() => setIsOpen(false)}>Contact us</Link>
+          {navItems.map((item) => (
+            <button
+              key={item.label}
+              onClick={() => handleNav(item)}
+              className="text-gray-600 hover:text-blue-600 transition cursor-pointer bg-transparent border-none"
+              style={{ fontFamily: "Poppins" }}
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
       )}
     </nav>

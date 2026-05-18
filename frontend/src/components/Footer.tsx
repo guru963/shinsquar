@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
             <div className="flex items-center gap-4 justify-center md:justify-start">
               <FaEnvelope className="text-[27px]" />
               <p className="text-[17px]">
-                jayant.a.dhote@gmail.com
+                contact@shinsquare.com
               </p>
             </div>
 
@@ -109,13 +109,13 @@ const Footer: React.FC = () => {
         {/* BOTTOM */}
         <div className="flex flex-wrap justify-center items-center mt-[30px] text-[14px] md:text-[16px] text-[#C7C9E0] gap-2 md:gap-3 text-center">
 
-          <span>LocalStack Market Place Private Limited</span>
+          <span>LocalStack Market Place PVT LTD</span>
 
           <span className="w-[22px] h-[22px] border border-white rounded-full flex items-center justify-center text-[12px]">
             C
           </span>
 
-          <span>2025, All rights reserved</span>
+          <span>2026, All rights reserved</span>
         </div>
 
       </div>

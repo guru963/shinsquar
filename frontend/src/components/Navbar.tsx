@@ -5,9 +5,11 @@ import logo from "../assets/logo.png";
 
 /* ── navigation items ── */
 const navItems = [
-  { label: "Home", scrollTo: "home" },
+  { label: "Home", scrollTo: "hero" },
+  { label: "Deals", scrollTo: "deals" },
+  { label: "Services", scrollTo: "features" },
   { label: "About", scrollTo: "about" },
-  { label: "Team", scrollTo: "team" },
+  { label: "Team", scrollTo: "founder" },
   { label: "Contact us", scrollTo: "contact" },
 ];
 
@@ -30,14 +32,11 @@ const Navbar: React.FC = () => {
       return;
     }
 
-    // Already on home — just scroll
-    if (item.scrollTo === "home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      const el = document.getElementById(item.scrollTo);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    // Already on home — scroll directly
+    const el = document.getElementById(item.scrollTo);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
 
   return (
     <nav className="w-full bg-[#F7F8FF] shadow-[0px_1px_4px_rgba(12,12,13,0.05)] flex items-center px-[48px] relative sticky top-0 z-50">

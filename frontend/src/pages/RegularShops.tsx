@@ -1,47 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MapPin } from "lucide-react";
 import { SHOPS } from "../data";
 
 const ShopCard: React.FC<{ shop: typeof SHOPS[0] }> = ({ shop }) => (
-  <Link to={`/regular-shops/${shop.id}`}>
+  <Link to={`/regular-shops/${shop.id}`} className="group block w-full">
     <div
-      className="bg-white overflow-hidden cursor-pointer transition-all shadow-[0px_4px_10px_rgba(0,0,0,0.1)] hover:shadow-[0px_8px_20px_rgba(0,0,0,0.5)] w-full max-w-[230px] h-[260px] md:h-[283px] mx-auto"
+      className="bg-white p-6 rounded-[32px] border border-outline-variant/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full"
     >
       {/* Image */}
-      <div className="w-full h-3/4 overflow-hidden">
+      <div className="aspect-square rounded-2xl bg-surface-container mb-6 overflow-hidden">
         <img
           src={shop.image}
           alt={shop.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
       </div>
 
       {/* Content */}
-      <div className="py-3 text-center">
-
-        <h3
-          className="text-[12px] md:text-[.5em] text-[#2C2C2C]"
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: 500
-          }}
-        >
+      <div className="text-center mt-auto">
+        <h3 className="text-headline-lg font-bold text-on-surface mb-2">
           {shop.name}
         </h3>
-
-        <div
-          className="flex items-center justify-center gap-1 mt-2 text-[10px] md:text-[.4em]"
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: 500,
-            color: "#737373"
-          }}
-        >
-          <MapPin size={14} className="md:w-[16px] md:h-[16px]" />
+        <div className="flex items-center justify-center gap-1 text-body-md text-on-surface-variant font-medium">
+          <span className="material-symbols-outlined text-[18px]">location_on</span>
           {shop.location}
         </div>
-
       </div>
     </div>
   </Link>
@@ -49,27 +32,30 @@ const ShopCard: React.FC<{ shop: typeof SHOPS[0] }> = ({ shop }) => (
 
 const RegularShops: React.FC = () => {
   return (
-    <section className="bg-[#F7F8FF] pb-[72px] px-4 md:px-12 font-['Poppins']">
-
-      <div className="max-w-[1900px] mx-auto text-xl md:text-4xl">
+    <section className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Back Button */}
+        <div className="mb-8">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary font-bold transition-colors"
+          >
+            <span className="material-symbols-outlined text-[20px] font-bold">arrow_back</span>
+            Back to Home
+          </Link>
+        </div>
 
         {/* Heading */}
-        <h1
-          className="py-[48px] md:py-[72px]"
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: 500,
-            color: "#2C2C2C"
-          }}
-        >
+        <h1 className="text-display-lg md:text-display-xl font-display-xl text-on-surface mb-12">
           Regular Shops in{" "}
-          <span style={{ color: "#4356FF", fontWeight: 700 }}>
+          <span className="text-primary font-bold">
             Durg, Chhattisgarh
           </span>
         </h1>
 
         {/* Shops Grid */}
-        <div className="flex flex-wrap justify-center md:justify-start gap-6 md:gap-[72px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {SHOPS.map((shop) => (
             <ShopCard key={shop.id} shop={shop} />
           ))}

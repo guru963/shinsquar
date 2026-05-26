@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Phone, MapPin, ArrowLeft, MessageSquare, X, Send, Loader2 } from "lucide-react";
+import { X, Send, Loader2 } from "lucide-react";
 import { SHOPS, PRODUCTS } from "../data";
 import denim from "../assets/denim.png";
 
 // ─── WhatsApp Cloud API Config ───────────────────────────────────────────────
-// Replace these with your actual values from Meta Developer Console
-const WA_PHONE_NUMBER_ID = "978729701999437";   // e.g. "123456789012345"
-const WA_ACCESS_TOKEN = "EAAM9dwY8JEYBRCjjhoJZBgPUtQGqNHXL2khaTbZCq6cghZBC0X3soquRw2TmZBHShnziZBvqVfQ1qoEZATWynSli1edGtechePnIYUnDBtbggCZCrhnFgCwBFW8U33zAibI84GuIHvGuSa2Aw7ds1GWoZCCJcL22eNAcVmI6msGAD5ZCFxGUZCH1L9hQZBMOEzBhovulHrbYBcpApRX8kz0HR5qarg212xa1x6iyldEndTX6rZBVwfYahMPIZA3kTl0jrDKUc4kdr8ji1d5jXHFqkwQBxSr7I2AZDZD"; // from Meta App Dashboard
+const WA_PHONE_NUMBER_ID = "978729701999437";
+const WA_ACCESS_TOKEN = "EAAM9dwY8JEYBRCjjhoJZBgPUtQGqNHXL2khaTbZCq6cghZBC0X3soquRw2TmZBHShnziZBvqVfQ1qoEZATWynSli1edGtechePnIYUnDBtbggCZCrhnFgCwBFW8U33zAibI84GuIHvGuSa2Aw7ds1GWoZCCJcL22eNAcVmI6msGAD5ZCFxGUZCH1L9hQZBMOEzBhovulHrbYBcpApRX8kz0HR5qarg212xa1x6iyldEndTX6rZBVwfYahMPIZA3kTl0jrDKUc4kdr8ji1d5jXHFqkwQBxSr7I2AZDZD";
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface CouponModalProps {
@@ -29,7 +28,6 @@ const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose })
   };
 
   const sendViaCloudAPI = async () => {
-    // Validate phone number (digits only, 10–15 chars)
     const cleanPhone = recipientPhone.replace(/\D/g, "");
     if (cleanPhone.length < 10 || cleanPhone.length > 15) {
       setErrorMsg("Please enter a valid phone number with country code (e.g. 919876543210)");
@@ -50,35 +48,32 @@ const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose })
             "Authorization": `Bearer ${WA_ACCESS_TOKEN}`,
             "Content-Type": "application/json",
           },
-          
-            body: JSON.stringify({
-  messaging_product: "whatsapp",
-  to: cleanPhone,
-  type: "template",
-  template: {
-    name: "shinsquare",
-    language: { code: "en" }, // IMPORTANT (your template shows "English", not en_US)
-    components: [
-      {
-        type: "body",
-        parameters: [
-          { type: "text", text: shopName },        // {{1}}
-          { type: "text", text: product.name },    // {{2}}
-          { type: "text", text: coupon },          // {{3}}
-          { type: "text", text: product.discount } // {{4}}
-        ]
-      }
-    ]
-  }
-})
-        
+          body: JSON.stringify({
+            messaging_product: "whatsapp",
+            to: cleanPhone,
+            type: "template",
+            template: {
+              name: "shinsquare",
+              language: { code: "en" },
+              components: [
+                {
+                  type: "body",
+                  parameters: [
+                    { type: "text", text: shopName },
+                    { type: "text", text: product.name },
+                    { type: "text", text: coupon },
+                    { type: "text", text: product.discount }
+                  ]
+                }
+              ]
+            }
+          })
         }
       );
 
       const data = await response.json();
 
       if (!response.ok) {
-        // Meta API returns error details in data.error
         throw new Error(data?.error?.message || "Failed to send message");
       }
 
@@ -90,29 +85,28 @@ const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose })
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6 relative font-['Poppins']">
-
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 backdrop-blur-sm">
+      <div className="bg-white rounded-[32px] border border-outline-variant/20 shadow-2xl w-full max-w-md p-8 relative text-left">
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+          className="absolute top-6 right-6 text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
         >
           <X size={20} />
         </button>
 
-        <h3 className="text-xl font-bold text-[#2C2C2C] mb-1">Send Coupon via WhatsApp</h3>
-        <p className="text-sm text-[#737373] mb-5">
+        <h3 className="text-display-lg font-bold text-on-surface mb-2">Send Coupon</h3>
+        <p className="text-body-md text-on-surface-variant mb-6">
           Enter the customer's WhatsApp number to send the coupon directly.
         </p>
 
         {/* Product Preview */}
-        <div className="flex items-center gap-3 bg-[#F7F8FF] rounded-xl p-3 mb-5">
-          <img src={denim} className="w-14 h-14 object-cover rounded-lg" />
+        <div className="flex items-center gap-4 bg-surface-container-low border border-outline-variant/20 rounded-2xl p-4 mb-6">
+          <img src={denim} className="w-16 h-16 object-cover rounded-xl" alt={product.name} />
           <div>
-            <p className="font-semibold text-[#2C2C2C] text-sm">{product.name}</p>
-            <p className="text-xs text-[#737373]">{shopName}</p>
-            <span className="text-xs bg-[#DC2626] text-white px-2 py-0.5 rounded-full mt-1 inline-block">
+            <p className="font-bold text-on-surface text-body-lg">{product.name}</p>
+            <p className="text-body-md text-on-surface-variant">{shopName}</p>
+            <span className="text-label-sm bg-error text-on-primary px-2.5 py-0.5 rounded-md mt-1 inline-block">
               {product.discount}
             </span>
           </div>
@@ -120,14 +114,14 @@ const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose })
 
         {status === "success" ? (
           <div className="text-center py-6">
-            <div className="text-5xl mb-3">✅</div>
-            <p className="text-[#16A34A] font-semibold text-lg">Coupon Sent!</p>
-            <p className="text-sm text-[#737373] mt-1">
+            <div className="text-5xl mb-4">✨</div>
+            <p className="text-emerald-600 font-bold text-body-lg">Coupon Sent Successfully!</p>
+            <p className="text-body-md text-on-surface-variant mt-2">
               The coupon was delivered to +{recipientPhone.replace(/\D/g, "")} via WhatsApp.
             </p>
             <button
               onClick={onClose}
-              className="mt-5 bg-[#4356FF] text-white px-6 py-2 rounded-full text-sm font-medium"
+              className="mt-6 w-full bg-primary text-on-primary py-3 rounded-full text-body-md font-bold hover:bg-primary/95 transition-all shadow-md cursor-pointer"
             >
               Done
             </button>
@@ -135,11 +129,11 @@ const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose })
         ) : (
           <>
             {/* Phone Input */}
-            <label className="block text-sm font-medium text-[#2C2C2C] mb-1">
+            <label className="block text-body-md font-bold text-on-surface mb-2">
               Recipient's WhatsApp Number
             </label>
-            <div className="flex items-center border border-[#EAEAEA] rounded-xl overflow-hidden mb-2 focus-within:ring-2 focus-within:ring-[#4356FF]">
-              <span className="bg-[#F7F8FF] px-3 py-3 text-sm text-[#737373] border-r border-[#EAEAEA]">
+            <div className="flex items-center border border-outline-variant/40 rounded-xl overflow-hidden mb-2 focus-within:ring-2 focus-within:ring-primary focus-within:border-transparent">
+              <span className="bg-surface-container px-4 py-3.5 text-body-md text-on-surface-variant border-r border-outline-variant/40">
                 +
               </span>
               <input
@@ -147,21 +141,21 @@ const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose })
                 placeholder="919876543210 (with country code)"
                 value={recipientPhone}
                 onChange={(e) => setRecipientPhone(e.target.value)}
-                className="flex-1 px-3 py-3 text-sm outline-none text-[#2C2C2C] placeholder:text-[#9CA3AF]"
+                className="flex-1 px-4 py-3.5 text-body-md outline-none text-on-surface placeholder:text-on-surface-variant/40"
               />
             </div>
-            <p className="text-xs text-[#9CA3AF] mb-4">
+            <p className="text-label-sm text-on-surface-variant/60 mb-6">
               Include country code without +. E.g. 91 for India.
             </p>
 
             {/* Error */}
             {status === "error" && (
-              <div className="bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl px-4 py-3 mb-4">
+              <div className="bg-error-container border border-error/20 text-error text-body-md rounded-xl px-4 py-3 mb-6">
                 {errorMsg}
               </div>
             )}
             {errorMsg && status === "idle" && (
-              <div className="bg-yellow-50 border border-yellow-200 text-yellow-700 text-sm rounded-xl px-4 py-3 mb-4">
+              <div className="bg-error-container border border-error/20 text-error text-body-md rounded-xl px-4 py-3 mb-6">
                 {errorMsg}
               </div>
             )}
@@ -170,11 +164,11 @@ const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose })
             <button
               onClick={sendViaCloudAPI}
               disabled={status === "sending"}
-              className="w-full flex items-center justify-center gap-2 bg-[#16A34A] text-white py-3 rounded-full font-medium text-sm disabled:opacity-60"
+              className="w-full flex items-center justify-center gap-2 bg-emerald-600 text-white py-4 rounded-full font-bold text-body-md disabled:opacity-60 hover:bg-emerald-700 transition-colors shadow-md cursor-pointer"
             >
               {status === "sending" ? (
                 <>
-                  <Loader2 size={16} className="animate-spin" />
+                  <Loader2 size={18} className="animate-spin" />
                   Sending...
                 </>
               ) : (
@@ -200,13 +194,12 @@ const ShopDetails: React.FC = () => {
 
   if (!shop) {
     return (
-      <div className="p-20 text-center font-bold">Shop Not Found</div>
+      <div className="p-20 text-center font-bold text-display-lg">Shop Not Found</div>
     );
   }
 
   return (
-    <div className="bg-[#F7F8FF] min-h-screen font-['Poppins']">
-
+    <div className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24 text-left">
       {/* Coupon Modal */}
       {selectedProduct && (
         <CouponModal
@@ -216,101 +209,111 @@ const ShopDetails: React.FC = () => {
         />
       )}
 
-      <div className="max-w-[1948px] mx-auto">
-
+      <div className="max-w-7xl mx-auto">
         {/* BACK BUTTON */}
-        <div className="px-[20px] md:px-[48px] py-[40px] md:py-[52px]">
+        <div className="mb-12">
           <Link
             to="/regular-shops"
-            className="flex items-center gap-2 text-[#2C2C2C] font-medium text-xl md:text-2xl"
+            className="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary font-bold transition-colors"
           >
-            <ArrowLeft size={20} />
-            Back
+            <span className="material-symbols-outlined text-[20px] font-bold">arrow_back</span>
+            Back to Shops
           </Link>
         </div>
 
         {/* SHOP HEADER */}
-        <div>
-          <div className="flex items-center gap-[16px] md:gap-[48px] px-[20px] md:px-[48px]">
+        <div className="bg-white p-8 rounded-[40px] border border-outline-variant/30 shadow-sm mb-12">
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
             <img
               src={shop.image}
-              className="w-[70px] h-[70px] md:w-[160px] md:h-[160px] rounded-full object-cover"
+              alt={shop.name}
+              className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg"
             />
-            <div>
-              <div className="flex flex-wrap items-center gap-[16px] md:gap-[48px]">
-                <h1 className="text-[20px] md:text-4xl font-medium text-[#2C2C2C]">
+            <div className="flex-1 text-center md:text-left">
+              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+                <h1 className="text-display-lg md:text-display-xl font-display-xl text-on-surface">
                   {shop.name}
                 </h1>
-                <button className="flex items-center gap-2 bg-[#4356FF] text-white px-[14px] md:px-[28px] py-[6px] md:py-[10px] rounded-full text-[13px] md:text-[20px] font-medium">
-                  <MessageSquare size={18} />
+                <div className="flex justify-center gap-3">
+                  <span className="text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1 rounded-full text-label-sm font-bold flex items-center gap-1 w-fit">
+                    <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: '"FILL" 1' }}>fiber_manual_record</span>
+                    Live
+                  </span>
+                </div>
+              </div>
+
+              {/* ADDRESS */}
+              <div className="flex items-center justify-center md:justify-start gap-2 mt-6 text-body-lg text-on-surface-variant font-medium">
+                <span className="material-symbols-outlined text-[22px] text-primary">location_on</span>
+                {shop.fullAddress}
+              </div>
+
+              {/* PHONE */}
+              <div className="flex items-center justify-center md:justify-start gap-2 mt-3 text-body-lg text-on-surface-variant font-medium">
+                <span className="material-symbols-outlined text-[22px] text-primary">call</span>
+                {shop.phone}
+              </div>
+
+              {/* ACTION BUTTON */}
+              <div className="mt-8 flex justify-center md:justify-start">
+                <button className="bg-primary hover:bg-primary/95 text-on-primary font-bold px-8 py-3 rounded-full transition-all flex items-center gap-2 text-body-md shadow-md cursor-pointer">
+                  <span className="material-symbols-outlined">forum</span>
                   Contact for offers
                 </button>
               </div>
-              <p className="text-[#22C55E] text-[16px] md:text-[26px] font-medium">Live</p>
             </div>
-          </div>
-
-          {/* ADDRESS */}
-          <div className="flex items-center py-[26px] gap-[8px] px-[20px] md:px-[48px] mt-[16px] text-[#737373] text-[13px] md:text-[16px] font-semibold">
-            <MapPin size={20} />
-            {shop.fullAddress}
-          </div>
-
-          {/* PHONE */}
-          <div className="flex items-center gap-[8px] px-[20px] md:px-[48px] mt-[6px] text-[#737373] text-[13px] md:text-[16px] font-semibold">
-            <Phone size={20} />
-            {shop.phone}
           </div>
         </div>
 
-        {/* OFFERS TITLE */}
-        <div className="mt-[48px] md:mt-[72px] mb-[48px] md:mb-[72px]">
-          <h2 className="px-[20px] md:px-[48px] mb-[32px] md:mb-[72px] text-[20px] md:text-3xl font-bold text-[#2C2C2C]">
+        {/* OFFERS */}
+        <div>
+          <h2 className="text-display-lg font-display-xl text-on-surface mb-8">
             Offers in shop
           </h2>
 
           {/* OFFER LIST */}
-          <div className="space-y-[24px] md:space-y-[36px] mx-[20px] md:mx-[48px]">
+          <div className="space-y-6">
             {PRODUCTS.map((product) => (
               <div
                 key={product.id}
-                className="flex flex-col md:flex-row items-start md:items-center gap-[16px] md:gap-[59px] bg-white border border-[#EAEAEA] pr-[16px] md:pr-[48px] shadow-[0px_1px_4px_rgba(12,12,13,0.05)]"
+                className="bg-white p-6 rounded-[32px] border border-outline-variant/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row gap-6 items-center"
               >
                 {/* IMAGE */}
                 <img
                   src={denim}
-                  className="w-full md:w-[170px] h-[180px] md:h-full object-cover"
+                  className="w-full md:w-40 h-40 rounded-2xl object-cover"
+                  alt={product.name}
                 />
 
                 {/* INFO */}
-                <div className="flex-1 px-[12px] md:px-0">
-                  <div className="flex flex-wrap items-center gap-[10px] md:gap-[36px]">
-                    <h3 className="text-[18px] md:text-[30px] font-medium text-[#2C2C2C]">
+                <div className="flex-1 text-center md:text-left">
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                    <h3 className="text-headline-lg font-bold text-on-surface">
                       {product.name}
                     </h3>
-                    <span className="bg-[#DC2626] text-white px-[10px] md:px-[12px] py-[2px] rounded-full text-[12px] md:text-[20px] font-medium">
+                    <span className="bg-error text-on-primary px-3 py-1 rounded-md text-label-sm font-bold">
                       {product.discount}
                     </span>
                   </div>
-                  <p className="text-[#737373] text-[14px] md:text-[15px] font-semibold mt-[8px] md:mt-[30px] max-w-[600px]">
+                  <p className="text-body-md text-on-surface-variant mt-3 max-w-2xl mx-auto md:mx-0">
                     {product.desc}
                   </p>
                 </div>
 
                 {/* PRICE + BUTTON */}
-                <div className="w-full md:w-auto flex flex-col items-start md:items-end px-[12px] md:px-0 pb-[12px] md:pb-0">
-                  <div className="flex items-center gap-2 md:justify-end">
-                    <span className="text-[#9CA3AF] line-through text-[14px] md:text-[20px]">
+                <div className="w-full md:w-auto flex flex-col items-center md:items-end gap-3 shrink-0">
+                  <div className="flex items-center gap-2">
+                    <span className="text-on-surface-variant/50 line-through text-body-md">
                       Rs.{product.oldPrice}
                     </span>
-                    <span className="text-[18px] md:text-[20px] font-semibold text-[#2C2C2C]">
+                    <span className="text-headline-lg font-bold text-on-surface">
                       Rs.{product.price}
                     </span>
                   </div>
 
                   <button
                     onClick={() => setSelectedProduct(product)}
-                    className="mt-[10px] md:mt-[16px] bg-[#16A34A] text-white px-[16px] md:px-[18px] py-[8px] md:py-[10px] rounded-full text-[14px] md:text-[20px] font-medium w-full md:w-auto"
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-full text-body-md font-bold w-full md:w-auto transition-colors shadow-md cursor-pointer"
                   >
                     Get coupon code
                   </button>

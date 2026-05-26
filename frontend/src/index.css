@@ -1,6 +1,1005 @@
 @import "tailwindcss";
 
-html {
+@theme {
+  --color-primary: #4356FF;
+  --color-primary-fixed: #dbe1ff;
+  --color-surface-container-high: #e6e8ea;
+  --color-on-secondary-fixed: #001c39;
+  --color-on-primary-fixed-variant: #003ea8;
+  --color-primary-container: #4356FF;
+  --color-on-secondary-fixed-variant: #004883;
+  --color-surface-container-highest: #e0e3e5;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #eeefff;
+  --color-inverse-surface: #2d3133;
+  --color-error-container: #ffdad6;
+  --color-error: #ba1a1a;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #003c70;
+  --color-secondary-fixed-dim: #a4c9ff;
+  --color-inverse-on-surface: #eff1f3;
+  --color-on-surface-variant: #434655;
+  --color-inverse-primary: #b4c5ff;
+  --color-background: #f7f9fb;
+  --color-on-error: #ffffff;
+  --color-surface-container-low: #f2f4f6;
+  --color-on-primary-fixed: #00174b;
+  --color-surface-container: #eceef0;
+  --color-outline-variant: #c3c6d7;
+  --color-on-tertiary-container: #e7f0ff;
+  --color-tertiary-container: #3c70a3;
+  --color-tertiary-fixed: #d0e4ff;
+  --color-surface-tint: #4356FF;
+  --color-primary-fixed-dim: #b4c5ff;
+  --color-tertiary-fixed-dim: #9ccaff;
+  --color-secondary-fixed: #d4e3ff;
+  --color-secondary: #0060ac;
+  --color-on-tertiary-fixed-variant: #03497a;
+  --color-on-error-container: #93000a;
+  --color-on-surface: #191c1e;
+  --color-tertiary: #1d5789;
+  --color-on-tertiary: #ffffff;
+  --color-surface-dim: #d8dadc;
+  --color-surface: #f7f9fb;
+  --color-surface-variant: #e0e3e5;
+  --color-on-tertiary-fixed: #001d35;
+  --color-surface-bright: #f7f9fb;
+  --color-secondary-container: #64a8fe;
+  --color-outline: #737686;
+  --color-on-background: #191c1e;
+  --color-surface-container-lowest: #ffffff;
+
+  --radius-default: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  --spacing-bento-gap: 16px;
+  --spacing-margin-desktop: 40px;
+  --spacing-base: 8px;
+  --spacing-margin-mobile: 16px;
+  --spacing-gutter: 24px;
+
+  --font-headline-lg: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-display-xl: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-label-sm: "Geist", monospace;
+  --font-body-lg: "Inter", sans-serif;
+  --font-headline-lg-mobile: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-display-lg: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+}
+
+/* Ensure global font family defaults match index.html design */
+body {
+  font-family: "Inter", sans-serif;
   scroll-behavior: smooth;
   scroll-padding-top: 72px;
+}
+
+/* Force specific classes to have the exact styles (font-size, line-height, letter-spacing, font-weight) from tailwind config */
+@utility text-display-xl {
+  font-size: 64px;
+  line-height: 72px;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
+@utility text-display-lg {
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+@utility text-headline-lg {
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+@utility text-headline-lg-mobile {
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+@utility text-body-lg {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+@utility text-body-md {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+@utility text-label-sm {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* Custom utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.noise {
+  background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBVeHffCQTcVr-YZJMUNz6GZNf30R5ypKJtViE7zaxYCx09gEDn_O97GUaCIDz1CQKiGVMRqqG1K49GICBApeCXl2nCX92sLPf9X18CI670JFl46jFMDPurqCrl-3eeglXqg3LohJIRAkNhiD7Jh5ghMht8mThYR20A23cdZeIB35-nCqOjwNTN4SYmS05zJeNWnTvBMQcDd8bei039uUCkoYjtB-w5b1INiiYzjInqRqBFHKG_bnjoaGZqf5hEUtZjdKZITG4CJeI9);
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.mesh-gradient {
+  background-color: #f7f9fb;
+  background-image: radial-gradient(at 0% 0%, rgba(0, 74, 198, 0.08) 0px, transparent 50%),
+                    radial-gradient(at 100% 0%, rgba(0, 96, 172, 0.05) 0px, transparent 50%),
+                    radial-gradient(at 100% 100%, rgba(29, 87, 137, 0.05) 0px, transparent 50%),
+                    radial-gradient(at 0% 100%, rgba(0, 74, 198, 0.08) 0px, transparent 50%);
+}
+
+/* ============================================================
+   SHIN SQUARE HERO CUSTOM CSS
+============================================================ */
+
+:root {
+  --header-h: 80px;
+  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
+  --gradient-brand: linear-gradient(135deg, #4356FF 0%, #43C0FF 100%);
+  --blue: #4356FF;
+  --green: #10B981;
+  --green-light: #34D399;
+  --orange: #F97316;
+  --red: #EF4444;
+  --whatsapp: #25D366;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --r-pill: 9999px;
+  --r-sm: 6px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-margin-mobile, 16px);
+  padding-right: var(--spacing-margin-mobile, 16px);
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: var(--spacing-margin-desktop, 40px);
+    padding-right: var(--spacing-margin-desktop, 40px);
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn--primary {
+  background-color: var(--blue);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(67, 86, 255, 0.35);
+}
+
+.btn--primary:hover {
+  background-color: #3144e5;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(67, 86, 255, 0.45);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+}
+
+.btn--lg {
+  padding: 14px 32px;
+  font-size: 1.125rem;
+  border-radius: 9999px;
+}
+
+.hero {
+  min-height: calc(100svh - var(--header-h) - 44px);
+  padding: clamp(28px, 5vh, 56px) 0 clamp(36px, 6vh, 64px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero__grid {
+  display: grid;
+  gap: clamp(28px, 5vw, 48px);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding: clamp(40px, 6vh, 64px) 0 clamp(48px, 7vh, 72px);
+  }
+
+  .hero__grid {
+    grid-template-columns: minmax(0, 0.94fr) minmax(440px, 1.06fr);
+    gap: clamp(24px, 3vw, 44px);
+  }
+}
+
+.hero__content {
+  position: relative;
+}
+
+/* Title */
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.85rem, 6vw, 4.25rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin-bottom: clamp(18px, 3vh, 24px);
+  color: var(--text-primary);
+}
+
+.hero__gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtitle */
+.hero__subtitle {
+  font-size: clamp(1.125rem, 1.55vw, 1.22rem);
+  color: var(--text-secondary);
+  max-width: 500px;
+  line-height: 1.65;
+  margin-bottom: clamp(24px, 4vh, 34px);
+}
+
+/* CTA */
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 28px;
+  margin-bottom: clamp(24px, 4vh, 38px);
+}
+
+.hero__secondary-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.2s, gap 0.2s;
+  text-decoration: none;
+}
+
+.hero__secondary-link:hover {
+  color: var(--blue);
+  gap: 8px;
+}
+
+/* Social Proof */
+.hero__social-proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatars img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2.5px solid #fff;
+  object-fit: cover;
+  margin-left: -10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s;
+}
+
+.avatars img:first-child {
+  margin-left: 0;
+}
+
+.avatars:hover img {
+  transform: translateX(2px);
+}
+
+.avatars:hover img:first-child {
+  transform: translateX(0);
+}
+
+.hero__trust-text {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.hero__trust-text strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.rating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: var(--r-pill);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.rating-badge svg {
+  color: #fbbf24;
+}
+
+/* ============================================================
+HERO CARDS — Fanned Stack (Mockup Layout)
+============================================================ */
+.hero__cards {
+  position: relative;
+  width: 100%;
+  max-width: min(100%, 500px);
+  min-height: clamp(360px, 92vw, 430px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.hero__cards::before {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(67, 86, 255, 0.22) 0%, rgba(67, 86, 255, 0) 70%);
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+  transform: translate3d(20px, 0, -150px);
+}
+
+@media (min-width: 1024px) {
+  .hero__cards {
+    max-width: min(100%, 640px);
+    min-height: min(56vw, 510px);
+    margin: 0 0 0 auto;
+  }
+}
+
+/* Base deal-card */
+.deal-card {
+  position: absolute;
+  background: #fff;
+  border-radius: 12px;
+  padding: 2px 2px 4px 2px;
+  box-shadow:
+    -15px 30px 60px -15px rgba(15, 23, 42, 0.12),
+    -5px 15px 30px -10px rgba(74, 85, 231, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.025);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.5s ease;
+}
+
+/* Card sizes */
+.deal-card--front {
+  width: 240px;
+  z-index: 3;
+  overflow: visible;
+}
+
+.deal-card--middle {
+  width: 215px;
+  z-index: 2;
+}
+
+.deal-card--back {
+  width: 195px;
+  z-index: 1;
+}
+
+/* Card positions — Mobile */
+.deal-card--front {
+  width: clamp(244px, 66vw, 288px);
+  top: 10px;
+  left: clamp(4px, 3vw, 16px);
+  transform-origin: center center;
+  transform: perspective(800px) rotateX(18deg) rotateY(-20deg) rotateZ(0deg) translate3d(0, 0, 0);
+}
+
+.deal-card--middle {
+  width: clamp(218px, 58vw, 258px);
+  top: 30px;
+  left: clamp(140px, 40vw, 188px);
+  transform: perspective(800px) rotateX(12deg) rotateY(-12deg) rotateZ(5deg) translate3d(0, 0, -40px);
+}
+
+.deal-card--back {
+  width: clamp(184px, 48vw, 220px);
+  top: 50px;
+  left: clamp(224px, 61vw, 280px);
+  transform: perspective(800px) rotateX(10deg) rotateY(-12deg) rotateZ(7deg) translate3d(0, 0, -80px);
+}
+
+/* Card positions — Desktop */
+@media (min-width: 1024px) {
+  .deal-card--front {
+    width: clamp(320px, 26vw, 360px);
+    top: 10px;
+    left: 0;
+    transform-origin: center center;
+    transform: perspective(900px) rotateX(18deg) rotateY(-20deg) rotateZ(0deg) translate3d(0, 0, 0);
+  }
+
+  .deal-card--middle {
+    width: clamp(286px, 23vw, 322px);
+    top: 36px;
+    left: clamp(176px, 14vw, 208px);
+    transform: perspective(900px) rotateX(12deg) rotateY(-12deg) rotateZ(5deg) translate3d(0, 0, -60px);
+  }
+
+  .deal-card--back {
+    width: clamp(254px, 20vw, 286px);
+    top: 58px;
+    left: clamp(312px, 25vw, 360px);
+    transform: perspective(900px) rotateX(10deg) rotateY(-12deg) rotateZ(7deg) translate3d(0, 0, -120px);
+  }
+}
+
+/* Hover animations */
+.hero__cards:hover .deal-card--front {
+  transform: perspective(900px) rotateX(18deg) rotateY(-32deg) rotateZ(0deg) translate3d(0, 0, 30px);
+  box-shadow:
+    -25px 45px 80px -20px rgba(15, 23, 42, 0.16),
+    -10px 20px 40px -15px rgba(67, 86, 255, 0.14),
+    0 0 0 1px rgba(0, 0, 0, 0.02);
+}
+
+.hero__cards:hover .deal-card--middle {
+  transform: perspective(900px) rotateX(10deg) rotateY(-10deg) rotateZ(8deg) translate3d(15px, -10px, -20px);
+}
+
+.hero__cards:hover .deal-card--back {
+  transform: perspective(1500px) rotateX(5deg) rotateY(-10deg) rotateZ(10deg) translate3d(30px, -15px, -70px);
+}
+
+/* Card media */
+.deal-card__media {
+  position: relative;
+  aspect-ratio: 1 / 0.92;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.deal-card--back .deal-card__media {
+  aspect-ratio: 1 / 0.78;
+}
+
+.deal-card__media::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  pointer-events: none;
+}
+
+.deal-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Badges */
+.badge {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 2;
+  line-height: 1;
+}
+
+.badge--discount {
+  top: 12px;
+  left: 12px;
+  background: var(--red);
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: var(--r-sm);
+}
+
+.badge--verified {
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.97);
+  color: var(--green);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.badge--verified svg {
+  stroke: var(--green-light);
+  color: var(--green-light);
+}
+
+/* Distance overlay */
+.deal-card__distance-overlay,
+.deal-card__rating-overlay {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.deal-card__rating-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  border-radius: var(--r-sm);
+  padding: 4px 8px;
+  text-shadow: none;
+}
+
+.deal-card__rating-overlay svg {
+  color: #fbbf24;
+}
+
+/* Card body */
+.deal-card__body {
+  padding: 12px 14px 12px;
+}
+
+.deal-card__body--compact {
+  padding: 8px 10px 8px;
+}
+
+.deal-card__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 1px;
+}
+
+.deal-card--front .deal-card__title {
+  font-size: 1.0625rem;
+}
+
+.deal-card__desc {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.deal-card__body--compact .deal-card__desc {
+  margin-bottom: 3px;
+  font-size: 0.75rem;
+}
+
+.deal-card__pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.deal-card__price {
+  font-size: 1.1875rem;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.deal-card__price-old {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.deal-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.deal-card__urgency {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--red);
+}
+
+.deal-card__urgency--clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.deal-card__available {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--green);
+}
+
+/* WhatsApp Button (hero cards) */
+.whatsapp-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--whatsapp);
+  color: #fff;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45);
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s;
+  z-index: 5;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.55);
+}
+
+.popular {
+  background: #F4F6FC; /* Distinct soft background to make cards pop */
+  padding: 72px 0 88px;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: inset 0 12px 20px -10px rgba(67, 86, 255, 0.05), inset 0 -12px 20px -10px rgba(67, 86, 255, 0.05);
+}
+
+.popular .container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.popular__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.popular__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+}
+
+.popular__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin: 0 0 6px 0;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.popular__subtitle {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Filter buttons */
+.popular__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.popular__filter-btn {
+  padding: 9px 22px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--border-light);
+  background: #fff;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.15s;
+  white-space: nowrap;
+}
+
+.popular__filter-btn:hover {
+  border-color: var(--blue);
+  background: #4356FF;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(67, 86, 255, 0.2);
+}
+
+.popular__filter-btn--active {
+  background: var(--gradient-brand);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: var(--shadow-btn);
+}
+
+.popular__filter-btn--active:hover {
+  color: #fff;
+  box-shadow: var(--shadow-btn-hover);
+}
+
+/* Grid */
+.popular__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .popular__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Card */
+.pop-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0, 0, 0, 0.03);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  border: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.pop-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px -10px rgba(67, 86, 255, 0.12), 0 12px 20px -12px rgba(67, 86, 255, 0.08), 0 0 0 1px rgba(67, 86, 255, 0.15);
+}
+
+/* Image area */
+.pop-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.pop-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.pop-card:hover .pop-card__media img {
+  transform: scale(1.05);
+}
+
+/* Badges */
+.pop-card__badge {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: var(--r-sm);
+  z-index: 2;
+  line-height: 1;
+}
+
+.pop-card__badge--topleft {
+  top: 12px;
+  left: 12px;
+  color: #fff;
+}
+
+.pop-card__badge--verified {
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #16a34a;
+  border-radius: var(--r-pill);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Distance */
+.pop-card__distance {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Body */
+.pop-card__body {
+  padding: 14px 14px 14px;
+  position: relative;
+}
+
+.pop-card__category {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: var(--blue);
+  margin: 0 0 4px 0;
+  text-transform: uppercase;
+}
+
+.pop-card__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 2px 0;
+  letter-spacing: -0.01em;
+}
+
+.pop-card__desc {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+/* Price */
+.pop-card__pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.pop-card__price {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.pop-card__price-old {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+/* Rating */
+.pop-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+/* Urgency */
+.pop-card__urgency {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.pop-card__urgency--red {
+  color: var(--red);
+}
+
+.pop-card__urgency--green {
+  color: var(--green);
+}
+
+.pop-card__urgency--orange {
+  color: var(--orange);
+}
+
+/* WhatsApp button (popular cards) */
+.pop-card__whatsapp {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--whatsapp);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.2s;
+  z-index: 3;
+}
+
+.pop-card__whatsapp:hover {
+  transform: scale(1.12);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.55);
+}
+
+/* Scroll reveal */
+.pop-card.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }

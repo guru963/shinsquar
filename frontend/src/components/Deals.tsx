@@ -65,7 +65,7 @@ const DealCard: React.FC<DealCardProps> = ({ image, title, description, link }) 
 
 const DealsSection: React.FC = () => {
   return (
-    <section id="home" className="bg-[#FFFFFF] pt-[62px] pb-[138px]">
+    <section id="deals" className="bg-[#FFFFFF] pt-[62px] pb-[138px]">
 
       <div className="max-w-[1200px] mx-auto text-center">
 
@@ -123,14 +123,14 @@ const DealsSection: React.FC = () => {
             image={one}
             title="Regular Shops"
             description="Fashion, electronic, Food, Furniture"
-            link="/regular-shops"
+            link="/coming-soon"
           />
 
           <DealCard
             image={two}
             title="Experience Based Shops"
             description="Salon, Gym, Beauty Parlour, Spa"
-            link="/experience-based"
+            link="/coming-soon"
           />
 
           <DealCard

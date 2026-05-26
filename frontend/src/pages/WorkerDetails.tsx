@@ -1,16 +1,14 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { Phone, ArrowLeft, Star, Briefcase } from "lucide-react";
 import { WORKERS } from "../data2";
 
 const WorkerDetails: React.FC = () => {
   const { id } = useParams();
-
   const worker = WORKERS.find((w) => w.id === id);
 
   if (!worker) {
     return (
-      <div className="p-20 text-center font-bold">
+      <div className="p-20 text-center font-bold text-display-lg">
         Worker Not Found
       </div>
     );
@@ -19,82 +17,78 @@ const WorkerDetails: React.FC = () => {
   const whatsappContact = () => {
     const phone = worker.phone.replace(/\D/g, "");
     const message = `Hello ${worker.name}, I need your ${worker.role} service.`;
-
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
     window.open(url, "_blank");
   };
 
   return (
-    <div className="bg-[#F8FAFC] min-h-screen p-6 md:p-12 font-['Poppins']">
-
+    <div className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24 text-left">
       <div className="max-w-4xl mx-auto">
-
         {/* Back Button */}
-        <Link
-          to="/household-works"
-          className="flex items-center gap-2 text-gray-700 mb-8 hover:text-[#4F46E5]"
-        >
-          <ArrowLeft size={18} />
-          Back
-        </Link>
+        <div className="mb-12">
+          <Link
+            to="/household-works"
+            className="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary font-bold transition-colors"
+          >
+            <span className="material-symbols-outlined text-[20px] font-bold">arrow_back</span>
+            Back to Workers
+          </Link>
+        </div>
 
-        {/* Worker Card */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-
-          <div className="flex flex-col md:flex-row items-center gap-8">
-
+        {/* Worker Details Card */}
+        <div className="bg-white p-8 md:p-12 rounded-[40px] border border-outline-variant/30 shadow-sm">
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
             {/* Image */}
             <img
               src={worker.image}
               alt={worker.name}
-              className="w-40 h-40 rounded-full object-cover border"
+              className="w-36 h-36 md:w-44 md:h-44 rounded-full object-cover border-4 border-white shadow-lg"
             />
 
             {/* Info */}
-            <div className="text-center md:text-left">
-
-              <h1 className="text-3xl font-bold text-gray-900">
+            <div className="flex-1 text-center md:text-left">
+              <h1 className="text-display-lg md:text-display-xl font-display-xl text-on-surface mb-2">
                 {worker.name}
               </h1>
 
-              <p className="text-lg text-gray-500 mt-1">
+              <div className="text-body-lg text-primary font-bold tracking-wider uppercase px-3 py-1 bg-primary/5 rounded-full inline-block mb-6">
                 {worker.role}
-              </p>
-
-              {/* Experience */}
-              <div className="flex items-center gap-2 mt-4 text-gray-600 justify-center md:justify-start">
-                <Briefcase size={18} />
-                <span>Experience: {worker.experience}</span>
               </div>
 
-              {/* Rating */}
-              <div className="flex items-center gap-2 mt-2 text-yellow-500 justify-center md:justify-start">
-                <Star size={18} fill="currentColor" />
-                <span className="text-gray-700">{worker.rating}</span>
+              <div className="space-y-4">
+                {/* Experience */}
+                <div className="flex items-center justify-center md:justify-start gap-3 text-body-lg text-on-surface-variant font-medium">
+                  <span className="material-symbols-outlined text-[22px] text-primary">work</span>
+                  <span>Experience: {worker.experience}</span>
+                </div>
+
+                {/* Rating */}
+                <div className="flex items-center justify-center md:justify-start gap-3 text-body-lg text-on-surface-variant font-medium">
+                  <span className="material-symbols-outlined text-[22px] text-amber-500" style={{ fontVariationSettings: '"FILL" 1' }}>star</span>
+                  <span>Rating: {worker.rating} / 5.0</span>
+                </div>
+
+                {/* Phone */}
+                <div className="flex items-center justify-center md:justify-start gap-3 text-body-lg text-on-surface-variant font-medium">
+                  <span className="material-symbols-outlined text-[22px] text-primary">call</span>
+                  <span>{worker.phone}</span>
+                </div>
               </div>
 
-              {/* Phone */}
-              <div className="flex items-center gap-2 mt-4 text-gray-600 justify-center md:justify-start">
-                <Phone size={18} />
-                <span>{worker.phone}</span>
+              {/* Action Button */}
+              <div className="mt-8 flex justify-center md:justify-start">
+                <button
+                  onClick={whatsappContact}
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-full transition-all flex items-center gap-2 text-body-md shadow-md cursor-pointer"
+                >
+                  <span className="material-symbols-outlined">forum</span>
+                  Contact on WhatsApp
+                </button>
               </div>
-
-              {/* WhatsApp Button */}
-              <button
-                onClick={whatsappContact}
-                className="mt-6 bg-green-500 text-white px-6 py-2 rounded-full font-medium hover:bg-green-600 transition"
-              >
-                Contact on WhatsApp
-              </button>
-
             </div>
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 };

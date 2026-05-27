@@ -16,7 +16,7 @@ export default function Hero() {
           </p>
           <div className="hero__cta">
             <a 
-              href="https://wa.me/917587315025"
+              href="https://chat.whatsapp.com/KrgkGXIMyxpFWaYTC3Yuur?mode=gi_t"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn--primary btn--lg"

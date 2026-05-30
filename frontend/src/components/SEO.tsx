@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { DEFAULT_OG_IMAGE, SITE_NAME } from "../seo/routes";
 import { buildAbsoluteUrl } from "../seo/schema";
@@ -21,7 +21,10 @@ const SEO: React.FC<SEOProps> = ({
   noIndex,
 }) => {
   const location = useLocation();
-  const structuredDataJson = JSON.stringify(structuredData ?? null);
+  const dataList = useMemo(() => {
+    if (!structuredData) return [];
+    return Array.isArray(structuredData) ? structuredData : [structuredData];
+  }, [structuredData]);
 
   useEffect(() => {
     const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
@@ -79,12 +82,6 @@ const SEO: React.FC<SEOProps> = ({
     );
     existingStructuredData.forEach((script) => script.remove());
 
-    const dataList = structuredData
-      ? Array.isArray(structuredData)
-        ? structuredData
-        : [structuredData]
-      : [];
-
     dataList.forEach((data) => {
       const script = document.createElement("script");
       script.type = "application/ld+json";
@@ -102,7 +99,7 @@ const SEO: React.FC<SEOProps> = ({
     image,
     location.pathname,
     noIndex,
-    structuredDataJson,
+    dataList,
   ]);
 
   return null; // This component doesn't render any UI

@@ -1,12 +1,15 @@
 import fs from "fs";
 import path from "path";
-import { defineConfig } from "vite";
+import { createRequire } from "module";
+import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import vitePrerender from "vite-plugin-prerender";
 import { ALL_ROUTES, SITE_URL } from "./src/seo/routes";
 
-const sitemapPlugin = (routes: string[]) => ({
+const require = createRequire(import.meta.url);
+const vitePrerender = require("vite-plugin-prerender");
+
+const sitemapPlugin = (routes: string[]): Plugin => ({
   name: "sitemap-generator",
   apply: "build",
   async closeBundle() {

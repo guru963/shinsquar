@@ -57,6 +57,8 @@ const vendorsData: Vendor[] = [
 
 const CATEGORIES = ['All', 'Plumbing', 'Construction', 'Interior', 'Creative'];
 
+import SEO from "../components/SEO";
+
 const HouseholdWorks: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const gridRef = useRef<HTMLDivElement>(null);
@@ -95,6 +97,10 @@ const HouseholdWorks: React.FC = () => {
 
   return (
     <section className="popular py-24 min-h-screen bg-[#F4F6FC]" id="vendors-section">
+      <SEO 
+        title="Household Workers & Technicians" 
+        description="Hire verified local Plumbers, Tiles Workers, Electricians, and Creative professionals in Shankar Nagar, Durg, Chhattisgarh. Trusted local expertise."
+      />
       <div className="container">
         {/* Back Button */}
         <div className="mb-8 text-left flex">

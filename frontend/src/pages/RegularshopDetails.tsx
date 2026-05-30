@@ -187,6 +187,8 @@ const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose })
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
+import SEO from "../components/SEO";
+
 const ShopDetails: React.FC = () => {
   const { id } = useParams();
   const shop = SHOPS.find((s) => s.id === id);
@@ -200,6 +202,10 @@ const ShopDetails: React.FC = () => {
 
   return (
     <div className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24 text-left">
+      <SEO 
+        title={shop.name} 
+        description={`Get live coupons, discounts and details for ${shop.name} at ${shop.fullAddress || shop.location}, Durg, Chhattisgarh.`}
+      />
       {/* Coupon Modal */}
       {selectedProduct && (
         <CouponModal

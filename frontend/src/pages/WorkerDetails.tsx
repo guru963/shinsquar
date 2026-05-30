@@ -2,6 +2,8 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { WORKERS } from "../data2";
 
+import SEO from "../components/SEO";
+
 const WorkerDetails: React.FC = () => {
   const { id } = useParams();
   const worker = WORKERS.find((w) => w.id === id);
@@ -23,6 +25,10 @@ const WorkerDetails: React.FC = () => {
 
   return (
     <div className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24 text-left">
+      <SEO 
+        title={`${worker.name} | Verified ${worker.role}`} 
+        description={`Hire ${worker.name}, a verified ${worker.role} in Durg, Chhattisgarh. Rating: ${worker.rating}/5.0 with ${worker.experience} of experience.`}
+      />
       <div className="max-w-4xl mx-auto">
         {/* Back Button */}
         <div className="mb-12">

@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { SHOPS } from "../data";
 
+import SEO from "../components/SEO";
+
 const ShopCard: React.FC<{ shop: typeof SHOPS[0] }> = ({ shop }) => (
   <Link to={`/regular-shops/${shop.id}`} className="group block w-full">
     <div
@@ -33,6 +35,10 @@ const ShopCard: React.FC<{ shop: typeof SHOPS[0] }> = ({ shop }) => (
 const RegularShops: React.FC = () => {
   return (
     <section className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24">
+      <SEO 
+        title="Local Business & Shops Directory" 
+        description="Browse the list of verified local stores, shops, and services in Shankar Nagar, Durg, Chhattisgarh. Get the best rates and verify deals."
+      />
       <div className="max-w-7xl mx-auto">
         
         {/* Back Button */}

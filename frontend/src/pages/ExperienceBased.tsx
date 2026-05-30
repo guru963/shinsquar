@@ -61,9 +61,15 @@ const ExperienceShopCard: React.FC<{ shop: typeof EXPERIENCE_SHOPS[0] }> = ({ sh
   </div>
 );
 
+import SEO from "../components/SEO";
+
 const ExperienceBased: React.FC = () => {
   return (
     <section className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24">
+      <SEO 
+        title="Experience Services & Salons" 
+        description="Book appointments and discover trusted salons, fitness gyms, spas, and wellness centers in Shankar Nagar, Durg, Chhattisgarh."
+      />
       <div className="max-w-7xl mx-auto">
         
         {/* Back Button */}

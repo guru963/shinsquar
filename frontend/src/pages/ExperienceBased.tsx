@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
+import { ROUTE_META } from "../seo/routes";
+import { buildItemListSchema } from "../seo/schema";
 
 const EXPERIENCE_SHOPS = [
   {
@@ -37,6 +40,8 @@ const ExperienceShopCard: React.FC<{ shop: typeof EXPERIENCE_SHOPS[0] }> = ({ sh
       <img
         src={shop.image}
         alt={shop.name}
+        loading="lazy"
+        decoding="async"
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
       />
       <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
@@ -61,14 +66,21 @@ const ExperienceShopCard: React.FC<{ shop: typeof EXPERIENCE_SHOPS[0] }> = ({ sh
   </div>
 );
 
-import SEO from "../components/SEO";
-
 const ExperienceBased: React.FC = () => {
+  const listSchema = buildItemListSchema(
+    "Experience-based services in Durg, Chhattisgarh",
+    EXPERIENCE_SHOPS.map((shop) => ({
+      name: shop.name,
+      itemType: "LocalBusiness",
+    }))
+  );
+
   return (
     <section className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24">
       <SEO 
-        title="Experience Services & Salons" 
-        description="Book appointments and discover trusted salons, fitness gyms, spas, and wellness centers in Shankar Nagar, Durg, Chhattisgarh."
+        title={ROUTE_META["/experience-based"].title}
+        description={ROUTE_META["/experience-based"].description}
+        structuredData={listSchema}
       />
       <div className="max-w-7xl mx-auto">
         

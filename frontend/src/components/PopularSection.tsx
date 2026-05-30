@@ -128,7 +128,7 @@ export default function PopularSection() {
               <div key={vendor.id} className="pop-card popular-card">
                 {/* Image area */}
                 <div className="pop-card__media">
-                  <img src={vendor.image} alt={vendor.name} loading="lazy" />
+                  <img src={vendor.image} alt={vendor.name} loading="lazy" decoding="async" />
                   
                   {vendor.verified && (
                     <span className="pop-card__badge pop-card__badge--verified">

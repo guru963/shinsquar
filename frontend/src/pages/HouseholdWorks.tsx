@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
+import { WORKERS } from "../data2";
+import { ROUTE_META } from "../seo/routes";
+import { buildItemListSchema } from "../seo/schema";
 
 interface Vendor {
   id: string;
@@ -57,11 +61,16 @@ const vendorsData: Vendor[] = [
 
 const CATEGORIES = ['All', 'Plumbing', 'Construction', 'Interior', 'Creative'];
 
-import SEO from "../components/SEO";
-
 const HouseholdWorks: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const gridRef = useRef<HTMLDivElement>(null);
+  const listSchema = buildItemListSchema(
+    "Household workers in Durg, Chhattisgarh",
+    vendorsData.map((vendor) => ({
+      name: vendor.name,
+      itemType: "Service",
+    }))
+  );
 
   const filteredVendors =
     activeCategory === 'All'
@@ -98,8 +107,9 @@ const HouseholdWorks: React.FC = () => {
   return (
     <section className="popular py-24 min-h-screen bg-[#F4F6FC]" id="vendors-section">
       <SEO 
-        title="Household Workers & Technicians" 
-        description="Hire verified local Plumbers, Tiles Workers, Electricians, and Creative professionals in Shankar Nagar, Durg, Chhattisgarh. Trusted local expertise."
+        title={ROUTE_META["/household-works"].title}
+        description={ROUTE_META["/household-works"].description}
+        structuredData={listSchema}
       />
       <div className="container">
         {/* Back Button */}
@@ -125,6 +135,18 @@ const HouseholdWorks: React.FC = () => {
             <p className="popular__subtitle">
               Verified local professionals trusted by your neighbors
             </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <span className="text-body-md text-on-surface-variant">Explore verified profiles:</span>
+              {WORKERS.map((worker) => (
+                <Link
+                  key={worker.id}
+                  to={`/household-workers/${worker.id}`}
+                  className="text-body-md font-bold text-primary hover:text-primary/80 transition-colors"
+                >
+                  {worker.name} ({worker.role})
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -151,7 +173,7 @@ const HouseholdWorks: React.FC = () => {
               <div key={vendor.id} className="pop-card popular-card">
                 {/* Image area */}
                 <div className="pop-card__media">
-                  <img src={vendor.image} alt={vendor.name} loading="lazy" />
+                  <img src={vendor.image} alt={vendor.name} loading="lazy" decoding="async" />
                   
                   {vendor.verified && (
                     <span className="pop-card__badge pop-card__badge--verified">

@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import { X, Send, Loader2 } from "lucide-react";
 import { SHOPS, PRODUCTS } from "../data";
 import denim from "../assets/denim.png";
+import SEO from "../components/SEO";
+import { buildAbsoluteUrl, buildShopSchema } from "../seo/schema";
 
 // ─── WhatsApp Cloud API Config ───────────────────────────────────────────────
 const WA_PHONE_NUMBER_ID = "978729701999437";
@@ -102,7 +104,13 @@ const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose })
 
         {/* Product Preview */}
         <div className="flex items-center gap-4 bg-surface-container-low border border-outline-variant/20 rounded-2xl p-4 mb-6">
-          <img src={denim} className="w-16 h-16 object-cover rounded-xl" alt={product.name} />
+          <img
+            src={denim}
+            className="w-16 h-16 object-cover rounded-xl"
+            alt={product.name}
+            loading="lazy"
+            decoding="async"
+          />
           <div>
             <p className="font-bold text-on-surface text-body-lg">{product.name}</p>
             <p className="text-body-md text-on-surface-variant">{shopName}</p>
@@ -187,8 +195,6 @@ const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose })
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-import SEO from "../components/SEO";
-
 const ShopDetails: React.FC = () => {
   const { id } = useParams();
   const shop = SHOPS.find((s) => s.id === id);
@@ -205,6 +211,8 @@ const ShopDetails: React.FC = () => {
       <SEO 
         title={shop.name} 
         description={`Get live coupons, discounts and details for ${shop.name} at ${shop.fullAddress || shop.location}, Durg, Chhattisgarh.`}
+        image={buildAbsoluteUrl(shop.image)}
+        structuredData={buildShopSchema(shop)}
       />
       {/* Coupon Modal */}
       {selectedProduct && (
@@ -233,6 +241,7 @@ const ShopDetails: React.FC = () => {
             <img
               src={shop.image}
               alt={shop.name}
+              decoding="async"
               className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg"
             />
             <div className="flex-1 text-center md:text-left">
@@ -289,6 +298,8 @@ const ShopDetails: React.FC = () => {
                   src={denim}
                   className="w-full md:w-40 h-40 rounded-2xl object-cover"
                   alt={product.name}
+                  loading="lazy"
+                  decoding="async"
                 />
 
                 {/* INFO */}

@@ -9,6 +9,8 @@ import TeamSection from './components/Team'
 import CTA from './components/CTA'
 
 import SEO from './components/SEO'
+import { ROUTE_META } from './seo/routes'
+import { LOCAL_BUSINESS_SCHEMA } from './seo/schema'
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -43,8 +45,9 @@ const App: React.FC = () => {
   return (
     <div className="bg-background text-on-surface font-body-md overflow-x-hidden pt-16">
       <SEO 
-        title="Your neighborhood, but smarter" 
-        description="Discover local stores, verify household workers, and get the best local deals at Shankar Nagar, Durg, Chhattisgarh with ShinSquare."
+        title={ROUTE_META["/"].title}
+        description={ROUTE_META["/"].description}
+        structuredData={LOCAL_BUSINESS_SCHEMA}
       />
       {/* 1. Hero & Social Trust */}
       <Hero />

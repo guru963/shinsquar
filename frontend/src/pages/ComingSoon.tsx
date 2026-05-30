@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
+import { ROUTE_META } from "../seo/routes";
 
 const ComingSoon: React.FC = () => {
   return (
@@ -9,6 +11,10 @@ const ComingSoon: React.FC = () => {
         background: "radial-gradient(at 0% 0%, rgba(67, 86, 255, 0.12) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(67, 192, 255, 0.1) 0px, transparent 50%), #F8FAFC"
       }}
     >
+      <SEO 
+        title={ROUTE_META["/coming-soon"].title}
+        description={ROUTE_META["/coming-soon"].description}
+      />
       {/* Decorative floating blurred vector circles */}
       <div className="absolute top-1/4 left-1/10 w-72 h-72 bg-[#4356FF]/5 rounded-full blur-[80px] pointer-events-none"></div>
       <div className="absolute bottom-1/4 right-1/10 w-96 h-96 bg-[#43C0FF]/5 rounded-full blur-[100px] pointer-events-none"></div>

@@ -65,7 +65,7 @@ const ServicesBento: React.FC = () => {
           </div>
 
           {/* Card 3: Reliable and Community-Driven */}
-          <div className="md:col-span-4 p-8 md:p-10 rounded-3xl bg-surface-container-low border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col justify-between h-[300px] hover:shadow-md transition">
+          <div className="md:col-span-4 p-6 md:p-10 rounded-3xl bg-surface-container-low border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col gap-5 min-h-[260px] md:h-[300px] hover:shadow-md transition">
             <div className="flex justify-between items-start">
               <div className="w-12 h-12 rounded-xl border border-[#4356FF]/20 flex items-center justify-center text-[#4356FF]">
                 <ShieldCheck size={26} />

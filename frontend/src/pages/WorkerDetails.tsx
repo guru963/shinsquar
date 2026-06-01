@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { WORKERS } from "../data2";
 
 import SEO from "../components/SEO";
+import { buildAbsoluteUrl, buildServiceSchema } from "../seo/schema";
 
 const WorkerDetails: React.FC = () => {
   const { id } = useParams();
@@ -28,6 +29,8 @@ const WorkerDetails: React.FC = () => {
       <SEO 
         title={`${worker.name} | Verified ${worker.role}`} 
         description={`Hire ${worker.name}, a verified ${worker.role} in Durg, Chhattisgarh. Rating: ${worker.rating}/5.0 with ${worker.experience} of experience.`}
+        image={buildAbsoluteUrl(worker.image)}
+        structuredData={buildServiceSchema(worker)}
       />
       <div className="max-w-4xl mx-auto">
         {/* Back Button */}
@@ -48,6 +51,7 @@ const WorkerDetails: React.FC = () => {
             <img
               src={worker.image}
               alt={worker.name}
+              decoding="async"
               className="w-36 h-36 md:w-44 md:h-44 rounded-full object-cover border-4 border-white shadow-lg"
             />
 

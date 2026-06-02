@@ -7,8 +7,9 @@ import logo from "../assets/logo.png";
 const navItems = [
   { label: "Home", scrollTo: "hero" },
   { label: "Deals", scrollTo: "deals" },
+   { label: "About", scrollTo: "about" },
   { label: "Services", scrollTo: "features" },
-  { label: "About", scrollTo: "about" },
+ 
   { label: "Team", scrollTo: "founder" },
   { label: "Contact us", scrollTo: "contact" },
 ];
@@ -39,7 +40,7 @@ const Navbar: React.FC = () => {
 
 
   return (
-    <nav className="w-full bg-[#F7F8FF] shadow-[0px_1px_4px_rgba(12,12,13,0.05)] flex items-center px-[48px] relative sticky top-0 z-50">
+    <nav className="w-full bg-[#F7F8FF] shadow-[0px_1px_4px_rgba(12,12,13,0.05)] flex items-center px-margin-mobile md:px-margin-desktop relative sticky top-0 z-50">
 
       {/* Container */}
       <div className="flex items-center justify-between w-full">
@@ -90,7 +91,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="absolute top-[95px] left-0 w-full bg-[#F7F8FF] border-t flex flex-col items-center gap-6 py-8 shadow-lg md:hidden">
+        <div className="absolute top-full left-0 w-full bg-[#F7F8FF] border-t flex flex-col items-center gap-6 py-8 shadow-lg md:hidden">
           {navItems.map((item) => (
             <button
               key={item.label}

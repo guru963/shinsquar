@@ -17,7 +17,7 @@ const AboutSection: React.FC = () => {
               </h2>
               <div className="space-y-4 text-secondary-fixed text-base max-w-md opacity-85 leading-relaxed">
                 <p>
-                  Shin Square is your trusted hyperlocal platform connecting you to the best deals, offers, and essential services in your neighborhood. From plumbers and electricians to photographers and local stores, we bring everything you need closer to you.
+                  Shin Square is your trusted hyperlocal platform connecting you to the best deals, offers, and essential services in your locality. From plumbers and electricians to photographers and local stores, we bring everything you need closer to you.
                 </p>
                 <p className="font-medium text-white/90">
                   Discover, connect, and save — all within your own community, made simple and convenient.
@@ -75,7 +75,7 @@ const AboutSection: React.FC = () => {
               <div>
                 <h4 className="text-headline-lg font-bold text-white mb-2">Trusted Vendors</h4>
                 <p className="text-white/80 text-body-md">
-                  Verified locals you can rely on, rated by your neighbors.
+                  Verified locals you can rely on, rated by your local residents.
                 </p>
               </div>
             </div>

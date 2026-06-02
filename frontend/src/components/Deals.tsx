@@ -14,34 +14,31 @@ interface DealCardProps {
 
 const DealCard: React.FC<DealCardProps> = ({ image, title, description, link }) => {
   return (
-    <Link to={link}>
+    <Link to={link} className="block w-full">
       <div
-        className="bg-white cursor-pointer transition-all  shadow-[0px_4px_10px_rgba(0,0,0,0.1)]  hover:shadow-[0px_8px_20px_rgba(0,0,0,0.5)]"
+        className="bg-white rounded-3xl cursor-pointer transition-all border border-gray-100/80 shadow-[0px_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0px_20px_40px_rgba(67,86,255,0.08)] hover:-translate-y-1 duration-300"
         style={{
-          padding: "12px",
+          padding: "20px",
           display: "flex",
           flexDirection: "column",
-          gap: "10px",
-      //     boxShadow:
-      // "0px 8px 20px rgba(0, 0, 0, 0.08)" // ✅ updated shadow
+          gap: "16px",
         }}
       >
         {/* Image */}
-        <div className="rounded-md overflow-hidden bg-gray-50">
+        <div className="rounded-2xl overflow-hidden bg-gray-50 aspect-video md:aspect-[4/3] max-h-[230px]">
           <img
             src={image}
             alt={title}
-            className="w-full h-[230px] object-cover"
+            className="w-full h-full object-cover"
           />
         </div>
 
         {/* Text */}
-        <div className="text-center">
+        <div className="text-center space-y-2">
           <h3
-            className="text-[1.2em] text-[#2C2C2C]"
+            className="text-[1.25em] text-[#2C2C2C] font-semibold"
             style={{
               fontFamily: "Poppins",
-              fontWeight:500,
               letterSpacing: "-0.5%"
             }}
           >
@@ -49,7 +46,7 @@ const DealCard: React.FC<DealCardProps> = ({ image, title, description, link }) 
           </h3>
 
           <p
-            className="text-[16px] text-[#737373] font-normal"
+            className="text-[15px] text-[#737373] font-normal leading-relaxed"
             style={{
               fontFamily: "Poppins",
               letterSpacing: "-0.5%"
@@ -65,7 +62,7 @@ const DealCard: React.FC<DealCardProps> = ({ image, title, description, link }) 
 
 const DealsSection: React.FC = () => {
   return (
-    <section id="deals" className="bg-[#FFFFFF] pt-[62px] pb-[138px]">
+    <section id="deals" className="bg-[#FFFFFF] pt-[62px] pb-[138px] px-6 md:px-12">
 
       <div className="max-w-[1200px] mx-auto text-center">
 
@@ -118,7 +115,7 @@ const DealsSection: React.FC = () => {
         </div>
 
         {/* CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-27 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-16">
           <DealCard
             image={one}
             title="Regular Shops"

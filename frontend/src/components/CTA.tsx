@@ -13,11 +13,11 @@ const CTA: React.FC = () => {
 
         <div className="relative z-10 space-y-8">
           <h2 className="text-display-lg md:text-display-xl font-display-xl text-on-primary">
-            Bring Your Neighborhood <br />
+            Bring Your Locality <br />
             Online.
           </h2>
           <p className="text-on-primary/80 text-body-lg max-w-2xl mx-auto">
-            Join the movement! Whether you are a vendor registering to list services, a household looking for trusted help, or a neighbor searching for local deals, sign up today.
+            Join the movement! Whether you are a vendor registering to list services, a household looking for trusted help, or a local resident searching for local deals, sign up today.
           </p>
           <div className="flex flex-wrap justify-center gap-6 pt-4">
             <Link 

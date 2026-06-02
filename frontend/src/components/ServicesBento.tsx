@@ -14,7 +14,7 @@ const ServicesBento: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight font-display-xl" style={{ fontFamily: "var(--font-display)" }}>
             Why Shin Square? <br />
             <span className="text-[#4356FF] text-2xl md:text-3xl font-semibold mt-1.5 block leading-snug font-display-xl" style={{ fontFamily: "var(--font-display)" }}>
-              Everything your neighborhood needs, in one place.
+              Everything your locality needs, in one place.
             </span>
           </h2>
         </div>
@@ -83,7 +83,7 @@ const ServicesBento: React.FC = () => {
           </div>
 
           {/* Card 4: Support Local Businesses */}
-          <div className="md:col-span-8 p-8 md:p-10 rounded-3xl bg-surface-container-low border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center gap-8 h-[300px] hover:shadow-md transition">
+          <div className="md:col-span-8 p-8 md:p-10 rounded-3xl bg-surface-container-low border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center gap-8 h-auto md:h-[300px] hover:shadow-md transition">
             <div className="flex-1 space-y-4">
               <div className="w-12 h-12 bg-[#4356FF]/10 rounded-xl flex items-center justify-center text-[#4356FF]">
                 <Store size={22} />
@@ -94,7 +94,7 @@ const ServicesBento: React.FC = () => {
               </p>
             </div>
             
-            <div className="w-full md:w-1/2 h-full py-2 shrink-0">
+            <div className="hidden md:block w-full md:w-1/2 h-full py-2 shrink-0">
               <img 
                 alt="Community illustration" 
                 className="w-full h-full object-cover rounded-2xl shadow-sm border border-gray-100" 

@@ -4,7 +4,7 @@ const Footer: React.FC = () => {
   return (
     <footer id="contact" className="bg-[#1e256e] text-white py-10 px-margin-mobile md:px-margin-desktop font-body-md">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
           {/* Brand Section */}
           <div className="space-y-2 text-left">
             <h2 className="text-4xl font-extrabold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>ShinSquare</h2>

@@ -8,8 +8,6 @@ const navItems = [
   { label: "Home", scrollTo: "hero" },
   { label: "Deals", scrollTo: "deals" },
    { label: "About", scrollTo: "about" },
-  { label: "Services", scrollTo: "features" },
- 
   { label: "Team", scrollTo: "founder" },
   { label: "Contact us", scrollTo: "contact" },
 ];

@@ -223,6 +223,23 @@ body {
   transform: translateY(0);
 }
 
+.btn--whatsapp {
+  background-color: var(--whatsapp);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+}
+
+.btn--whatsapp:hover {
+  background-color: #20ba5a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+.btn--whatsapp:active {
+  transform: translateY(0);
+}
+
+
 .btn--lg {
   padding: 14px 32px;
   font-size: 1.125rem;

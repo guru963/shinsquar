@@ -52,8 +52,8 @@ const ServicesBento: React.FC = () => {
           </div>
 
           {/* Card 2: Save Time and Money */}
-          <div className="md:col-span-4 p-8 md:p-10 rounded-3xl bg-[#4356FF] text-white border border-[#4356FF]/20 shadow-lg relative overflow-hidden flex flex-col justify-between hover:shadow-xl transition">
-            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-6">
+          <div className="md:col-span-4 p-8 md:p-10 rounded-3xl bg-[#4356FF] text-white border border-[#4356FF]/20 shadow-lg relative overflow-hidden flex flex-col justify-start gap-5 hover:shadow-xl transition">
+            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
               <Zap size={24} />
             </div>
             <div className="relative z-10 space-y-3 text-left">

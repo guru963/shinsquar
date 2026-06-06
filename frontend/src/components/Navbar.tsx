@@ -70,14 +70,18 @@ const Navbar: React.FC = () => {
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center gap-10 text-gray-600 font-medium">
           {navItems.map((item) => (
-            <button
+            <a
               key={item.label}
-              onClick={() => handleNav(item)}
+              href={`/#${item.scrollTo}`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNav(item);
+              }}
               className="hover:text-blue-600 transition cursor-pointer bg-transparent border-none"
               style={{ fontFamily: "Poppins" }}
             >
               {item.label}
-            </button>
+            </a>
           ))}
         </div>
 
@@ -95,14 +99,18 @@ const Navbar: React.FC = () => {
       {isOpen && (
         <div className="absolute top-full left-0 w-full bg-[#F7F8FF] border-t flex flex-col items-center gap-5 py-6 shadow-lg lg:hidden">
           {navItems.map((item) => (
-            <button
+            <a
               key={item.label}
-              onClick={() => handleNav(item)}
+              href={`/#${item.scrollTo}`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNav(item);
+              }}
               className="text-gray-600 hover:text-blue-600 transition cursor-pointer bg-transparent border-none"
               style={{ fontFamily: "Poppins" }}
             >
               {item.label}
-            </button>
+            </a>
           ))}
         </div>
       )}

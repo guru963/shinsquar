@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
 
 const ComingSoon: React.FC = () => {
   return (
@@ -14,6 +15,10 @@ const ComingSoon: React.FC = () => {
       <div className="absolute bottom-1/4 right-1/10 w-96 h-96 bg-[#43C0FF]/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-2xl w-full mx-auto bg-white/80 backdrop-blur-xl rounded-[40px] p-8 md:p-14 text-center shadow-2xl border border-white/60 relative z-10">
+        <SEO 
+          title="Coming Soon — New Features" 
+          description="ShinSquare is launching new hyperlocal features in Durg, Chhattisgarh. Find local shops, household workers, and the best deals near you. Stay tuned!"
+        />
         
         {/* Animated Badge */}
         <span className="text-[#4356FF] text-xs font-extrabold uppercase tracking-widest bg-[#4356FF]/10 px-4 py-2 rounded-full inline-block mb-6 font-display-xl animate-pulse" style={{ fontFamily: "var(--font-display)" }}>

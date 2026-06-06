@@ -41,7 +41,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-background text-on-surface font-body-md overflow-x-hidden pt-16">
+    <main className="bg-background text-on-surface font-body-md overflow-x-hidden pt-16">
       <SEO 
         title="Your locality, but smarter" 
         description="Discover local stores, verify household workers, and get the best local deals at Shankar Nagar, Durg, Chhattisgarh with ShinSquare."
@@ -71,7 +71,7 @@ const App: React.FC = () => {
 
       {/* 8. Final CTA waitlist */}
       <CTA />
-    </div>
+    </main>
   )
 }
 

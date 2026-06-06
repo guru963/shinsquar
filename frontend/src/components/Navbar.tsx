@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MapPin, ChevronDown, Check } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
@@ -14,6 +14,7 @@ const navItems = [
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLocationOpen, setIsLocationOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -36,27 +37,28 @@ const Navbar: React.FC = () => {
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-
   return (
     <nav className="w-full bg-[#F7F8FF] shadow-[0px_1px_4px_rgba(12,12,13,0.05)] flex items-center px-margin-mobile md:px-margin-desktop relative sticky top-0 z-50">
 
       {/* Container */}
-      <div className="flex items-center justify-between w-full">
+      <div className="flex items-center justify-between w-full py-2">
 
         {/* Logo + Title */}
-        <div className="flex items-center gap-[10px]">
-          <img src={logo} alt="logo" className="h-16 w-auto" />
+        <div className="flex items-center gap-[10px] shrink-0">
+          <img src={logo} alt="logo" className="h-12 md:h-16 w-auto" />
 
           <p
             className="
               font-serif
-              text-[1.7em]
+              text-[1.3em]
+              md:text-[1.7em]
               tracking-[0.11em]
               bg-gradient-to-r
               from-[#4356FF]
               to-[#43C0FF]
               bg-clip-text
               text-transparent
+              hidden sm:block
             "
             style={{ fontFamily: "'Baskervville SC', serif" }}
           >
@@ -64,28 +66,91 @@ const Navbar: React.FC = () => {
           </p>
         </div>
 
-        {/* Desktop Links — using <a> tags for SEO crawlability */}
-        <div className="hidden md:flex items-center gap-10 text-gray-600 font-medium">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={`/#${item.scrollTo}`}
-              onClick={(e) => { e.preventDefault(); handleNav(item); }}
-              className="hover:text-blue-600 transition cursor-pointer"
-              style={{ fontFamily: "Poppins" }}
-            >
-              {item.label}
-            </a>
-          ))}
+        {/* Middle: Location Selection Button */}
+        <div className="relative">
+          <button
+            onClick={() => setIsLocationOpen(!isLocationOpen)}
+            className="flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 bg-white border border-gray-200/80 rounded-full shadow-sm text-xs md:text-sm font-semibold text-gray-700 hover:bg-gray-50 transition cursor-pointer"
+          >
+            <MapPin size={15} className="text-[#4356FF] shrink-0" />
+            <span>Durg, CG</span>
+            <ChevronDown size={13} className="text-gray-400 shrink-0" />
+          </button>
+
+          {isLocationOpen && (
+            <>
+              {/* Overlay to close when clicking outside */}
+              <div 
+                className="fixed inset-0 z-40 cursor-default" 
+                onClick={() => setIsLocationOpen(false)}
+              ></div>
+              
+              {/* Dropdown Card */}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white border border-gray-100 rounded-2xl shadow-xl p-3 z-50 transition-all duration-200">
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider px-3 py-1 mb-1">
+                  Select Location
+                </p>
+                <div className="space-y-0.5">
+                  <button 
+                    onClick={() => setIsLocationOpen(false)}
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-xs md:text-sm font-semibold text-[#4356FF] bg-[#4356FF]/5 hover:bg-[#4356FF]/10 transition cursor-pointer"
+                  >
+                    <span className="flex items-center gap-2">
+                      <MapPin size={14} className="text-[#4356FF]" />
+                      Durg, CG
+                    </span>
+                    <Check size={14} className="text-[#4356FF]" />
+                  </button>
+
+                  {[
+                    "Bhilai, CG",
+                    "Raipur, CG",
+                    "HSR Layout, Bangalore"
+                  ].map((loc) => (
+                    <div 
+                      key={loc}
+                      className="flex items-center justify-between px-3 py-2 rounded-xl text-xs md:text-sm font-medium text-gray-400 cursor-not-allowed select-none"
+                    >
+                      <span className="flex items-center gap-2">
+                        <MapPin size={14} className="text-gray-300" />
+                        {loc}
+                      </span>
+                      <span className="text-[8px] font-bold text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded uppercase tracking-wide">
+                        Soon
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-gray-600"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        {/* Right Section: Desktop Links + Mobile Menu */}
+        <div className="flex items-center gap-4">
+          {/* Desktop Links — using <a> tags for SEO crawlability */}
+          <div className="hidden md:flex items-center gap-8 text-gray-600 font-medium">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={`/#${item.scrollTo}`}
+                onClick={(e) => { e.preventDefault(); handleNav(item); }}
+                className="hover:text-blue-600 transition cursor-pointer text-sm"
+                style={{ fontFamily: "Poppins" }}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-gray-600 cursor-pointer"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Dropdown */}

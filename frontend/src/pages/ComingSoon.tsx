@@ -26,7 +26,7 @@ const ComingSoon: React.FC = () => {
         </h1>
         
         <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-lg mx-auto mb-10" style={{ fontFamily: "var(--font-display)" }}>
-          We are hard at work mapping the best neighborhood stores and certified helpers. In the meantime, you can reach out to us directly on WhatsApp.
+          We are hard at work mapping the best locality stores and certified helpers. In the meantime, you can reach out to us directly on WhatsApp.
         </p>
 
         {/* WhatsApp Button */}

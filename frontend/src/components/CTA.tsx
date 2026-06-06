@@ -13,7 +13,7 @@ const CTA: React.FC = () => {
 
         <div className="relative z-10 space-y-8">
           <h2 className="text-4xl md:text-display-xl font-display-xl text-on-primary leading-tight">
-            Bring Your Neighborhood <br />
+            Bring Your locality <br />
             Online.
           </h2>
           <p className="text-on-primary/80 text-body-lg max-w-2xl mx-auto">

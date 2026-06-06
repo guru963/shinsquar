@@ -43,7 +43,7 @@ const App: React.FC = () => {
   return (
     <div className="bg-background text-on-surface font-body-md overflow-x-hidden pt-16">
       <SEO 
-        title="Your neighborhood, but smarter" 
+        title="Your locality, but smarter" 
         description="Discover local stores, verify household workers, and get the best local deals at Shankar Nagar, Durg, Chhattisgarh with ShinSquare."
       />
       {/* 1. Hero & Social Trust */}

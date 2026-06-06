@@ -8,7 +8,7 @@ export default function Hero() {
         <div className="hero__content">
           <h1 className="hero__title">
             Everything your<br />
-            <span className="hero__gradient">neighborhood</span><br />
+            <span className="hero__gradient">locality</span><br />
             runs on.
           </h1>
           <p className="hero__subtitle">

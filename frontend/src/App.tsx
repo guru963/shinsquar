@@ -43,28 +43,26 @@ const App: React.FC = () => {
   return (
     <main className="bg-background text-on-surface font-body-md overflow-x-hidden pt-16">
       <SEO 
-        title="Your locality, but smarter" 
+        title="Your locality, made smarter" 
         description="Discover local stores, verify household workers, and get the best local deals at Shankar Nagar, Durg, Chhattisgarh with ShinSquare."
       />
       {/* 1. Hero & Social Trust */}
       <Hero />
 
-      {/* 2. Deals (Untouched per requirement) */}
       <DealsSection />
+      {/* 2. About (Core Values) Section */}
+      <AboutSection />
 
-      {/* 3. Services Bento */}
+      {/* 3. Services Bento (Why Shin Square) */}
       <ServicesBento />
+
+      {/* 4. Experience Section (Pin Point Hyperlocal) */}
+      <Experience />
 
       {/* Popular Section (Meet Your Vendors) */}
       <PopularSection />
 
-      {/* 4. Experience Section */}
-      <Experience />
-
-      {/* 6. About (Core Values) Section */}
-      <AboutSection />
-
-      {/* 7. Team (Untouched per requirement) */}
+      {/* 7. Team */}
       <div id="founder">
         <TeamSection />
       </div>

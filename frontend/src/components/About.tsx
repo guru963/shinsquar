@@ -75,7 +75,7 @@ const AboutSection: React.FC = () => {
               <div>
                 <h4 className="text-headline-lg font-bold text-white mb-2">Trusted Vendors</h4>
                 <p className="text-white/80 text-body-md">
-                  Verified locals you can rely on, rated by your neighbors.
+                  Verified locals you can rely on, rated by your local residents.
                 </p>
               </div>
             </div>

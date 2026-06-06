@@ -76,16 +76,6 @@ body {
   scroll-padding-top: 72px;
 }
 
-html,
-body {
-  overflow-x: clip;
-}
-
-section[id],
-#founder {
-  scroll-margin-top: 76px;
-}
-
 /* Force specific classes to have the exact styles (font-size, line-height, letter-spacing, font-weight) from tailwind config */
 @utility text-display-xl {
   font-size: 64px;
@@ -233,6 +223,23 @@ section[id],
   transform: translateY(0);
 }
 
+.btn--whatsapp {
+  background-color: var(--whatsapp);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+}
+
+.btn--whatsapp:hover {
+  background-color: #20ba5a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+.btn--whatsapp:active {
+  transform: translateY(0);
+}
+
+
 .btn--lg {
   padding: 14px 32px;
   font-size: 1.125rem;
@@ -271,10 +278,10 @@ section[id],
 /* Title */
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.45rem, 12vw, 4.25rem);
+  font-size: clamp(2.85rem, 6vw, 4.25rem);
   font-weight: 900;
   line-height: 1.05;
-  letter-spacing: 0;
+  letter-spacing: -0.035em;
   margin-bottom: clamp(18px, 3vh, 24px);
   color: var(--text-primary);
 }
@@ -288,7 +295,7 @@ section[id],
 
 /* Subtitle */
 .hero__subtitle {
-  font-size: clamp(1rem, 4vw, 1.22rem);
+  font-size: clamp(1.125rem, 1.55vw, 1.22rem);
   color: var(--text-secondary);
   max-width: 500px;
   line-height: 1.65;
@@ -388,8 +395,8 @@ HERO CARDS — Fanned Stack (Mockup Layout)
 .hero__cards {
   position: relative;
   width: 100%;
-  max-width: min(100%, 430px);
-  min-height: clamp(310px, 94vw, 430px);
+  max-width: min(100%, 500px);
+  min-height: clamp(360px, 92vw, 430px);
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -400,8 +407,8 @@ HERO CARDS — Fanned Stack (Mockup Layout)
 .hero__cards::before {
   content: "";
   position: absolute;
-  width: min(360px, 88vw);
-  height: min(360px, 88vw);
+  width: 360px;
+  height: 360px;
   background: radial-gradient(circle, rgba(67, 86, 255, 0.22) 0%, rgba(67, 86, 255, 0) 70%);
   filter: blur(40px);
   z-index: 0;
@@ -452,24 +459,24 @@ HERO CARDS — Fanned Stack (Mockup Layout)
 
 /* Card positions — Mobile */
 .deal-card--front {
-  width: clamp(220px, 66vw, 288px);
+  width: clamp(244px, 66vw, 288px);
   top: 10px;
-  left: clamp(0px, 2vw, 16px);
+  left: clamp(4px, 3vw, 16px);
   transform-origin: center center;
   transform: perspective(800px) rotateX(18deg) rotateY(-20deg) rotateZ(0deg) translate3d(0, 0, 0);
 }
 
 .deal-card--middle {
-  width: clamp(194px, 56vw, 258px);
-  top: 28px;
-  left: clamp(108px, 34vw, 188px);
+  width: clamp(218px, 58vw, 258px);
+  top: 30px;
+  left: clamp(140px, 40vw, 188px);
   transform: perspective(800px) rotateX(12deg) rotateY(-12deg) rotateZ(5deg) translate3d(0, 0, -40px);
 }
 
 .deal-card--back {
-  width: clamp(164px, 46vw, 220px);
-  top: 48px;
-  left: clamp(176px, 54vw, 280px);
+  width: clamp(184px, 48vw, 220px);
+  top: 50px;
+  left: clamp(224px, 61vw, 280px);
   transform: perspective(800px) rotateX(10deg) rotateY(-12deg) rotateZ(7deg) translate3d(0, 0, -80px);
 }
 
@@ -747,7 +754,7 @@ HERO CARDS — Fanned Stack (Mockup Layout)
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 4.5vw, 3.5rem);
   font-weight: 900;
-  letter-spacing: 0;
+  letter-spacing: -0.03em;
   margin: 0 0 6px 0;
   color: var(--text-primary);
   line-height: 1.1;
@@ -762,17 +769,9 @@ HERO CARDS — Fanned Stack (Mockup Layout)
 /* Filter buttons */
 .popular__filters {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 10px;
   align-items: center;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.popular__filters::-webkit-scrollbar {
-  display: none;
 }
 
 .popular__filter-btn {
@@ -817,7 +816,13 @@ HERO CARDS — Fanned Stack (Mockup Layout)
 .popular__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: 20px;
+}
+
+@media (min-width: 480px) {
+  .popular__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 768px) {
@@ -1021,4 +1026,43 @@ HERO CARDS — Fanned Stack (Mockup Layout)
 .pop-card.is-visible {
   opacity: 1 !important;
   transform: translateY(0) !important;
+}
+
+/* Scaling fanned cards on mobile to prevent overflow */
+@media (max-width: 480px) {
+  .hero__cards {
+    transform: scale(0.8);
+    transform-origin: center center;
+    margin-top: -30px;
+    margin-bottom: -30px;
+  }
+}
+@media (max-width: 380px) {
+  .hero__cards {
+    transform: scale(0.75);
+    transform-origin: center center;
+    margin-top: -45px;
+    margin-bottom: -45px;
+  }
+}
+
+/* Clean inline WhatsApp button for vendor cards */
+.pop-card__whatsapp-btn-clean {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--whatsapp);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+  flex-shrink: 0;
+}
+
+.pop-card__whatsapp-btn-clean:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(37, 211, 102, 0.45);
+  color: #fff;
 }

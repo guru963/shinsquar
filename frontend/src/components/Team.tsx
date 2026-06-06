@@ -19,7 +19,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
     <div className="text-center" style={{ fontFamily: "Poppins" }}>
 
       {/* Image */}
-      <div className="w-[270px] h-[270px]  rounded-full overflow-hidden">
+      <div className="w-[270px] h-[270px] rounded-full overflow-hidden mx-auto">
         <img
           src={image}
           alt={name}
@@ -85,7 +85,7 @@ const TeamSection: React.FC = () => {
         </h2>
 
         {/* Team Members */}
-        <div className="flex flex-col md:flex-row justify-center items-center gap-50">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-12">
           <TeamMember
             image={ceo}
             name="Jayant Dhote"

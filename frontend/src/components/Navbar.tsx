@@ -7,7 +7,6 @@ import logo from "../assets/logo.png";
 const navItems = [
   { label: "Home", scrollTo: "hero" },
   { label: "Deals", scrollTo: "deals" },
-  { label: "Services", scrollTo: "features" },
   { label: "About", scrollTo: "about" },
   { label: "Team", scrollTo: "founder" },
   { label: "Contact us", scrollTo: "contact" },
@@ -39,22 +38,20 @@ const Navbar: React.FC = () => {
 
 
   return (
-    <nav className="w-full bg-[#F7F8FF] shadow-[0px_1px_4px_rgba(12,12,13,0.05)] flex items-center px-4 sm:px-6 lg:px-12 relative sticky top-0 z-50">
+    <nav className="w-full bg-[#F7F8FF] shadow-[0px_1px_4px_rgba(12,12,13,0.05)] flex items-center px-margin-mobile md:px-margin-desktop relative sticky top-0 z-50">
 
       {/* Container */}
       <div className="flex items-center justify-between w-full">
 
         {/* Logo + Title */}
-        <div className="flex items-center gap-2 sm:gap-[10px] min-w-0">
-          <img src={logo} alt="logo" className="h-12 sm:h-16 w-auto shrink-0" />
+        <div className="flex items-center gap-[10px]">
+          <img src={logo} alt="logo" className="h-16 w-auto" />
 
           <p
             className="
               font-serif
-              text-[1.25rem]
-              sm:text-[1.7em]
-              tracking-[0.07em]
-              sm:tracking-[0.11em]
+              text-[1.7em]
+              tracking-[0.11em]
               bg-gradient-to-r
               from-[#4356FF]
               to-[#43C0FF]
@@ -67,17 +64,14 @@ const Navbar: React.FC = () => {
           </p>
         </div>
 
-        {/* Desktop Links */}
-        <div className="hidden lg:flex items-center gap-10 text-gray-600 font-medium">
+        {/* Desktop Links — using <a> tags for SEO crawlability */}
+        <div className="hidden md:flex items-center gap-10 text-gray-600 font-medium">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={`/#${item.scrollTo}`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNav(item);
-              }}
-              className="hover:text-blue-600 transition cursor-pointer bg-transparent border-none"
+              onClick={(e) => { e.preventDefault(); handleNav(item); }}
+              className="hover:text-blue-600 transition cursor-pointer"
               style={{ fontFamily: "Poppins" }}
             >
               {item.label}
@@ -87,8 +81,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden text-gray-600 p-2 -mr-2"
-          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+          className="md:hidden text-gray-600"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -97,16 +90,13 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-[#F7F8FF] border-t flex flex-col items-center gap-5 py-6 shadow-lg lg:hidden">
+        <div className="absolute top-full left-0 w-full bg-[#F7F8FF] border-t flex flex-col items-center gap-6 py-8 shadow-lg md:hidden">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={`/#${item.scrollTo}`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNav(item);
-              }}
-              className="text-gray-600 hover:text-blue-600 transition cursor-pointer bg-transparent border-none"
+              onClick={(e) => { e.preventDefault(); handleNav(item); }}
+              className="text-gray-600 hover:text-blue-600 transition cursor-pointer"
               style={{ fontFamily: "Poppins" }}
             >
               {item.label}

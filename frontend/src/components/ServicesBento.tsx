@@ -20,10 +20,10 @@ const ServicesBento: React.FC = () => {
         </div>
         
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-bento-gap auto-rows-auto md:auto-rows-[minmax(280px,auto)]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-bento-gap auto-rows-[minmax(280px,auto)]">
           
           {/* Card 1: Easy Discovery of Professionals */}
-          <div className="md:col-span-8 p-6 md:p-10 rounded-3xl bg-surface-container-low border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col md:flex-row justify-between items-stretch hover:shadow-md transition group animate-fade-in gap-6">
+          <div className="md:col-span-8 p-8 md:p-10 rounded-3xl bg-surface-container-low border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col md:flex-row justify-between items-stretch hover:shadow-md transition group animate-fade-in gap-6">
             <div className="relative z-10 space-y-3 flex-1 flex flex-col justify-center">
               <div className="w-12 h-12 bg-[#4356FF]/10 rounded-xl flex items-center justify-center text-[#4356FF] mb-2">
                 <Search size={22} />
@@ -52,7 +52,7 @@ const ServicesBento: React.FC = () => {
           </div>
 
           {/* Card 2: Save Time and Money */}
-          <div className="md:col-span-4 p-6 md:p-10 rounded-3xl bg-[#4356FF] text-white border border-[#4356FF]/20 shadow-lg relative overflow-hidden flex flex-col justify-between hover:shadow-xl transition">
+          <div className="md:col-span-4 p-8 md:p-10 rounded-3xl bg-[#4356FF] text-white border border-[#4356FF]/20 shadow-lg relative overflow-hidden flex flex-col justify-between hover:shadow-xl transition">
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-6">
               <Zap size={24} />
             </div>
@@ -83,7 +83,7 @@ const ServicesBento: React.FC = () => {
           </div>
 
           {/* Card 4: Support Local Businesses */}
-          <div className="md:col-span-8 p-6 md:p-10 rounded-3xl bg-surface-container-low border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center gap-6 md:gap-8 min-h-[320px] md:h-[300px] hover:shadow-md transition">
+          <div className="md:col-span-8 p-8 md:p-10 rounded-3xl bg-surface-container-low border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center gap-8 h-auto md:h-[300px] hover:shadow-md transition">
             <div className="flex-1 space-y-4">
               <div className="w-12 h-12 bg-[#4356FF]/10 rounded-xl flex items-center justify-center text-[#4356FF]">
                 <Store size={22} />
@@ -94,7 +94,7 @@ const ServicesBento: React.FC = () => {
               </p>
             </div>
             
-            <div className="w-full md:w-1/2 h-full py-2 shrink-0">
+            <div className="hidden md:block w-full md:w-1/2 h-full py-2 shrink-0">
               <img 
                 alt="Community illustration" 
                 className="w-full h-full object-cover rounded-2xl shadow-sm border border-gray-100" 

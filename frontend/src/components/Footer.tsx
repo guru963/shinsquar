@@ -1,44 +1,74 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <footer id="contact" className="bg-[#1e256e] text-white py-10 px-margin-mobile md:px-margin-desktop font-body-md">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="space-y-2 text-left">
             <h2 className="text-4xl font-extrabold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>ShinSquare</h2>
             <p className="text-lg leading-snug text-white/80 max-w-[320px]">Get the best deal in your nearby locality</p>
           </div>
 
-          {/* Contact Section */}
-          <div className="space-y-3 flex flex-col justify-center py-2 md:mx-auto text-left w-fit">
-            <div className="flex items-center gap-3 text-left">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-white">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <p className="text-lg text-white/90">Shankar Nagar, Durg-491001</p>
-            </div>
-            <div className="flex items-center gap-3 text-left">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-white">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-              <p className="text-lg text-white/90 font-semibold">+91-75873-15025</p>
-            </div>
-            <div className="flex items-center gap-3 text-left">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-white">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              <p className="text-lg text-white/90">contact@shinsquare.com</p>
-            </div>
-          </div>
+          {/* Quick Links */}
+          <nav aria-label="Quick Links" className="space-y-3 text-left">
+            <h3 className="text-lg font-bold tracking-tight text-white" style={{ fontFamily: "var(--font-display)" }}>Quick Links</h3>
+            <ul className="space-y-2">
+              <li><a href="/#hero" onClick={(e) => { e.preventDefault(); scrollTo("hero"); }} className="text-white/70 hover:text-white transition-colors">Home</a></li>
+              <li><a href="/#deals" onClick={(e) => { e.preventDefault(); scrollTo("deals"); }} className="text-white/70 hover:text-white transition-colors">Deals</a></li>
+              <li><a href="/#features" onClick={(e) => { e.preventDefault(); scrollTo("features"); }} className="text-white/70 hover:text-white transition-colors">Services</a></li>
+              <li><a href="/#about" onClick={(e) => { e.preventDefault(); scrollTo("about"); }} className="text-white/70 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="/#founder" onClick={(e) => { e.preventDefault(); scrollTo("founder"); }} className="text-white/70 hover:text-white transition-colors">Team</a></li>
+            </ul>
+          </nav>
 
-          {/* Social Section */}
-          <div className="space-y-4 md:text-right flex flex-col md:items-end">
-            <h3 className="text-2xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>Stay connected</h3>
-            <div className="flex gap-3">
+          {/* Services Links */}
+          <nav aria-label="Services" className="space-y-3 text-left">
+            <h3 className="text-lg font-bold tracking-tight text-white" style={{ fontFamily: "var(--font-display)" }}>Services</h3>
+            <ul className="space-y-2">
+              <li><Link to="/regular-shops" className="text-white/70 hover:text-white transition-colors">Regular Shops</Link></li>
+              <li><Link to="/experience-based" className="text-white/70 hover:text-white transition-colors">Experience Based</Link></li>
+              <li><Link to="/household-works" className="text-white/70 hover:text-white transition-colors">Household Works</Link></li>
+            </ul>
+          </nav>
+
+          {/* Contact & Social Section */}
+          <div className="space-y-4 text-left">
+            <h3 className="text-lg font-bold tracking-tight text-white" style={{ fontFamily: "var(--font-display)" }}>Contact Us</h3>
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-1 text-white/80">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <div className="text-sm text-white/80">
+                  <p>Shankar Nagar,</p>
+                  <p>Durg-491001</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-white/80">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <p className="text-sm text-white/80 font-semibold">+91-75873-15025</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-white/80">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <p className="text-sm text-white/80">contact@shinsquare.com</p>
+              </div>
+            </div>
+            {/* Social Icons */}
+            <div className="flex gap-3 pt-2">
               <a 
                 href="https://www.facebook.com/profile.php?id=61589310645378" 
                 target="_blank" 
@@ -80,7 +110,7 @@ const Footer: React.FC = () => {
                 aria-label="WhatsApp"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M19.001 4.908A9.817 9.817 0 0 0 11.992 2C6.534 2 2.085 6.448 2.08 11.908c0 1.748.458 3.45 1.321 4.956L2 22l5.255-1.377a9.816 9.816 0 0 0 4.73 1.206h.005c5.46 0 9.908-4.448 9.913-9.913a9.815 9.815 0 0 0-2.902-7.008zM11.992 20.13a8.17 8.17 0 0 1-4.177-1.149l-.299-.17-3.11.815.83-3.03-.187-.297A8.178 8.178 0 0 1 3.82 11.91c.005-4.514 3.678-8.187 8.187-8.187a8.171 8.171 0 0 1 5.792 2.4a8.175 8.175 0 0 1 2.397 5.793c-.005 4.514-3.678 8.187-8.204 8.214zm4.505-6.17c-.247-.125-1.47-.723-1.696-.807-.228-.083-.393-.125-.558.125-.166.246-.639.807-.784.972-.145.166-.29.187-.537.063a6.786 6.786 0 0 1-1.998-1.233 7.465 7.465 0 0 1-1.384-1.722c-.145-.246-.015-.38.109-.504.113-.11.247-.29.37-.433.125-.145.166-.247.249-.413.083-.166.04-.31-.02-.433-.063-.125-.559-1.347-.765-1.848-.2-.486-.403-.42-.558-.428-.145-.008-.31-.008-.475-.008-.166 0-.434.062-.661.31-.227.247-.867.847-.867 2.067 0 1.22.888 2.397 1.012 2.562.124.166 1.747 2.668 4.233 3.738.59.255 1.05.408 1.41.521.593.189 1.134.162 1.562.099.476-.072 1.47-.6 1.677-1.18.207-.577.207-1.074.145-1.18-.062-.103-.228-.165-.475-.29z" />
+                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.44 0-2.85-.38-4.1-1.1l-.3-.17-3.05.8 0.81-2.96-.19-.3a8.176 8.176 0 0 1-1.25-4.33c0-4.54 3.7-8.23 8.24-8.23m-3.53 4.63c-.19 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.44 0 1.44 1.05 2.84 1.2 3.03.15.19 2.07 3.16 5.01 4.43.7.3 1.25.48 1.67.61.7.22 1.34.19 1.84.12.56-.08 1.72-.7 1.96-1.38.24-.67.24-1.26.17-1.38-.07-.12-.27-.19-.57-.34-.3-.15-1.72-.85-1.99-.95-.27-.1-.47-.15-.67.15-.2.3-.77.95-.95 1.15-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.6-.5-.52-.67-.52" />
                 </svg>
               </a>
             </div>
@@ -88,7 +118,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="mt-8 pt-4 border-t border-white/10 flex justify-center items-center gap-2 text-base opacity-80">
-          <span>Localstack Market PVT LTD</span>
+          <span>LocalStack Market PVT LTD</span>
           <span>©</span>
           <span>2026, All rights reserved</span>
         </div>

@@ -64,7 +64,8 @@ const TeamSection: React.FC = () => {
       {/* WAVES IMAGE */}
       <img
         src={waves}
-        alt="decorative waves"
+        alt=""
+        aria-hidden="true"
         className="absolute left-10 top-16 w-[48px] h-[103px]"
       />
 

@@ -10,7 +10,7 @@ const SEO: React.FC<SEOProps> = ({ title, description }) => {
   const location = useLocation();
 
   useEffect(() => {
-    const fullTitle = `${title} | Shin Square`;
+    const fullTitle = title.includes("Shin Square") || title.includes("ShinSquare") ? title : `${title} | Shin Square`;
     const fullUrl = `https://shinsquare.com${location.pathname}`;
 
     // Update Title

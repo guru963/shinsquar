@@ -40,7 +40,7 @@ const AboutSection: React.FC = () => {
           {/* Right side: Bento Grid for Core Values */}
           <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[240px]">
             {/* Truly Hyperlocal */}
-            <div className="p-8 rounded-[40px] bg-white/5 border border-white/10 flex flex-col justify-between hover:bg-white/10 transition-colors group">
+            <div className="p-8 rounded-[40px] bg-white/5 border border-white/10 flex flex-col justify-start gap-5 hover:bg-white/10 transition-colors group">
               <div className="w-12 h-12 rounded-2xl bg-primary-fixed-dim/20 flex items-center justify-center text-primary-fixed-dim group-hover:scale-110 transition-transform">
                 <span className="material-symbols-outlined text-3xl">location_searching</span>
               </div>
@@ -53,7 +53,7 @@ const AboutSection: React.FC = () => {
             </div>
 
             {/* Faster Service */}
-            <div className="p-8 rounded-[40px] bg-white/5 border border-white/10 flex flex-col justify-between hover:bg-white/10 transition-colors group">
+            <div className="p-8 rounded-[40px] bg-white/5 border border-white/10 flex flex-col justify-start gap-5 hover:bg-white/10 transition-colors group">
               <div className="w-12 h-12 rounded-2xl bg-primary-fixed-dim/20 flex items-center justify-center text-primary-fixed-dim group-hover:scale-110 transition-transform">
                 <span className="material-symbols-outlined text-3xl">bolt</span>
               </div>
@@ -66,7 +66,7 @@ const AboutSection: React.FC = () => {
             </div>
 
             {/* Trusted Vendors */}
-            <div className="p-8 rounded-[40px] bg-primary flex flex-col justify-between shadow-[0_24px_48px_-12px_rgba(0,74,198,0.4)] group">
+            <div className="p-8 rounded-[40px] bg-primary flex flex-col justify-start gap-5 shadow-[0_24px_48px_-12px_rgba(0,74,198,0.4)] group">
               <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                 <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: '"FILL" 1' }}>
                   verified_user

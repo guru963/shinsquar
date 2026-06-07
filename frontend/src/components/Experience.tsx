@@ -57,7 +57,7 @@ const Experience: React.FC = () => {
           <div className="glass aspect-[4/5] w-full max-w-[400px] rounded-[32px] overflow-hidden border-white shadow-2xl relative">
             <img 
               className="w-full h-full object-cover" 
-              alt="Lively local street market illustration" 
+              alt="Local street market in Durg showing hyperlocal services by ShinSquare" 
               src={neighborhoodImg} 
             />
             <div className="absolute bottom-8 left-8 right-8 glass p-6 rounded-2xl border-white/40">

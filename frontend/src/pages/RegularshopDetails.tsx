@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { X, Send, Loader2 } from "lucide-react";

@@ -16,11 +16,11 @@ const sitemapPlugin = (routes: string[]): Plugin => ({
     const uniqueRoutes = Array.from(new Set(routes));
     const lastmod = new Date().toISOString().split("T")[0];
     const urls = uniqueRoutes
-      .map((route) => {
-        const normalized = route === "/" ? "" : route;
-        const changefreq = route === "/" ? "daily" : "weekly";
-        const priority = route === "/" ? "1.0" : "0.7";
-        return [
+.map((route) => {
+  const normalized = route;
+  const changefreq = route === "/" ? "daily" : "weekly";
+  const priority = route === "/" ? "1.0" : "0.7";
+  return [
           "  <url>",
           `    <loc>${SITE_URL}${normalized}</loc>`,
           `    <lastmod>${lastmod}</lastmod>`,

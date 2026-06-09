@@ -14,7 +14,7 @@ export const SHOPS = [
     name: "Classic Collection",
     location: "Station Road, Durg",
     fullAddress: "Shop No. 12, Station Road, Durg, 491001",
-    phone: "+91-75873-15025",
+    phone: "+91-75873-15027",
     image: shop1,
   },
   {

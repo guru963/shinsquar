@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
 import Hero from './components/Hero'
 import DealsSection from './components/Deals'
-import ServicesBento from './components/ServicesBento'
+import AboutSection from './components/About'
 import PopularSection from './components/PopularSection'
 import Experience from './components/Experience'
-import AboutSection from './components/About'
 import TeamSection from './components/Team'
 import CTA from './components/CTA'
 
@@ -44,30 +43,28 @@ const App: React.FC = () => {
     <main className="bg-background text-on-surface font-body-md overflow-x-hidden pt-16">
       <SEO 
         title="Shin Square | Your locality, made smarter" 
-        description="Discover local stores, verify household workers, and get the best local deals at Shankar Nagar, Durg, Chhattisgarh with ShinSquare."
+        description="Discover local stores, verify household workers, and get the best local deals in your locality with ShinSquare."
       />
       {/* 1. Hero & Social Trust */}
       <Hero />
 
       <DealsSection />
-      {/* 2. About (Core Values) Section */}
+
+      {/* 2. About (Core Values & Benefits) Section */}
       <AboutSection />
 
-      {/* 3. Services Bento (Why Shin Square) */}
-      <ServicesBento />
-
-      {/* 4. Experience Section (Pin Point Hyperlocal) */}
+      {/* 3. Experience Section (Pin Point Hyperlocal) */}
       <Experience />
 
       {/* Popular Section (Meet Your Vendors) */}
       <PopularSection />
 
-      {/* 7. Team */}
+      {/* 4. Team */}
       <div id="founder">
         <TeamSection />
       </div>
 
-      {/* 8. Final CTA waitlist */}
+      {/* 5. Final CTA waitlist */}
       <CTA />
     </main>
   )

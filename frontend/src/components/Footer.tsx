@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li><a href="/#hero" onClick={(e) => { e.preventDefault(); scrollTo("hero"); }} className="text-white/70 hover:text-white transition-colors">Home</a></li>
               <li><a href="/#deals" onClick={(e) => { e.preventDefault(); scrollTo("deals"); }} className="text-white/70 hover:text-white transition-colors">Deals</a></li>
-              <li><a href="/#features" onClick={(e) => { e.preventDefault(); scrollTo("features"); }} className="text-white/70 hover:text-white transition-colors">Services</a></li>
+              <li><a href="/#about" onClick={(e) => { e.preventDefault(); scrollTo("about"); }} className="text-white/70 hover:text-white transition-colors">Services</a></li>
               <li><a href="/#about" onClick={(e) => { e.preventDefault(); scrollTo("about"); }} className="text-white/70 hover:text-white transition-colors">About Us</a></li>
               <li><a href="/#founder" onClick={(e) => { e.preventDefault(); scrollTo("founder"); }} className="text-white/70 hover:text-white transition-colors">Team</a></li>
             </ul>
@@ -49,8 +49,8 @@ const Footer: React.FC = () => {
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
                 <div className="text-sm text-white/80">
-                  <p>Shankar Nagar,</p>
-                  <p>Durg-491001</p>
+                  <p>Durg, Chhattisgarh</p>
+                  <p>India - 491001</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">

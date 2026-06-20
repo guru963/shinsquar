@@ -365,6 +365,7 @@ body {
 .hero__trust-text {
   font-size: 0.875rem;
   color: var(--text-secondary);
+  transition: color 0.2s ease;
 }
 
 .hero__trust-text strong {
@@ -383,10 +384,27 @@ body {
   font-size: 0.8125rem;
   font-weight: 700;
   color: var(--text-primary);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .rating-badge svg {
   color: #fbbf24;
+}
+
+/* Hover effects for the link wrapper */
+a.hero__social-proof {
+  cursor: pointer;
+}
+
+a.hero__social-proof:hover .hero__trust-text {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+a.hero__social-proof:hover .rating-badge {
+  border-color: #fbbf24;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.18);
 }
 
 /* ============================================================

@@ -29,21 +29,30 @@ export default function Hero() {
               Join WhatsApp Group
             </a>
           </div>
-          <div className="hero__social-proof">
+          <a 
+            href="https://www.google.com/search?q=shin+square&sca_esv=340f99c589fee39c&biw=1470&bih=918&sxsrf=APpeQnt4SPTg40x_-LlsfzWf9kQrEd1P-Q:1781950087947&ei=h2Y2apmsOY-SseMPhpuN4Q0&ved=0ahUKEwjZi_-vyZWVAxUPSWwGHYZNI9wQ4dUDCBI&uact=5&oq=shin+square&gs_lp=Egxnd3Mtd2l6LXNlcnAiC3NoaW4gc3F1YXJlMgQQIxgnMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMggQABgHGB4YCjIGEAAYBxgeMgYQABgHGB5IzApQPFg8cAF4AZABAJgB5wKgAecCqgEDMy0xuAEDyAEA-AEBmAICoAL0AsICBxAjGLADGCfCAgoQABhHGNYEGLADmAMA4gMFEgExIECIBgGQBgqSBwUxLjMtMaAH_wWyBwMzLTG4B-8CwgcDMi0yyAcJgAgB&sclient=gws-wiz-serp#lrd=0x3a293d002566c3eb:0x38fa647a4f6523d4,1,,,,"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero__social-proof"
+            style={{ textDecoration: "none" }}
+          >
             <div className="avatars" aria-hidden="true">
               <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="" width="36" height="36" />
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="" width="36" height="36" />
               <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="" width="36" height="36" />
-              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="" width="36" height="36" />
             </div>
-            <p className="hero__trust-text">Trusted by <strong>20+</strong> in Durg</p>
-            <span className="rating-badge" aria-label="Rating 4.8 out of 5">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-              </svg>
-              4.8
+            <p className="hero__trust-text">Trusted by <strong>3</strong> on Google Reviews</p>
+            <span className="rating-badge" aria-label="Rating 5.0 out of 5">
+              5.0
+              <span className="rating-badge__stars" style={{ display: "inline-flex", gap: "2px", marginLeft: "4px" }}>
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style={{ color: "#fbbf24" }}>
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                ))}
+              </span>
             </span>
-          </div>
+          </a>
         </div>
 
         {/* Right: Card Stack */}

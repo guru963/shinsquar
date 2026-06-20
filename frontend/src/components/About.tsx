@@ -10,104 +10,89 @@ const AboutSection: React.FC = () => {
           {/* Left side: Content & Main Metrics */}
           <div className="lg:col-span-5 space-y-10">
             <div className="space-y-4">
-              <span className="text-primary-fixed-dim text-xs font-bold uppercase tracking-widest block">About Us</span>
-              <h2 className="text-display-lg font-display-xl text-white leading-tight">
-                Shin Square<br />
-                <span className="text-primary-fixed-dim text-2xl font-semibold tracking-normal block mt-1">your hyperlocal platform</span>
+              <span className="text-primary-fixed-dim text-xs font-bold uppercase tracking-widest block font-display-xl" style={{ fontFamily: "var(--font-display)" }}>About Us</span>
+              <h2 className="text-display-lg font-display-xl text-white leading-tight" style={{ fontFamily: "var(--font-display)" }}>
+                Why Shin Square?
+                <span className="text-primary-fixed-dim text-2xl font-semibold tracking-normal block mt-1">your locality, made smarter</span>
               </h2>
               <div className="space-y-4 text-secondary-fixed text-base max-w-md opacity-85 leading-relaxed">
                 <p>
-                  Shin Square is your trusted hyperlocal platform connecting you to the best deals, offers, and essential services in your locality. From plumbers and electricians to photographers and local stores, we bring everything you need closer to you.
+                  Shin Square is your trusted hyperlocal platform connecting you directly with the best local shops, handymen, and exclusive deals. 
                 </p>
                 <p className="font-medium text-white/90">
-                  Discover, connect, and save — all within your own community, made simple and convenient.
+                  Founded by an IIT Guwahati alumnus and former OYO Rooms employee, our mission is to empower local economies by bringing verified services closer to you.
                 </p>
               </div>
             </div>
             
             <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
               <div className="space-y-2">
-                <div className="text-primary-fixed-dim font-bold text-display-lg leading-none">2026</div>
+                <div className="text-primary-fixed-dim font-bold text-display-lg leading-none" style={{ fontFamily: "var(--font-display)" }}>2026</div>
                 <div className="text-label-sm font-bold uppercase tracking-widest text-white opacity-60">Future Ready</div>
               </div>
               <div className="space-y-2">
-                <div className="text-primary-fixed-dim font-bold text-display-lg leading-none">Zero</div>
+                <div className="text-primary-fixed-dim font-bold text-display-lg leading-none" style={{ fontFamily: "var(--font-display)" }}>Zero</div>
                 <div className="text-label-sm font-bold uppercase tracking-widest text-white opacity-60">Platform Fees</div>
               </div>
             </div>
           </div>
 
-          {/* Right side: Bento Grid for Core Values */}
-          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[240px]">
+          {/* Right side: Bento Grid for Core Value Pillars */}
+          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[220px]">
             {/* Truly Hyperlocal */}
-            <div className="p-8 rounded-[40px] bg-white/5 border border-white/10 flex flex-col justify-start gap-5 hover:bg-white/10 transition-colors group">
+            <div className="p-8 rounded-[40px] bg-white/5 border border-white/10 flex flex-col justify-center items-start text-left gap-4 hover:bg-white/10 transition-colors group">
               <div className="w-12 h-12 rounded-2xl bg-primary-fixed-dim/20 flex items-center justify-center text-primary-fixed-dim group-hover:scale-110 transition-transform">
                 <span className="material-symbols-outlined text-3xl">location_searching</span>
               </div>
               <div>
-                <h4 className="text-headline-lg font-bold text-white mb-2">Truly Hyperlocal</h4>
-                <p className="text-secondary-fixed opacity-80 text-body-md italic font-semibold">
-                  "We focus only on your area"
+                <h4 className="text-headline-lg font-bold text-white mb-2" style={{ fontFamily: "var(--font-display)" }}>Truly Hyperlocal</h4>
+                <p className="text-secondary-fixed opacity-70 text-body-md">
+                  Focused strictly on your locality. Local means quicker response times and on-time service.
                 </p>
               </div>
             </div>
 
-            {/* Faster Service */}
-            <div className="p-8 rounded-[40px] bg-white/5 border border-white/10 flex flex-col justify-start gap-5 hover:bg-white/10 transition-colors group">
+            {/* Easy Discovery */}
+            <div className="p-8 rounded-[40px] bg-white/5 border border-white/10 flex flex-col justify-center items-start text-left gap-4 hover:bg-white/10 transition-colors group">
               <div className="w-12 h-12 rounded-2xl bg-primary-fixed-dim/20 flex items-center justify-center text-primary-fixed-dim group-hover:scale-110 transition-transform">
                 <span className="material-symbols-outlined text-3xl">bolt</span>
               </div>
               <div>
-                <h4 className="text-headline-lg font-bold text-white mb-2">Faster Service</h4>
+                <h4 className="text-headline-lg font-bold text-white mb-2" style={{ fontFamily: "var(--font-display)" }}>Easy Discovery</h4>
                 <p className="text-secondary-fixed opacity-70 text-body-md">
-                  Local means quicker response times and on-time delivery.
+                  Find and contact verified plumbers, electricians, or technicians in your neighborhood in under 60 seconds.
                 </p>
               </div>
             </div>
 
             {/* Trusted Vendors */}
-            <div className="p-8 rounded-[40px] bg-primary flex flex-col justify-start gap-5 shadow-[0_24px_48px_-12px_rgba(0,74,198,0.4)] group">
+            <div className="p-8 rounded-[40px] bg-primary flex flex-col justify-center items-start text-left gap-4 shadow-[0_24px_48px_-12px_rgba(0,74,198,0.4)] group">
               <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                 <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: '"FILL" 1' }}>
                   verified_user
                 </span>
               </div>
               <div>
-                <h4 className="text-headline-lg font-bold text-white mb-2">Trusted Vendors</h4>
+                <h4 className="text-headline-lg font-bold text-white mb-2" style={{ fontFamily: "var(--font-display)" }}>Verified & Safe</h4>
                 <p className="text-white/80 text-body-md">
-                  Verified locals you can rely on, rated by your local residents.
+                  Every vendor is verified and rated by residents in your area, guaranteeing quality and safety.
                 </p>
               </div>
             </div>
 
-            {/* More Values (Stacked) */}
-            <div className="grid grid-rows-2 gap-6">
-              {/* Better Prices */}
-              <div className="p-6 rounded-[32px] bg-white/5 border border-white/10 flex items-center gap-6 hover:bg-white/10 transition-colors">
-                <div className="shrink-0 w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-primary-fixed-dim">
-                  <span className="material-symbols-outlined">payments</span>
-                </div>
-                <div>
-                  <h5 className="font-bold text-white">Better Prices</h5>
-                  <p className="text-secondary-fixed text-[13px] opacity-70">
-                    No middleman markup — deals straight from local shops.
-                  </p>
-                </div>
+            {/* Better Prices / Savings */}
+            <div className="p-8 rounded-[40px] bg-white/5 border border-white/10 flex flex-col justify-center items-start text-left gap-4 hover:bg-white/10 transition-colors group">
+              <div className="w-12 h-12 rounded-2xl bg-primary-fixed-dim/20 flex items-center justify-center text-primary-fixed-dim group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-3xl">payments</span>
               </div>
-
-              {/* Community Bond */}
-              <div className="p-6 rounded-[32px] bg-white/5 border border-white/10 flex items-center gap-6 hover:bg-white/10 transition-colors">
-                <div className="shrink-0 w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-primary-fixed-dim">
-                  <span className="material-symbols-outlined">diversity_3</span>
-                </div>
-                <div>
-                  <h5 className="font-bold text-white">Community Bond</h5>
-                  <p className="text-secondary-fixed text-[13px] opacity-70">
-                    Every transaction strengthens your local economy.
-                  </p>
-                </div>
+              <div>
+                <h4 className="text-headline-lg font-bold text-white mb-2" style={{ fontFamily: "var(--font-display)" }}>Direct Savings</h4>
+                <p className="text-secondary-fixed opacity-70 text-body-md">
+                  Book directly with local stores and handymen. Zero middleman markup means better prices for you.
+                </p>
               </div>
             </div>
+
           </div>
         </div>
       </div>

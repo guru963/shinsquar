@@ -99,7 +99,7 @@ const HouseholdWorks: React.FC = () => {
     <section className="popular py-24 min-h-screen bg-[#F4F6FC]" id="vendors-section">
       <SEO 
         title="Household Workers & Technicians" 
-        description="Hire verified local Plumbers, Tiles Workers, Electricians, and Creative professionals in Shankar Nagar, Durg, Chhattisgarh. Trusted local expertise."
+        description="Hire verified local Plumbers, Tiles Workers, Electricians, and Creative professionals in your locality in Durg, Chhattisgarh. Trusted local expertise."
       />
       <div className="container">
         {/* Back Button */}

@@ -6,7 +6,7 @@ const EXPERIENCE_SHOPS = [
     id: "glow-studio",
     name: "Glow Studio Salon",
     role: "Salon & Haircare",
-    location: "Shankar Nagar, Durg",
+    location: "Model Town, Durg",
     image: "https://lh3.googleusercontent.com/aida/ADBb0uh9GPZ9-IlSCw4xbv42sXS2VfO2tc3gkb4iPs7bbT97jiPTnnOqpaOptzUwRts4BJHAnRrED37h-pc6BNN_8qAIIBjVvKGYoSZTT9CNJMlWYbWyxpXraGETG5EVi2rvO5PWVYKTuOxHOwNF6yo5TRet20EE_mGMjIUQ8SH3JtdqwapKvL1MVCjfofNCw9hElW32ZhWOnq-1Hv3Y0AWvDXVPj8AETkpESXPTxXzzGwP_jvdqETxxz8U7y1Qe",
     rating: "4.9"
   },
@@ -68,7 +68,7 @@ const ExperienceBased: React.FC = () => {
     <section className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24">
       <SEO 
         title="Experience Services & Salons" 
-        description="Book appointments and discover trusted salons, fitness gyms, spas, and wellness centers in Shankar Nagar, Durg, Chhattisgarh."
+        description="Book appointments and discover trusted salons, fitness gyms, spas, and wellness centers in your locality in Durg, Chhattisgarh."
       />
       <div className="max-w-7xl mx-auto">
         

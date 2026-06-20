@@ -37,7 +37,7 @@ const RegularShops: React.FC = () => {
     <section className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24">
       <SEO 
         title="Local Business & Shops Directory" 
-        description="Browse the list of verified local stores, shops, and services in Shankar Nagar, Durg, Chhattisgarh. Get the best rates and verify deals."
+        description="Browse the list of verified local stores, shops, and services in your locality in Durg, Chhattisgarh. Get the best rates and verify deals."
       />
       <div className="max-w-7xl mx-auto">
         

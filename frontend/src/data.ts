@@ -19,7 +19,7 @@ export const SHOPS = [
   },
   {
     id: "electronics",
-    name: "New Era Electronics",
+    name: "New Era Electronis",
     location: "Indira Market, Durg",
     fullAddress: "Opposite Town Hall, Indira Market, Durg, 491001",
     phone: "+91-88123-45678",

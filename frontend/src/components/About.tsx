@@ -10,14 +10,13 @@ const AboutSection: React.FC = () => {
           {/* Left side: Content & Main Metrics */}
           <div className="lg:col-span-5 space-y-10">
             <div className="space-y-4">
-              <span className="text-primary-fixed-dim text-xs font-bold uppercase tracking-widest block font-display-xl" style={{ fontFamily: "var(--font-display)" }}>About Us</span>
               <h2 className="text-display-lg font-display-xl text-white leading-tight" style={{ fontFamily: "var(--font-display)" }}>
-                Why Shin Square?
-                <span className="text-primary-fixed-dim text-2xl font-semibold tracking-normal block mt-1">your locality, made smarter</span>
+                About Us
+                <span className="text-primary-fixed-dim text-2xl font-semibold tracking-normal block mt-1">Your locality, made smarter</span>
               </h2>
               <div className="space-y-4 text-secondary-fixed text-base max-w-md opacity-85 leading-relaxed">
                 <p>
-                  Shin Square is your trusted hyperlocal platform connecting you directly with the best local shops, handymen, and exclusive deals. 
+                  Shin Square is your trusted hyperlocal platform connecting you directly with the best local shops, home service providers (plumbers, electricians, etc.), and exclusive deals. 
                 </p>
                 <p className="font-medium text-white/90">
                   Founded by an IIT Guwahati alumnus and former OYO Rooms employee, our mission is to empower local economies by bringing verified services closer to you.
@@ -88,7 +87,7 @@ const AboutSection: React.FC = () => {
               <div>
                 <h4 className="text-headline-lg font-bold text-white mb-2" style={{ fontFamily: "var(--font-display)" }}>Direct Savings</h4>
                 <p className="text-secondary-fixed opacity-70 text-body-md">
-                  Book directly with local stores and handymen. Zero middleman markup means better prices for you.
+                  Book directly with local stores and home service providers. Zero middleman markup means better prices for you.
                 </p>
               </div>
             </div>

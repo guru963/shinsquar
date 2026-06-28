@@ -23,11 +23,43 @@ const WorkerDetails: React.FC = () => {
     window.open(url, "_blank");
   };
 
+  const workerSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": worker.name,
+    "jobTitle": worker.role,
+    "telephone": worker.phone,
+    "url": `https://shinsquare.com/household-workers/${worker.id}`,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Durg",
+      "addressRegion": "Chhattisgarh",
+      "addressCountry": "IN",
+    },
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": worker.role,
+      "occupationLocation": {
+        "@type": "City",
+        "name": "Durg, Chhattisgarh",
+      },
+      "experienceRequirements": worker.experience,
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": worker.rating,
+      "bestRating": 5,
+      "ratingCount": 10,
+    },
+  };
+
   return (
     <div className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24 text-left">
-      <SEO 
-        title={`${worker.name} | Verified ${worker.role}`} 
-        description={`Hire ${worker.name}, a verified ${worker.role} in Durg, Chhattisgarh. Rating: ${worker.rating}/5.0 with ${worker.experience} of experience.`}
+      <SEO
+        title={`${worker.name} — ${worker.role} in Durg`}
+        description={`Hire ${worker.name}, a verified ${worker.role} in Durg, Chhattisgarh. Rating: ${worker.rating}/5.0 with ${worker.experience} of experience. Contact via WhatsApp.`}
+        schema={workerSchema}
+        canonical={`https://shinsquare.com/household-workers/${worker.id}`}
       />
       <div className="max-w-4xl mx-auto">
         {/* Back Button */}

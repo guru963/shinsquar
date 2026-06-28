@@ -4,6 +4,21 @@ import { SHOPS } from "../data";
 
 import SEO from "../components/SEO";
 
+const regularShopsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Local Shops in Durg, Chhattisgarh",
+  "description": "Browse verified local stores and shops in Durg, Chhattisgarh on ShinSquare.",
+  "url": "https://shinsquare.com/regular-shops",
+  "numberOfItems": SHOPS.length,
+  "itemListElement": SHOPS.map((shop, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "url": `https://shinsquare.com/regular-shops/${shop.id}`,
+    "name": shop.name,
+  })),
+};
+
 const ShopCard: React.FC<{ shop: typeof SHOPS[0] }> = ({ shop }) => (
   <Link to={`/regular-shops/${shop.id}`} className="group block w-full">
     <div
@@ -15,6 +30,9 @@ const ShopCard: React.FC<{ shop: typeof SHOPS[0] }> = ({ shop }) => (
           src={shop.image}
           alt={shop.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          width={400}
+          height={400}
+          loading="lazy"
         />
       </div>
 
@@ -35,12 +53,14 @@ const ShopCard: React.FC<{ shop: typeof SHOPS[0] }> = ({ shop }) => (
 const RegularShops: React.FC = () => {
   return (
     <section className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24">
-      <SEO 
-        title="Local Business & Shops Directory" 
-        description="Browse the list of verified local stores, shops, and services in your locality in Durg, Chhattisgarh. Get the best rates and verify deals."
+      <SEO
+        title="Local Business & Shops Directory in Durg, Chhattisgarh"
+        description="Browse the list of verified local stores, shops, and services in Durg, Chhattisgarh. Get the best rates and exclusive deals."
+        schema={regularShopsSchema}
+        canonical="https://shinsquare.com/regular-shops"
       />
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Back Button */}
         <div className="mb-8">
           <Link

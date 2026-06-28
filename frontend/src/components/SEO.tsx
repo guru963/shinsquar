@@ -4,14 +4,16 @@ import { useLocation } from "react-router-dom";
 interface SEOProps {
   title: string;
   description: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  canonical?: string;
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description }) => {
+const SEO: React.FC<SEOProps> = ({ title, description, schema, canonical }) => {
   const location = useLocation();
 
   useEffect(() => {
     const fullTitle = title.includes("Shin Square") || title.includes("ShinSquare") ? title : `${title} | Shin Square`;
-    const fullUrl = `https://shinsquare.com${location.pathname}`;
+    const fullUrl = canonical ?? `https://shinsquare.com${location.pathname}`;
 
     // Update Title
     document.title = fullTitle;
@@ -42,9 +44,26 @@ const SEO: React.FC<SEOProps> = ({ title, description }) => {
     const twitterDescription = document.getElementById("twitter-description");
     if (twitterDescription) twitterDescription.setAttribute("content", description);
 
-  }, [title, description, location.pathname]);
+    // Inject JSON-LD schema
+    const schemaId = "dynamic-schema-ld-json";
+    const existing = document.getElementById(schemaId);
+    if (existing) existing.remove();
 
-  return null; // This component doesn't render any UI
+    if (schema) {
+      const script = document.createElement("script");
+      script.id = schemaId;
+      script.type = "application/ld+json";
+      script.textContent = JSON.stringify(schema);
+      document.head.appendChild(script);
+    }
+
+    return () => {
+      const toRemove = document.getElementById(schemaId);
+      if (toRemove) toRemove.remove();
+    };
+  }, [title, description, schema, canonical, location.pathname]);
+
+  return null;
 };
 
 export default SEO;

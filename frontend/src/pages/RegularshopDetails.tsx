@@ -201,11 +201,43 @@ const ShopDetails: React.FC = () => {
     );
   }
 
+  const shopSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": shop.name,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": shop.fullAddress || shop.location,
+      "addressLocality": "Durg",
+      "addressRegion": "Chhattisgarh",
+      "postalCode": "491001",
+      "addressCountry": "IN",
+    },
+    "telephone": shop.phone,
+    "url": `https://shinsquare.com/regular-shops/${shop.id}`,
+    "image": "https://shinsquare.com/logo.png",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 21.1904,
+      "longitude": 81.2849,
+    },
+    "sameAs": ["https://shinsquare.com/regular-shops"],
+    "priceRange": "₹",
+    "currenciesAccepted": "INR",
+    "paymentAccepted": "Cash, UPI",
+    "areaServed": {
+      "@type": "City",
+      "name": "Durg, Chhattisgarh",
+    },
+  };
+
   return (
     <div className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24 text-left">
-      <SEO 
-        title={shop.name} 
-        description={`Get live coupons, discounts and details for ${shop.name} at ${shop.fullAddress || shop.location}, Durg, Chhattisgarh.`}
+      <SEO
+        title={`${shop.name} — Deals & Coupons in Durg`}
+        description={`Get live coupons, discounts and details for ${shop.name} at ${shop.fullAddress || shop.location}, Durg, Chhattisgarh. Save on every purchase.`}
+        schema={shopSchema}
+        canonical={`https://shinsquare.com/regular-shops/${shop.id}`}
       />
       {/* Coupon Modal */}
       {selectedProduct && (

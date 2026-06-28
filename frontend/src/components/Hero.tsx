@@ -37,11 +37,9 @@ export default function Hero() {
             style={{ textDecoration: "none" }}
           >
             <div className="avatars" aria-hidden="true">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="" width="36" height="36" />
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="" width="36" height="36" />
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="" width="36" height="36" />
+              <img src="/shubham.png" alt="User Avatar" width="36" height="36" />
             </div>
-            <p className="hero__trust-text">Trusted by <strong>3</strong> on Google Reviews</p>
+            <p className="hero__trust-text">Trusted by <strong>1</strong> user</p>
             <span className="rating-badge" aria-label="Rating 5.0 out of 5">
               5.0
               <span className="rating-badge__stars" style={{ display: "inline-flex", gap: "2px", marginLeft: "4px" }}>

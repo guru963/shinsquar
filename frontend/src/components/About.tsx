@@ -16,7 +16,7 @@ const AboutSection: React.FC = () => {
               </h2>
               <div className="space-y-4 text-secondary-fixed text-base max-w-md opacity-85 leading-relaxed">
                 <p>
-                  Shin Square is your trusted hyperlocal platform connecting you directly with the best local shops, home service providers (plumbers, electricians, etc.), and exclusive deals. 
+                  Locall is your trusted hyperlocal platform connecting you directly with the best local shops, home service providers (plumbers, electricians, etc.), and exclusive deals. 
                 </p>
                 <p className="font-medium text-white/90">
                   Founded by an IIT Guwahati alumnus and former OYO Rooms employee, our mission is to empower local economies by bringing verified services closer to you.

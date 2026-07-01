@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="space-y-2 text-left">
-            <h2 className="text-4xl font-extrabold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>ShinSquare</h2>
+            <h2 className="text-4xl font-extrabold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>Locall</h2>
             <p className="text-lg leading-snug text-white/80 max-w-[320px]">Get the best deal in your nearby locality</p>
           </div>
 
@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
-                <p className="text-sm text-white/80">contact@shinsquare.com</p>
+                <p className="text-sm text-white/80">contact@locall.in</p>
               </div>
             </div>
             {/* Social Icons */}

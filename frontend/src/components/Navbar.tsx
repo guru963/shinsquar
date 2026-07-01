@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
             "
             style={{ fontFamily: "'Baskervville SC', serif" }}
           >
-            ShinSquare
+            Locall
           </p>
         </div>
 

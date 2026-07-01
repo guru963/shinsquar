@@ -29,7 +29,7 @@ const WorkerDetails: React.FC = () => {
     "name": worker.name,
     "jobTitle": worker.role,
     "telephone": worker.phone,
-    "url": `https://shinsquare.com/household-workers/${worker.id}`,
+    "url": `https://locall.in/household-workers/${worker.id}`,
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Durg",
@@ -59,7 +59,7 @@ const WorkerDetails: React.FC = () => {
         title={`${worker.name} — ${worker.role} in Durg`}
         description={`Hire ${worker.name}, a verified ${worker.role} in Durg, Chhattisgarh. Rating: ${worker.rating}/5.0 with ${worker.experience} of experience. Contact via WhatsApp.`}
         schema={workerSchema}
-        canonical={`https://shinsquare.com/household-workers/${worker.id}`}
+        canonical={`https://locall.in/household-workers/${worker.id}`}
       />
       <div className="max-w-4xl mx-auto">
         {/* Back Button */}

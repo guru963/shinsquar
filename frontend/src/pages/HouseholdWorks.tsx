@@ -64,8 +64,8 @@ const householdWorksSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Household Workers & Home Service Providers in Durg, Chhattisgarh",
-  "description": "Find verified plumbers, electricians, carpenters and other home service providers in Durg, Chhattisgarh on ShinSquare.",
-  "url": "https://shinsquare.com/household-works",
+  "description": "Find verified plumbers, electricians, carpenters and other home service providers in Durg, Chhattisgarh on Locall.",
+  "url": "https://locall.in/household-works",
   "numberOfItems": vendorsData.length + WORKERS.length,
   "itemListElement": [
     ...vendorsData.map((v, i) => ({
@@ -77,7 +77,7 @@ const householdWorksSchema = {
     ...WORKERS.map((w, i) => ({
       "@type": "ListItem",
       "position": vendorsData.length + i + 1,
-      "url": `https://shinsquare.com/household-workers/${w.id}`,
+      "url": `https://locall.in/household-workers/${w.id}`,
       "name": `${w.name} — ${w.role}`,
       "description": `${w.role} in Durg with ${w.experience} of experience. Rating: ${w.rating}/5.`,
     })),
@@ -126,7 +126,7 @@ const HouseholdWorks: React.FC = () => {
         title="Household Workers & Home Service Providers in Durg"
         description="Hire verified local Plumbers, Tiles Workers, Electricians, Carpenters and Creative professionals in Durg, Chhattisgarh. Trusted local expertise."
         schema={householdWorksSchema}
-        canonical="https://shinsquare.com/household-works"
+        canonical="https://locall.in/household-works"
       />
       <div className="container">
         {/* Back Button */}

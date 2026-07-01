@@ -54,7 +54,7 @@ const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose })
             to: cleanPhone,
             type: "template",
             template: {
-              name: "shinsquare",
+              name: "locall",
               language: { code: "en" },
               components: [
                 {
@@ -214,14 +214,14 @@ const ShopDetails: React.FC = () => {
       "addressCountry": "IN",
     },
     "telephone": shop.phone,
-    "url": `https://shinsquare.com/regular-shops/${shop.id}`,
-    "image": "https://shinsquare.com/logo.png",
+    "url": `https://locall.in/regular-shops/${shop.id}`,
+    "image": "https://locall.in/logo.png",
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": 21.1904,
       "longitude": 81.2849,
     },
-    "sameAs": ["https://shinsquare.com/regular-shops"],
+    "sameAs": ["https://locall.in/regular-shops"],
     "priceRange": "₹",
     "currenciesAccepted": "INR",
     "paymentAccepted": "Cash, UPI",
@@ -237,7 +237,7 @@ const ShopDetails: React.FC = () => {
         title={`${shop.name} — Deals & Coupons in Durg`}
         description={`Get live coupons, discounts and details for ${shop.name} at ${shop.fullAddress || shop.location}, Durg, Chhattisgarh. Save on every purchase.`}
         schema={shopSchema}
-        canonical={`https://shinsquare.com/regular-shops/${shop.id}`}
+        canonical={`https://locall.in/regular-shops/${shop.id}`}
       />
       {/* Coupon Modal */}
       {selectedProduct && (

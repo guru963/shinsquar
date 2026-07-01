@@ -12,8 +12,8 @@ const SEO: React.FC<SEOProps> = ({ title, description, schema, canonical }) => {
   const location = useLocation();
 
   useEffect(() => {
-    const fullTitle = title.includes("Shin Square") || title.includes("ShinSquare") ? title : `${title} | Shin Square`;
-    const fullUrl = canonical ?? `https://shinsquare.com${location.pathname}`;
+    const fullTitle = title.includes("Locall") || title.includes("Locall") ? title : `${title} | Locall`;
+    const fullUrl = canonical ?? `https://locall.in${location.pathname}`;
 
     // Update Title
     document.title = fullTitle;

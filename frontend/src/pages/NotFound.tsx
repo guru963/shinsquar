@@ -13,7 +13,7 @@ const NotFound: React.FC = () => {
     >
       <SEO
         title="Page Not Found"
-        description="The page you are looking for does not exist. Return to ShinSquare homepage to discover local shops, household workers, and deals in Durg."
+        description="The page you are looking for does not exist. Return to Locall homepage to discover local shops, household workers, and deals in Durg."
       />
 
       <div className="max-w-lg w-full mx-auto text-center space-y-8 relative z-10">

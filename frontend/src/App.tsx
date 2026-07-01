@@ -42,8 +42,8 @@ const App: React.FC = () => {
   return (
     <main className="bg-background text-on-surface font-body-md overflow-x-hidden pt-16">
       <SEO 
-        title="Shin Square | Your locality, made smarter" 
-        description="Discover local stores, verify household workers, and get the best local deals in your locality with ShinSquare."
+        title="Locall | Your locality, made smarter" 
+        description="Discover local stores, verify household workers, and get the best local deals in your locality with Locall."
       />
       {/* 1. Hero & Social Trust */}
       <Hero />

@@ -12,7 +12,7 @@ const ServicesBento: React.FC = () => {
             Core Benefits
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight font-display-xl" style={{ fontFamily: "var(--font-display)" }}>
-            Why Shin Square? <br />
+            Why Locall? <br />
             <span className="text-[#4356FF] text-2xl md:text-3xl font-semibold mt-1.5 block leading-snug font-display-xl" style={{ fontFamily: "var(--font-display)" }}>
               Everything your locality needs, in one place.
             </span>

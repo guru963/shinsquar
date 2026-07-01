@@ -17,7 +17,7 @@ const ComingSoon: React.FC = () => {
       <div className="max-w-2xl w-full mx-auto bg-white/80 backdrop-blur-xl rounded-[40px] p-8 md:p-14 text-center shadow-2xl border border-white/60 relative z-10">
         <SEO 
           title="Coming Soon — New Features" 
-          description="ShinSquare is launching new hyperlocal features in Durg, Chhattisgarh. Find local shops, household workers, and the best deals near you. Stay tuned!"
+          description="Locall is launching new hyperlocal features in Durg, Chhattisgarh. Find local shops, household workers, and the best deals near you. Stay tuned!"
         />
         
         {/* Animated Badge */}

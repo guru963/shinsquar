@@ -96,7 +96,7 @@ const Community: React.FC = () => {
             Meet Your <span className="text-primary inline-block transform -rotate-1 hover:rotate-0 transition-transform">Neighbors.</span>
           </h2>
           <p className="text-sm md:text-base text-[#475569] max-w-xl mx-auto font-medium">
-            The heart and soul of Shin Square. Real people, real connections, right next door.
+            The heart and soul of Locall. Real people, real connections, right next door.
           </p>
         </div>
 

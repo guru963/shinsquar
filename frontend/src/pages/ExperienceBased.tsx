@@ -68,7 +68,7 @@ const experienceSchema = {
   "@type": "ItemList",
   "name": "Experience-Based Services in Durg — Salons, Gyms & Spas",
   "description": "Discover and book appointments at trusted salons, fitness gyms, spas, and wellness centers in Durg, Chhattisgarh.",
-  "url": "https://locall.in/experience-based",
+  "url": "https://shinsquare.com/experience-based",
   "numberOfItems": EXPERIENCE_SHOPS.length,
   "itemListElement": EXPERIENCE_SHOPS.map((shop, i) => ({
     "@type": "ListItem",
@@ -85,7 +85,7 @@ const ExperienceBased: React.FC = () => {
         title="Salons, Gyms & Spas in Durg, Chhattisgarh"
         description="Book appointments and discover trusted salons, fitness gyms, spas, and wellness centers in Durg, Chhattisgarh. Verified local service providers."
         schema={experienceSchema}
-        canonical="https://locall.in/experience-based"
+        canonical="https://shinsquare.com/experience-based"
       />
       <div className="max-w-7xl mx-auto">
         

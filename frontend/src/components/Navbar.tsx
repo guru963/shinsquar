@@ -43,27 +43,9 @@ const Navbar: React.FC = () => {
       {/* Container */}
       <div className="flex items-center justify-between w-full py-2">
 
-        {/* Logo + Title */}
-        <div className="flex items-center gap-[10px] shrink-0">
-          <img src={logo} alt="logo" className="h-12 md:h-16 w-auto" />
-
-          <p
-            className="
-              font-serif
-              text-[1.3em]
-              md:text-[1.7em]
-              tracking-[0.11em]
-              bg-gradient-to-r
-              from-[#4356FF]
-              to-[#43C0FF]
-              bg-clip-text
-              text-transparent
-              hidden sm:block
-            "
-            style={{ fontFamily: "'Baskervville SC', serif" }}
-          >
-            Locall
-          </p>
+        {/* Logo */}
+        <div className="flex items-center shrink-0">
+          <img src={logo} alt="Locall" className="h-10 md:h-14 w-auto object-contain" />
         </div>
 
         {/* Middle: Location Selection Button */}

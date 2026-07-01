@@ -9,12 +9,12 @@ const regularShopsSchema = {
   "@type": "ItemList",
   "name": "Local Shops in Durg, Chhattisgarh",
   "description": "Browse verified local stores and shops in Durg, Chhattisgarh on Locall.",
-  "url": "https://locall.in/regular-shops",
+  "url": "https://shinsquare.com/regular-shops",
   "numberOfItems": SHOPS.length,
   "itemListElement": SHOPS.map((shop, i) => ({
     "@type": "ListItem",
     "position": i + 1,
-    "url": `https://locall.in/regular-shops/${shop.id}`,
+    "url": `https://shinsquare.com/regular-shops/${shop.id}`,
     "name": shop.name,
   })),
 };
@@ -57,7 +57,7 @@ const RegularShops: React.FC = () => {
         title="Local Business & Shops Directory in Durg, Chhattisgarh"
         description="Browse the list of verified local stores, shops, and services in Durg, Chhattisgarh. Get the best rates and exclusive deals."
         schema={regularShopsSchema}
-        canonical="https://locall.in/regular-shops"
+        canonical="https://shinsquare.com/regular-shops"
       />
       <div className="max-w-7xl mx-auto">
 

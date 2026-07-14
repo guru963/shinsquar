@@ -41,15 +41,15 @@ const Navbar: React.FC = () => {
     <nav className="w-full bg-[#F7F8FF] shadow-[0px_1px_4px_rgba(12,12,13,0.05)] flex items-center px-margin-mobile md:px-margin-desktop relative sticky top-0 z-50">
 
       {/* Container */}
-      <div className="flex items-center justify-between w-full py-1">
+      <div className="flex items-center justify-between w-full py-2 relative">
 
         {/* Logo */}
         <div className="flex items-center shrink-0">
-          <img src={logo} alt="logo" className="h-10 md:h-14 w-auto" />
+          <img src={logo} alt="Locall" className="h-10 md:h-14 w-auto object-contain" />
         </div>
 
         {/* Middle: Location Selection Button */}
-        <div className="relative">
+        <div className="absolute left-1/2 -translate-x-1/2 z-20">
           <button
             onClick={() => setIsLocationOpen(!isLocationOpen)}
             className="flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 bg-white border border-gray-200/80 rounded-full shadow-sm text-xs md:text-sm font-semibold text-gray-700 hover:bg-gray-50 transition cursor-pointer"

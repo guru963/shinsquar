@@ -1,9 +1,10 @@
 import React from "react";
 import ceo from "../assets/CEO.png";
 import waves from "../assets/waves.png";
+import jayesh from "../assets/jayesh.jpg";
 
 interface TeamMemberProps {
-  image: string;
+  image?: string;
   name: string;
   role: string;
   description: string;
@@ -15,16 +16,33 @@ const TeamMember: React.FC<TeamMemberProps> = ({
   role,
   description
 }) => {
+  const getInitials = (n: string) => {
+    return n
+      .split(" ")
+      .map((p) => p[0])
+      .join("")
+      .toUpperCase()
+      .substring(0, 2);
+  };
+
   return (
     <div className="text-center" style={{ fontFamily: "Poppins" }}>
 
-      {/* Image */}
+      {/* Image / Placeholder */}
       <div className="w-[270px] h-[270px] rounded-full overflow-hidden mx-auto">
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-full object-cover"
-        />
+        {image ? (
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-tr from-[#1E2773]/10 to-[#1E2773]/30 flex items-center justify-center border border-[#1E2773]/20 shadow-sm text-[#1E2773]">
+            <span className="text-[72px] font-semibold tracking-wide select-none">
+              {getInitials(name)}
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Name */}
@@ -73,7 +91,7 @@ const TeamSection: React.FC = () => {
 
         {/* Heading */}
         <h2
-          className="text-center mb-[96px]"
+          className="text-center mb-[72px]"
           style={{
             fontFamily: "Poppins",
             fontWeight: 500,
@@ -85,7 +103,7 @@ const TeamSection: React.FC = () => {
         </h2>
 
         {/* Team Members */}
-        <div className="flex flex-col md:flex-row justify-center items-center gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 justify-items-center mb-[96px]">
           <TeamMember
             image={ceo}
             name="Jayant Dhote"
@@ -93,9 +111,46 @@ const TeamSection: React.FC = () => {
             description={`Ex-OYO Rooms, Fin-Tech
 DPS Durg, IIT Guwahati Alumni`}
           />
+          <TeamMember
+            name="Guru Darshini"
+            role="Backend Developer"
+            description={`Shiv Nadar University, Chennai`}
+          />
+          <TeamMember
+            name="Shubham Patthe"
+            role="Frontend Developer"
+            description={`IIT Kharagpur`}
+          />
+        </div>
 
+        {/* Mentors Section */}
+        <div className="mt-16 pt-16 border-t border-[#e2e8f0]">
+          <h2
+            className="text-center mb-[72px]"
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: 500,
+              fontSize: "48px",
+              color: "#1E2773"
+            }}
+          >
+            Mentors & Advisors
+          </h2>
 
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 justify-items-center max-w-[800px] mx-auto">
+            <TeamMember
+              image={jayesh}
+              name="Jayesh Khade"
+              role="Advisor"
+              description={`World Trade Center Navi Mumbai
+E-cell IIT Bombay`}
+            />
+            <TeamMember
+              name="Manish Gadpande"
+              role="Industrialist"
+              description={`Raipur, Bhilai area`}
+            />
+          </div>
         </div>
 
       </div>

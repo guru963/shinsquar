@@ -54,7 +54,7 @@ const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose })
             to: cleanPhone,
             type: "template",
             template: {
-              name: "locall",
+              name: "shinsquare",
               language: { code: "en" },
               components: [
                 {

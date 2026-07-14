@@ -41,29 +41,11 @@ const Navbar: React.FC = () => {
     <nav className="w-full bg-[#F7F8FF] shadow-[0px_1px_4px_rgba(12,12,13,0.05)] flex items-center px-margin-mobile md:px-margin-desktop relative sticky top-0 z-50">
 
       {/* Container */}
-      <div className="flex items-center justify-between w-full py-2">
+      <div className="flex items-center justify-between w-full py-1">
 
-        {/* Logo + Title */}
-        <div className="flex items-center gap-[10px] shrink-0">
-          <img src={logo} alt="logo" className="h-12 md:h-16 w-auto" />
-
-          <p
-            className="
-              font-serif
-              text-[1.3em]
-              md:text-[1.7em]
-              tracking-[0.11em]
-              bg-gradient-to-r
-              from-[#4356FF]
-              to-[#43C0FF]
-              bg-clip-text
-              text-transparent
-              hidden sm:block
-            "
-            style={{ fontFamily: "'Baskervville SC', serif" }}
-          >
-            Locall
-          </p>
+        {/* Logo */}
+        <div className="flex items-center shrink-0">
+          <img src={logo} alt="logo" className="h-10 md:h-14 w-auto" />
         </div>
 
         {/* Middle: Location Selection Button */}

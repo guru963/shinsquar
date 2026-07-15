@@ -2,6 +2,9 @@ import React from "react";
 import ceo from "../assets/CEO.png";
 import waves from "../assets/waves.png";
 import jayesh from "../assets/jayesh.jpg";
+import team2 from "../assets/Team2.jpeg"
+import shubham from "../assets/shubham.jpg"
+import guru from "../assets/Guru.jpeg"
 
 interface TeamMemberProps {
   image?: string;
@@ -112,11 +115,13 @@ const TeamSection: React.FC = () => {
 DPS Durg, IIT Guwahati Alumni`}
           />
           <TeamMember
-            name="Guru Darshini"
+            image={guru}
+            name="Guru Divya Darshini U"
             role="Backend Developer"
             description={`Shiv Nadar University, Chennai`}
           />
           <TeamMember
+            image={shubham}
             name="Shubham Patthe"
             role="Frontend Developer"
             description={`IIT Kharagpur`}
@@ -146,6 +151,7 @@ DPS Durg, IIT Guwahati Alumni`}
 E-cell IIT Bombay`}
             />
             <TeamMember
+            image={team2}
               name="Manish Gadpande"
               role="Industrialist"
               description={`Raipur, Bhilai area`}

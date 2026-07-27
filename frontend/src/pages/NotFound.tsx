@@ -8,7 +8,7 @@ const NotFound: React.FC = () => {
       className="min-h-[85vh] flex items-center justify-center py-20 px-6 md:px-12 relative overflow-hidden bg-background"
       style={{
         background:
-          "radial-gradient(at 0% 0%, rgba(67, 86, 255, 0.08) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(67, 192, 255, 0.06) 0px, transparent 50%), #F8FAFC",
+          "radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.08) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(249, 115, 22, 0.06) 0px, transparent 50%), #F8FAFC",
       }}
     >
       <SEO
@@ -19,7 +19,7 @@ const NotFound: React.FC = () => {
       <div className="max-w-lg w-full mx-auto text-center space-y-8 relative z-10">
         {/* 404 Number */}
         <h1
-          className="text-[120px] md:text-[160px] font-extrabold leading-none tracking-tighter bg-gradient-to-r from-[#4356FF] to-[#43C0FF] bg-clip-text text-transparent select-none"
+          className="text-[120px] md:text-[160px] font-extrabold leading-none tracking-tighter bg-gradient-to-r from-[#1E3A8A] to-[#F97316] bg-clip-text text-transparent select-none"
           style={{ fontFamily: "var(--font-display)" }}
         >
           404
@@ -45,7 +45,7 @@ const NotFound: React.FC = () => {
         {/* Back Home Button */}
         <Link
           to="/"
-          className="inline-flex items-center justify-center bg-[#4356FF] hover:bg-[#3144e5] text-white px-8 py-4 rounded-2xl font-bold text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg cursor-pointer"
+          className="inline-flex items-center justify-center bg-[#1E3A8A] hover:bg-[#152e6e] text-white px-8 py-4 rounded-2xl font-bold text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg cursor-pointer"
           style={{ fontFamily: "var(--font-display)" }}
         >
           <svg

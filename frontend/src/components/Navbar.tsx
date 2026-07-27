@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
             onClick={() => setIsLocationOpen(!isLocationOpen)}
             className="flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 bg-white border border-gray-200/80 rounded-full shadow-sm text-xs md:text-sm font-semibold text-gray-700 hover:bg-gray-50 transition cursor-pointer"
           >
-            <MapPin size={15} className="text-[#4356FF] shrink-0" />
+            <MapPin size={15} className="text-[#1E3A8A] shrink-0" />
             <span>Durg, CG</span>
             <ChevronDown size={13} className="text-gray-400 shrink-0" />
           </button>
@@ -75,13 +75,13 @@ const Navbar: React.FC = () => {
                 <div className="space-y-0.5">
                   <button 
                     onClick={() => setIsLocationOpen(false)}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-xs md:text-sm font-semibold text-[#4356FF] bg-[#4356FF]/5 hover:bg-[#4356FF]/10 transition cursor-pointer"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-xs md:text-sm font-semibold text-[#1E3A8A] bg-[#1E3A8A]/5 hover:bg-[#1E3A8A]/10 transition cursor-pointer"
                   >
                     <span className="flex items-center gap-2">
-                      <MapPin size={14} className="text-[#4356FF]" />
+                      <MapPin size={14} className="text-[#1E3A8A]" />
                       Durg, CG
                     </span>
-                    <Check size={14} className="text-[#4356FF]" />
+                    <Check size={14} className="text-[#1E3A8A]" />
                   </button>
 
                   {[
@@ -117,7 +117,7 @@ const Navbar: React.FC = () => {
                 key={item.label}
                 href={`/#${item.scrollTo}`}
                 onClick={(e) => { e.preventDefault(); handleNav(item); }}
-                className="hover:text-blue-600 transition cursor-pointer text-sm"
+                className="hover:text-[#1E3A8A] transition cursor-pointer text-sm"
                 style={{ fontFamily: "Poppins" }}
               >
                 {item.label}
@@ -143,7 +143,7 @@ const Navbar: React.FC = () => {
               key={item.label}
               href={`/#${item.scrollTo}`}
               onClick={(e) => { e.preventDefault(); handleNav(item); }}
-              className="text-gray-600 hover:text-blue-600 transition cursor-pointer"
+              className="text-gray-600 hover:text-[#1E3A8A] transition cursor-pointer"
               style={{ fontFamily: "Poppins" }}
             >
               {item.label}

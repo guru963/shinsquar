@@ -133,7 +133,7 @@ const Community: React.FC = () => {
           {neighbors.map((neighbor) => (
             <div 
               key={neighbor.id}
-              className="w-[280px] flex-shrink-0 snap-start bg-white border border-gray-100 rounded-3xl shadow-sm hover:shadow-[0_12px_30px_rgba(67,86,255,0.06)] hover:-translate-y-1 transition duration-300 flex flex-col h-[380px] overflow-hidden"
+              className="w-[280px] flex-shrink-0 snap-start bg-white border border-gray-100 rounded-3xl shadow-sm hover:shadow-[0_12px_30px_rgba(30,58,138,0.06)] hover:-translate-y-1 transition duration-300 flex flex-col h-[380px] overflow-hidden"
             >
               {/* Top 3/4: Cover Image */}
               <div className="relative h-[290px] w-full overflow-hidden bg-gray-50">
@@ -173,7 +173,7 @@ const Community: React.FC = () => {
 
                 {/* Chat Button */}
                 <button 
-                  className="flex-shrink-0 w-10 h-10 bg-primary hover:bg-[#3144e5] text-white rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(67,86,255,0.25)] transition cursor-pointer" 
+                  className="flex-shrink-0 w-10 h-10 bg-primary hover:bg-[#152e6e] text-white rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(30,58,138,0.25)] transition cursor-pointer" 
                   aria-label="Chat now"
                 >
                   <MessageSquare size={16} />

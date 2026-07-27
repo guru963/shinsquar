@@ -8,12 +8,12 @@ const ServicesBento: React.FC = () => {
         
         {/* Section Header */}
         <div className="mb-12 text-center lg:text-left space-y-2">
-          <span className="text-[#4356FF] text-xs font-bold uppercase tracking-widest bg-[#4356FF]/5 px-3 py-1.5 rounded-full inline-block font-display-xl" style={{ fontFamily: "var(--font-display)" }}>
+          <span className="text-[#1E3A8A] text-xs font-bold uppercase tracking-widest bg-[#1E3A8A]/5 px-3 py-1.5 rounded-full inline-block font-display-xl" style={{ fontFamily: "var(--font-display)" }}>
             Core Benefits
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight font-display-xl" style={{ fontFamily: "var(--font-display)" }}>
             Why Locall? <br />
-            <span className="text-[#4356FF] text-2xl md:text-3xl font-semibold mt-1.5 block leading-snug font-display-xl" style={{ fontFamily: "var(--font-display)" }}>
+            <span className="text-[#1E3A8A] text-2xl md:text-3xl font-semibold mt-1.5 block leading-snug font-display-xl" style={{ fontFamily: "var(--font-display)" }}>
               Everything your locality needs, in one place.
             </span>
           </h2>
@@ -25,7 +25,7 @@ const ServicesBento: React.FC = () => {
           {/* Card 1: Easy Discovery of Professionals */}
           <div className="md:col-span-8 p-8 md:p-10 rounded-3xl bg-surface-container-low border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col md:flex-row justify-between items-stretch hover:shadow-md transition group animate-fade-in gap-6">
             <div className="relative z-10 space-y-3 flex-1 flex flex-col justify-center">
-              <div className="w-12 h-12 bg-[#4356FF]/10 rounded-xl flex items-center justify-center text-[#4356FF] mb-2">
+              <div className="w-12 h-12 bg-[#1E3A8A]/10 rounded-xl flex items-center justify-center text-[#1E3A8A] mb-2">
                 <Search size={22} />
               </div>
               <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 font-display-xl" style={{ fontFamily: "var(--font-display)" }}>Easy Discovery</h3>
@@ -37,13 +37,13 @@ const ServicesBento: React.FC = () => {
             {/* Visual element container (Positioned on the right to fill empty space) */}
             <div className="relative w-full md:w-[240px] min-h-[140px] md:min-h-auto bg-gray-50/60 rounded-2xl md:rounded-l-[80px] md:rounded-r-none -mr-8 md:-mr-10 -my-6 md:-my-10 p-6 flex flex-col justify-center overflow-hidden shrink-0">
               <div className="absolute top-4 left-6 flex items-center gap-3 bg-white px-4 py-2.5 rounded-xl shadow-md border border-gray-100/50 w-fit transition-transform duration-300 group-hover:-translate-y-1">
-                <div className="w-8 h-8 bg-[#4356FF]/10 rounded-lg flex items-center justify-center text-[#4356FF]">
+                <div className="w-8 h-8 bg-[#1E3A8A]/10 rounded-lg flex items-center justify-center text-[#1E3A8A]">
                   <Wrench size={16} />
                 </div>
                 <div className="text-xs font-bold text-gray-700" style={{ fontFamily: "var(--font-display)" }}>Plumber • 0.2km</div>
               </div>
               <div className="absolute top-20 left-12 flex items-center gap-3 bg-white px-4 py-2.5 rounded-xl shadow-md border border-gray-100/50 w-fit transition-transform duration-300 group-hover:-translate-y-2">
-                <div className="w-8 h-8 bg-[#4356FF]/10 rounded-lg flex items-center justify-center text-[#4356FF]">
+                <div className="w-8 h-8 bg-[#1E3A8A]/10 rounded-lg flex items-center justify-center text-[#1E3A8A]">
                   <Utensils size={16} />
                 </div>
                 <div className="text-xs font-bold text-gray-700" style={{ fontFamily: "var(--font-display)" }}>New Bistro • 0.5km</div>
@@ -52,7 +52,7 @@ const ServicesBento: React.FC = () => {
           </div>
 
           {/* Card 2: Save Time and Money */}
-          <div className="md:col-span-4 p-8 md:p-10 rounded-3xl bg-[#4356FF] text-white border border-[#4356FF]/20 shadow-lg relative overflow-hidden flex flex-col justify-start gap-5 hover:shadow-xl transition">
+          <div className="md:col-span-4 p-8 md:p-10 rounded-3xl bg-[#1E3A8A] text-white border border-[#1E3A8A]/20 shadow-lg relative overflow-hidden flex flex-col justify-start gap-5 hover:shadow-xl transition">
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
               <Zap size={24} />
             </div>
@@ -67,10 +67,10 @@ const ServicesBento: React.FC = () => {
           {/* Card 3: Reliable and Community-Driven */}
           <div className="md:col-span-4 p-6 md:p-10 rounded-3xl bg-surface-container-low border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col gap-5 min-h-[260px] md:h-[300px] hover:shadow-md transition">
             <div className="flex justify-between items-start">
-              <div className="w-12 h-12 rounded-xl border border-[#4356FF]/20 flex items-center justify-center text-[#4356FF]">
+              <div className="w-12 h-12 rounded-xl border border-[#1E3A8A]/20 flex items-center justify-center text-[#1E3A8A]">
                 <ShieldCheck size={26} />
               </div>
-              <span className="text-[10px] font-bold tracking-widest text-[#4356FF] bg-[#4356FF]/10 px-3 py-1 rounded-full uppercase" style={{ fontFamily: "var(--font-display)" }}>
+              <span className="text-[10px] font-bold tracking-widest text-[#1E3A8A] bg-[#1E3A8A]/10 px-3 py-1 rounded-full uppercase" style={{ fontFamily: "var(--font-display)" }}>
                 Verified
               </span>
             </div>
@@ -85,7 +85,7 @@ const ServicesBento: React.FC = () => {
           {/* Card 4: Support Local Businesses */}
           <div className="md:col-span-8 p-8 md:p-10 rounded-3xl bg-surface-container-low border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center gap-8 h-auto md:h-[300px] hover:shadow-md transition">
             <div className="flex-1 space-y-4">
-              <div className="w-12 h-12 bg-[#4356FF]/10 rounded-xl flex items-center justify-center text-[#4356FF]">
+              <div className="w-12 h-12 bg-[#1E3A8A]/10 rounded-xl flex items-center justify-center text-[#1E3A8A]">
                 <Store size={22} />
               </div>
               <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 font-display-xl" style={{ fontFamily: "var(--font-display)" }}>Support Local Businesses</h3>

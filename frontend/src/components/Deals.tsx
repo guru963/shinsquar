@@ -16,7 +16,7 @@ const DealCard: React.FC<DealCardProps> = ({ image, title, description, link }) 
   return (
     <Link to={link} className="block w-full">
       <div
-        className="bg-white rounded-3xl cursor-pointer transition-all border border-gray-100/80 shadow-[0px_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0px_20px_40px_rgba(67,86,255,0.08)] hover:-translate-y-1 duration-300"
+        className="bg-white rounded-3xl cursor-pointer transition-all border border-gray-100/80 shadow-[0px_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0px_20px_40px_rgba(30,58,138,0.08)] hover:-translate-y-1 duration-300"
         style={{
           padding: "20px",
           display: "flex",
@@ -85,8 +85,8 @@ const DealsSection: React.FC = () => {
           tracking-[0.05em]
           leading-[100%]
           bg-gradient-to-r
-          from-[#4356FF]
-          to-[#43A1FF]
+          from-[#1E3A8A]
+          to-[#F97316]
           bg-clip-text
           text-transparent
         "
@@ -111,6 +111,7 @@ const DealsSection: React.FC = () => {
           {/* GREEN BRUSH UNDERLINE */}
           <img src={leaf}
             className="absolute left-[35%] -bottom-5 w-[170px]"
+            style={{ filter: "brightness(0) saturate(100%) invert(56%) sepia(87%) saturate(1478%) hue-rotate(346deg) brightness(99%) contrast(97%)" }}
           />
         </div>
 

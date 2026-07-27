@@ -98,7 +98,7 @@ export default function PopularSection() {
         <div className="popular__header">
           <div className="text-left">
             <p className="popular__eyebrow">Near You</p>
-            <h2 className="popular__title">Meet Your <span style={{ color: "#4356FF" }}>Vendors</span></h2>
+            <h2 className="popular__title">Meet Your <span style={{ color: "#F97316" }}>Vendors</span></h2>
             <p className="popular__subtitle">
               Verified local professionals trusted by your neighbors
             </p>

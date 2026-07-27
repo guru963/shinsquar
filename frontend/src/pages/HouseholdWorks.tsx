@@ -133,7 +133,7 @@ const HouseholdWorks: React.FC = () => {
         <div className="mb-8 text-left flex">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#4356FF] font-bold transition-colors"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#1E3A8A] font-bold transition-colors"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -147,7 +147,7 @@ const HouseholdWorks: React.FC = () => {
           <div className="text-left">
             <p className="popular__eyebrow">Near You</p>
             <h2 className="popular__title">
-              Household Workers in <span style={{ color: "#4356FF" }}>Durg, Chhattisgarh</span>
+              Household Workers in <span style={{ color: "#1E3A8A" }}>Durg, Chhattisgarh</span>
             </h2>
             <p className="popular__subtitle">
               Verified local professionals trusted by your neighbors
@@ -256,7 +256,7 @@ const HouseholdWorks: React.FC = () => {
                     <h3 className="pop-card__title">{worker.name}</h3>
                     <p className="pop-card__desc">{worker.experience} Experience · ⭐ {worker.rating}</p>
                     <div className="mt-4 pt-3 border-t border-gray-100">
-                      <span className="inline-flex items-center gap-1 text-[#4356FF] font-bold text-sm">
+                      <span className="inline-flex items-center gap-1 text-[#1E3A8A] font-bold text-sm">
                         View Profile
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                       </span>

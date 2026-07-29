@@ -16,7 +16,7 @@ const DealCard: React.FC<DealCardProps> = ({ image, title, description, link }) 
   return (
     <Link to={link} className="block w-full">
       <div
-        className="bg-white rounded-3xl cursor-pointer transition-all border border-gray-100/80 shadow-[0px_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0px_20px_40px_rgba(30,58,138,0.08)] hover:-translate-y-1 duration-300"
+        className="bg-white rounded-3xl cursor-pointer transition-all border border-[#D9E2EF]/80 shadow-[0px_10px_30px_rgba(7,59,145,0.05)] hover:shadow-[0px_20px_40px_rgba(7,59,145,0.12)] hover:-translate-y-1 duration-300"
         style={{
           padding: "20px",
           display: "flex",
@@ -25,7 +25,7 @@ const DealCard: React.FC<DealCardProps> = ({ image, title, description, link }) 
         }}
       >
         {/* Image */}
-        <div className="rounded-2xl overflow-hidden bg-gray-50 aspect-video md:aspect-[4/3] max-h-[230px]">
+        <div className="rounded-2xl overflow-hidden bg-[#FFF8F1] aspect-video md:aspect-[4/3] max-h-[230px]">
           <img
             src={image}
             alt={title}
@@ -36,7 +36,7 @@ const DealCard: React.FC<DealCardProps> = ({ image, title, description, link }) 
         {/* Text */}
         <div className="text-center space-y-2">
           <h3
-            className="text-[1.25em] text-[#2C2C2C] font-semibold"
+            className="text-[1.25em] text-[#162033] font-semibold"
             style={{
               fontFamily: "Poppins",
               letterSpacing: "-0.5%"
@@ -46,7 +46,7 @@ const DealCard: React.FC<DealCardProps> = ({ image, title, description, link }) 
           </h3>
 
           <p
-            className="text-[15px] text-[#737373] font-normal leading-relaxed"
+            className="text-[15px] text-[#475569] font-normal leading-relaxed"
             style={{
               fontFamily: "Poppins",
               letterSpacing: "-0.5%"
@@ -62,13 +62,13 @@ const DealCard: React.FC<DealCardProps> = ({ image, title, description, link }) 
 
 const DealsSection: React.FC = () => {
   return (
-    <section id="deals" className="bg-[#FFFFFF] pt-[62px] pb-[138px] px-6 md:px-12">
+    <section id="deals" className="bg-[#FFFCF8] pt-[62px] pb-[138px] px-6 md:px-12">
 
       <div className="max-w-[1200px] mx-auto text-center">
 
         {/* GET */}
         <p
-          className="text-2xl text-[#595959] pb-[22px]"
+          className="text-2xl text-[#475569] pb-[22px]"
           style={{
             fontFamily: "Poppins",
             fontWeight: 500
@@ -85,8 +85,8 @@ const DealsSection: React.FC = () => {
           tracking-[0.05em]
           leading-[100%]
           bg-gradient-to-r
-          from-[#1E3A8A]
-          to-[#F97316]
+          from-[#073B91]
+          to-[#FF6B00]
           bg-clip-text
           text-transparent
         "
@@ -99,7 +99,7 @@ const DealsSection: React.FC = () => {
         <div className="relative inline-block">
 
           <p
-            className="text-4xl text-[#2C2C2C] pt-[12px]"
+            className="text-4xl text-[#162033] pt-[12px]"
             style={{
               fontFamily: "Kaushan Script",
               letterSpacing: "0.5px"

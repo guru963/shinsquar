@@ -81,7 +81,7 @@ const Community: React.FC = () => {
   return (
     <section 
       id="community" 
-      className="min-h-[100svh] lg:h-[100vh] flex flex-col justify-center py-12 px-margin-mobile md:px-margin-desktop bg-[#F8FAFC] relative overflow-hidden"
+      className="min-h-[100svh] lg:h-[100vh] flex flex-col justify-center py-12 px-margin-mobile md:px-margin-desktop bg-[#FFF8F1] relative overflow-hidden"
     >
       {/* Decorative blurred background shapes */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
@@ -102,20 +102,20 @@ const Community: React.FC = () => {
 
         {/* Scroll navigation controls */}
         <div className="flex justify-between items-center mb-4 max-w-6xl mx-auto px-4">
-          <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+          <span className="text-xs font-bold text-[#475569] uppercase tracking-widest">
             Slide to discover ({neighbors.length})
           </span>
           <div className="flex gap-2">
             <button 
               onClick={() => scroll("left")}
-              className="w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center hover:bg-gray-50 text-gray-600 transition cursor-pointer"
+              className="w-8 h-8 rounded-full border border-[#D9E2EF] bg-white flex items-center justify-center hover:bg-[#FFF1E5] text-[#162033] transition cursor-pointer"
               aria-label="Scroll left"
             >
               <ArrowLeft size={16} />
             </button>
             <button 
               onClick={() => scroll("right")}
-              className="w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center hover:bg-gray-50 text-gray-600 transition cursor-pointer"
+              className="w-8 h-8 rounded-full border border-[#D9E2EF] bg-white flex items-center justify-center hover:bg-[#FFF1E5] text-[#162033] transition cursor-pointer"
               aria-label="Scroll right"
             >
               <ArrowRight size={16} />
@@ -133,10 +133,10 @@ const Community: React.FC = () => {
           {neighbors.map((neighbor) => (
             <div 
               key={neighbor.id}
-              className="w-[280px] flex-shrink-0 snap-start bg-white border border-gray-100 rounded-3xl shadow-sm hover:shadow-[0_12px_30px_rgba(30,58,138,0.06)] hover:-translate-y-1 transition duration-300 flex flex-col h-[380px] overflow-hidden"
+              className="w-[280px] flex-shrink-0 snap-start bg-white border border-[#D9E2EF] rounded-3xl shadow-sm hover:shadow-[0_12px_30px_rgba(7,59,145,0.10)] hover:-translate-y-1 transition duration-300 flex flex-col h-[380px] overflow-hidden"
             >
               {/* Top 3/4: Cover Image */}
-              <div className="relative h-[290px] w-full overflow-hidden bg-gray-50">
+              <div className="relative h-[290px] w-full overflow-hidden bg-[#FFF8F1]">
                 <img 
                   src={neighbor.image} 
                   alt={neighbor.name}
@@ -144,12 +144,12 @@ const Community: React.FC = () => {
                 />
                 
                 {/* Distance Badge overlay */}
-                <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm text-[10px] font-bold text-gray-700">
+                <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm text-[10px] font-bold text-[#162033]">
                   <MapPin size={10} className="text-primary" />
                   {neighbor.distance}
                 </span>
 
-                <span className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-2 py-1 rounded-full flex items-center gap-1 shadow-sm text-[10px] font-semibold text-green-600">
+                <span className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-2 py-1 rounded-full flex items-center gap-1 shadow-sm text-[10px] font-semibold text-[#FF6B00]">
                   Verified
                 </span>
               </div>
@@ -173,7 +173,7 @@ const Community: React.FC = () => {
 
                 {/* Chat Button */}
                 <button 
-                  className="flex-shrink-0 w-10 h-10 bg-primary hover:bg-[#152e6e] text-white rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(30,58,138,0.25)] transition cursor-pointer" 
+                  className="flex-shrink-0 w-10 h-10 bg-primary hover:bg-[#052B6F] text-white rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(7,59,145,0.25)] transition cursor-pointer" 
                   aria-label="Chat now"
                 >
                   <MessageSquare size={16} />

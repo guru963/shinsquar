@@ -40,7 +40,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
             className="w-full h-full object-cover"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-tr from-[#1E3A8A]/10 to-[#1E3A8A]/30 flex items-center justify-center border border-[#1E3A8A]/20 shadow-sm text-[#1E3A8A]">
+          <div className="w-full h-full bg-gradient-to-tr from-[#EAF1FF] to-[#FFE1CC] flex items-center justify-center border border-[#D9E2EF] shadow-sm text-[#073B91]">
             <span className="text-[72px] font-semibold tracking-wide select-none">
               {getInitials(name)}
             </span>
@@ -61,7 +61,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
 
       {/* Role */}
       <p
-        className="text-[19px] text-[#737373] mt-1"
+        className="text-[19px] text-[#475569] mt-1"
         style={{ fontWeight: 500 }}
       >
         {role}
@@ -69,7 +69,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
 
       {/* Description */}
       <p
-        className="text-[19px] text-[#737373] mt-2 whitespace-pre-line leading-relaxed"
+        className="text-[19px] text-[#475569] mt-2 whitespace-pre-line leading-relaxed"
         style={{ fontWeight: 500 }}
       >
         {description}
@@ -80,7 +80,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
 
 const TeamSection: React.FC = () => {
   return (
-    <section id="team" className="relative bg-[#F7F8FF] pt-[48px] pb-[72px]" >
+    <section id="team" className="relative bg-[#F7FAFF] pt-[48px] pb-[72px]" >
 
       {/* WAVES IMAGE */}
       <img
@@ -99,7 +99,7 @@ const TeamSection: React.FC = () => {
             fontFamily: "Poppins",
             fontWeight: 500,
             fontSize: "48px",
-            color: "#1E3A8A"
+            color: "#073B91"
           }}
         >
           Team
@@ -129,14 +129,14 @@ DPS Durg, IIT Guwahati Alumni`}
         </div>
 
         {/* Mentors Section */}
-        <div className="mt-16 pt-16 border-t border-[#e2e8f0]">
+        <div className="mt-16 pt-16 border-t border-[#D9E2EF]">
           <h2
             className="text-center mb-[72px]"
             style={{
               fontFamily: "Poppins",
               fontWeight: 500,
               fontSize: "48px",
-              color: "#1E3A8A"
+              color: "#073B91"
             }}
           >
             Mentors & Advisors

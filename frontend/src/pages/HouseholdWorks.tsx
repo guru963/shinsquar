@@ -121,7 +121,7 @@ const HouseholdWorks: React.FC = () => {
   }, [activeCategory]);
 
   return (
-    <section className="popular py-24 min-h-screen bg-[#F4F6FC]" id="vendors-section">
+    <section className="popular py-24 min-h-screen bg-[#FFF8F1]" id="vendors-section">
       <SEO
         title="Household Workers & Home Service Providers in Durg"
         description="Hire verified local Plumbers, Tiles Workers, Electricians, Carpenters and Creative professionals in Durg, Chhattisgarh. Trusted local expertise."
@@ -133,7 +133,7 @@ const HouseholdWorks: React.FC = () => {
         <div className="mb-8 text-left flex">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#1E3A8A] font-bold transition-colors"
+            className="inline-flex items-center gap-2 text-[#162033] hover:text-[#FF6B00] font-bold transition-colors"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -147,7 +147,7 @@ const HouseholdWorks: React.FC = () => {
           <div className="text-left">
             <p className="popular__eyebrow">Near You</p>
             <h2 className="popular__title">
-              Household Workers in <span style={{ color: "#1E3A8A" }}>Durg, Chhattisgarh</span>
+              Household Workers in <span style={{ color: "#073B91" }}>Durg, Chhattisgarh</span>
             </h2>
             <p className="popular__subtitle">
               Verified local professionals trusted by your neighbors
@@ -205,7 +205,7 @@ const HouseholdWorks: React.FC = () => {
                   <p className="pop-card__desc">{vendor.work}</p>
                   
                   {/* Clean Flex Footer Row for price and WhatsApp */}
-                  <div className="flex justify-between items-center gap-2 mt-4 pt-3 border-t border-gray-100">
+                  <div className="flex justify-between items-center gap-2 mt-4 pt-3 border-t border-[#D9E2EF]">
                     <div className="pop-card__pricing m-0">
                       <span className="pop-card__price">{vendor.price}</span>
                     </div>
@@ -255,8 +255,8 @@ const HouseholdWorks: React.FC = () => {
                     <p className="pop-card__category">{worker.role}</p>
                     <h3 className="pop-card__title">{worker.name}</h3>
                     <p className="pop-card__desc">{worker.experience} Experience · ⭐ {worker.rating}</p>
-                    <div className="mt-4 pt-3 border-t border-gray-100">
-                      <span className="inline-flex items-center gap-1 text-[#1E3A8A] font-bold text-sm">
+                    <div className="mt-4 pt-3 border-t border-[#D9E2EF]">
+                      <span className="inline-flex items-center gap-1 text-[#073B91] font-bold text-sm">
                         View Profile
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                       </span>

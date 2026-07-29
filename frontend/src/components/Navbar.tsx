@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="w-full bg-[#F7F8FF] shadow-[0px_1px_4px_rgba(12,12,13,0.05)] flex items-center px-margin-mobile md:px-margin-desktop relative sticky top-0 z-50">
+    <nav className="w-full bg-[#FFFCF8]/95 backdrop-blur-md border-b border-[#E5ECF7] shadow-[0px_1px_4px_rgba(7,59,145,0.06)] flex items-center px-margin-mobile md:px-margin-desktop relative sticky top-0 z-50">
 
       {/* Container */}
       <div className="flex items-center justify-between w-full py-2 relative">
@@ -52,11 +52,11 @@ const Navbar: React.FC = () => {
         <div className="absolute left-1/2 -translate-x-1/2 z-20">
           <button
             onClick={() => setIsLocationOpen(!isLocationOpen)}
-            className="flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 bg-white border border-gray-200/80 rounded-full shadow-sm text-xs md:text-sm font-semibold text-gray-700 hover:bg-gray-50 transition cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 bg-white border border-[#D9E2EF]/80 rounded-full shadow-sm text-xs md:text-sm font-semibold text-[#162033] hover:bg-[#FFF1E5] transition cursor-pointer"
           >
-            <MapPin size={15} className="text-[#1E3A8A] shrink-0" />
+            <MapPin size={15} className="text-[#FF6B00] shrink-0" />
             <span>Durg, CG</span>
-            <ChevronDown size={13} className="text-gray-400 shrink-0" />
+            <ChevronDown size={13} className="text-[#475569] shrink-0" />
           </button>
 
           {isLocationOpen && (
@@ -68,20 +68,20 @@ const Navbar: React.FC = () => {
               ></div>
               
               {/* Dropdown Card */}
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white border border-gray-100 rounded-2xl shadow-xl p-3 z-50 transition-all duration-200">
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider px-3 py-1 mb-1">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white border border-[#D9E2EF] rounded-2xl shadow-xl p-3 z-50 transition-all duration-200">
+                <p className="text-[10px] font-bold text-[#475569] uppercase tracking-wider px-3 py-1 mb-1">
                   Select Location
                 </p>
                 <div className="space-y-0.5">
                   <button 
                     onClick={() => setIsLocationOpen(false)}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-xs md:text-sm font-semibold text-[#1E3A8A] bg-[#1E3A8A]/5 hover:bg-[#1E3A8A]/10 transition cursor-pointer"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-xs md:text-sm font-semibold text-[#073B91] bg-[#EAF1FF] hover:bg-[#DCE8FF] transition cursor-pointer"
                   >
                     <span className="flex items-center gap-2">
-                      <MapPin size={14} className="text-[#1E3A8A]" />
+                      <MapPin size={14} className="text-[#FF6B00]" />
                       Durg, CG
                     </span>
-                    <Check size={14} className="text-[#1E3A8A]" />
+                    <Check size={14} className="text-[#073B91]" />
                   </button>
 
                   {[
@@ -91,13 +91,13 @@ const Navbar: React.FC = () => {
                   ].map((loc) => (
                     <div 
                       key={loc}
-                      className="flex items-center justify-between px-3 py-2 rounded-xl text-xs md:text-sm font-medium text-gray-400 cursor-not-allowed select-none"
+                      className="flex items-center justify-between px-3 py-2 rounded-xl text-xs md:text-sm font-medium text-[#475569] cursor-not-allowed select-none"
                     >
                       <span className="flex items-center gap-2">
                         <MapPin size={14} className="text-gray-300" />
                         {loc}
                       </span>
-                      <span className="text-[8px] font-bold text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded uppercase tracking-wide">
+                      <span className="text-[8px] font-bold text-[#475569] bg-[#F0F4FB] px-1.5 py-0.5 rounded uppercase tracking-wide">
                         Soon
                       </span>
                     </div>
@@ -111,13 +111,13 @@ const Navbar: React.FC = () => {
         {/* Right Section: Desktop Links + Mobile Menu */}
         <div className="flex items-center gap-4">
           {/* Desktop Links — using <a> tags for SEO crawlability */}
-          <div className="hidden md:flex items-center gap-8 text-gray-600 font-medium">
+          <div className="hidden md:flex items-center gap-8 text-[#162033] font-medium">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={`/#${item.scrollTo}`}
                 onClick={(e) => { e.preventDefault(); handleNav(item); }}
-                className="hover:text-[#1E3A8A] transition cursor-pointer text-sm"
+                className="hover:text-[#FF6B00] transition cursor-pointer text-sm"
                 style={{ fontFamily: "Poppins" }}
               >
                 {item.label}
@@ -127,7 +127,7 @@ const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-600 cursor-pointer"
+            className="md:hidden text-[#162033] cursor-pointer"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={26} /> : <Menu size={26} />}
@@ -137,13 +137,13 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-[#F7F8FF] border-t flex flex-col items-center gap-6 py-8 shadow-lg md:hidden">
+        <div className="absolute top-full left-0 w-full bg-[#FFFCF8] border-t border-[#E5ECF7] flex flex-col items-center gap-6 py-8 shadow-lg md:hidden">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={`/#${item.scrollTo}`}
               onClick={(e) => { e.preventDefault(); handleNav(item); }}
-              className="text-gray-600 hover:text-[#1E3A8A] transition cursor-pointer"
+              className="text-[#162033] hover:text-[#FF6B00] transition cursor-pointer"
               style={{ fontFamily: "Poppins" }}
             >
               {item.label}

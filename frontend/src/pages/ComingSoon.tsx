@@ -7,12 +7,12 @@ const ComingSoon: React.FC = () => {
     <section 
       className="min-h-[85vh] flex items-center justify-center py-20 px-margin-mobile md:px-margin-desktop relative overflow-hidden bg-background"
       style={{
-        background: "radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.12) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(249, 115, 22, 0.1) 0px, transparent 50%), #F8FAFC"
+        background: "radial-gradient(at 0% 0%, rgba(7, 59, 145, 0.12) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(255, 107, 0, 0.1) 0px, transparent 50%), #FFF8F1"
       }}
     >
       {/* Decorative floating blurred vector circles */}
-      <div className="absolute top-1/4 left-1/10 w-72 h-72 bg-[#1E3A8A]/5 rounded-full blur-[80px] pointer-events-none"></div>
-      <div className="absolute bottom-1/4 right-1/10 w-96 h-96 bg-[#F97316]/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/10 w-72 h-72 bg-[#073B91]/5 rounded-full blur-[80px] pointer-events-none"></div>
+      <div className="absolute bottom-1/4 right-1/10 w-96 h-96 bg-[#FF6B00]/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-2xl w-full mx-auto bg-white/80 backdrop-blur-xl rounded-[40px] p-8 md:p-14 text-center shadow-2xl border border-white/60 relative z-10">
         <SEO 
@@ -21,16 +21,16 @@ const ComingSoon: React.FC = () => {
         />
         
         {/* Animated Badge */}
-        <span className="text-[#1E3A8A] text-xs font-extrabold uppercase tracking-widest bg-[#1E3A8A]/10 px-4 py-2 rounded-full inline-block mb-6 font-display-xl animate-pulse" style={{ fontFamily: "var(--font-display)" }}>
+        <span className="text-[#073B91] text-xs font-extrabold uppercase tracking-widest bg-[#EAF1FF] px-4 py-2 rounded-full inline-block mb-6 font-display-xl animate-pulse" style={{ fontFamily: "var(--font-display)" }}>
           Feature Launching Soon
         </span>
         
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight font-display-xl" style={{ fontFamily: "var(--font-display)", lineHeight: "1.15" }}>
           Hyperlocal Power, <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1E3A8A] to-[#F97316]">Coming Soon</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#073B91] to-[#FF6B00]">Coming Soon</span>
         </h1>
         
-        <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-lg mx-auto mb-10" style={{ fontFamily: "var(--font-display)" }}>
+        <p className="text-[#475569] text-base md:text-lg leading-relaxed max-w-lg mx-auto mb-10" style={{ fontFamily: "var(--font-display)" }}>
           We are hard at work mapping the best locality stores and certified helpers. In the meantime, you can reach out to us directly on WhatsApp.
         </p>
 
@@ -40,7 +40,7 @@ const ComingSoon: React.FC = () => {
             href="https://wa.me/917587315025"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-[#25D366] text-white px-8 py-4 rounded-2xl font-bold text-sm hover:bg-[#20ba5a] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md cursor-pointer"
+            className="inline-flex items-center justify-center bg-[#FF6B00] text-white px-8 py-4 rounded-2xl font-bold text-sm hover:bg-[#E65600] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md cursor-pointer"
             style={{ fontFamily: "var(--font-display)" }}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="mr-2">
@@ -53,7 +53,7 @@ const ComingSoon: React.FC = () => {
         {/* Back Button */}
         <Link 
           to="/" 
-          className="inline-flex items-center justify-center bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-gray-900 border border-gray-200/80 px-7 py-3.5 rounded-2xl font-bold text-sm transition-all shadow-sm cursor-pointer"
+          className="inline-flex items-center justify-center bg-[#FFFCF8] hover:bg-[#FFF1E5] text-[#162033] hover:text-[#073B91] border border-[#D9E2EF]/80 px-7 py-3.5 rounded-2xl font-bold text-sm transition-all shadow-sm cursor-pointer"
           style={{ fontFamily: "var(--font-display)" }}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mr-2">

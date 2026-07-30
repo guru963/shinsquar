@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const CTA: React.FC = () => {
   return (
     <section className="py-24 px-margin-mobile md:px-margin-desktop relative">
-      <div className="max-w-7xl mx-auto bg-primary-container rounded-[60px] p-12 md:p-24 relative overflow-hidden text-center">
+      <div className="max-w-7xl mx-auto bg-primary-container rounded-[32px] p-12 md:p-24 relative overflow-hidden text-center">
         {/* Pulsing visual circles */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
           <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-pulse"></div>

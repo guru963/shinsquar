@@ -40,7 +40,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
             className="w-full h-full object-cover"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-tr from-[#EAF1FF] to-[#FFE1CC] flex items-center justify-center border border-[#D9E2EF] shadow-sm text-[#073B91]">
+          <div className="w-full h-full bg-[#EAF1FF] flex items-center justify-center border border-[#D9E2EF] shadow-sm text-[#2563EB]">
             <span className="text-[72px] font-semibold tracking-wide select-none">
               {getInitials(name)}
             </span>
@@ -99,7 +99,7 @@ const TeamSection: React.FC = () => {
             fontFamily: "Poppins",
             fontWeight: 500,
             fontSize: "48px",
-            color: "#073B91"
+            color: "#2563EB"
           }}
         >
           Team
@@ -136,7 +136,7 @@ DPS Durg, IIT Guwahati Alumni`}
               fontFamily: "Poppins",
               fontWeight: 500,
               fontSize: "48px",
-              color: "#073B91"
+              color: "#2563EB"
             }}
           >
             Mentors & Advisors

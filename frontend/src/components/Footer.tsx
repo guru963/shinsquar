@@ -9,14 +9,14 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="relative bg-[#FFF8F1] text-[#073B91] pt-20 pb-10 px-margin-mobile md:px-margin-desktop font-body-md overflow-hidden">
+    <footer id="contact" className="relative bg-[#FFFFFF] text-[#2563EB] pt-20 pb-10 px-margin-mobile md:px-margin-desktop font-body-md overflow-hidden">
       
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
           {/* Contact Section */}
           <div className="space-y-5 text-left">
-            <h3 className="text-xl font-bold tracking-tight text-[#073B91]" style={{ fontFamily: "var(--font-display)" }}>Contact</h3>
+            <h3 className="text-xl font-bold tracking-tight text-[#2563EB]" style={{ fontFamily: "var(--font-display)" }}>Contact</h3>
             <div className="space-y-4 text-[#162033] text-sm">
               <p>
                 <span className="block text-[#475569] mb-1">Phone Number:</span>
@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
 
           {/* Location Section */}
           <div className="space-y-5 text-left">
-            <h3 className="text-xl font-bold tracking-tight text-[#073B91]" style={{ fontFamily: "var(--font-display)" }}>Location</h3>
+            <h3 className="text-xl font-bold tracking-tight text-[#2563EB]" style={{ fontFamily: "var(--font-display)" }}>Location</h3>
             <div className="text-[#162033] text-sm space-y-6">
               <p className="max-w-[200px] leading-relaxed">
                 Durg, Chhattisgarh,<br/>India - 491001
@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
 
           {/* Links Section (Combined) */}
           <div className="space-y-5 text-left">
-            <h3 className="text-xl font-bold tracking-tight text-[#073B91]" style={{ fontFamily: "var(--font-display)" }}>Links</h3>
+            <h3 className="text-xl font-bold tracking-tight text-[#2563EB]" style={{ fontFamily: "var(--font-display)" }}>Links</h3>
             <ul className="text-sm text-[#162033] space-y-3">
               <li><a href="/#hero" onClick={(e) => { e.preventDefault(); scrollTo("hero"); }} className="hover:text-[#FF6B00] transition-colors">Home</a></li>
               <li><a href="/#deals" onClick={(e) => { e.preventDefault(); scrollTo("deals"); }} className="hover:text-[#FF6B00] transition-colors">Deals</a></li>

@@ -25,7 +25,7 @@ const DealCard: React.FC<DealCardProps> = ({ image, title, description, link }) 
         }}
       >
         {/* Image */}
-        <div className="rounded-2xl overflow-hidden bg-[#FFF8F1] aspect-video md:aspect-[4/3] max-h-[230px]">
+        <div className="rounded-2xl overflow-hidden bg-[#FFFFFF] aspect-video md:aspect-[4/3] max-h-[230px]">
           <img
             src={image}
             alt={title}
@@ -84,8 +84,8 @@ const DealsSection: React.FC = () => {
           font-semibold
           tracking-[0.05em]
           leading-[100%]
-          bg-gradient-to-r
-          from-[#073B91]
+          bg-[#2563EB]
+          from-[#2563EB]
           to-[#FF6B00]
           bg-clip-text
           text-transparent
@@ -111,7 +111,7 @@ const DealsSection: React.FC = () => {
           {/* GREEN BRUSH UNDERLINE */}
           <img src={leaf}
             className="absolute left-[35%] -bottom-5 w-[170px]"
-            style={{ filter: "brightness(0) saturate(100%) invert(56%) sepia(87%) saturate(1478%) hue-rotate(346deg) brightness(99%) contrast(97%)" }}
+            style={{ filter: "brightness(0) saturate(100%) invert(66%) sepia(61%) saturate(2852%) hue-rotate(95deg) brightness(94%) contrast(87%)" }}
           />
         </div>
 

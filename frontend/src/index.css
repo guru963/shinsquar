@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #073B91;
+  --color-primary: #2563EB;
   --color-primary-fixed: #DCE8FF;
   --color-surface-container-high: #F0F4FB;
   --color-on-secondary-fixed: #301100;
-  --color-on-primary-fixed-variant: #073B91;
-  --color-primary-container: #073B91;
+  --color-on-primary-fixed-variant: #2563EB;
+  --color-primary-container: #2563EB;
   --color-on-secondary-fixed-variant: #B94400;
   --color-surface-container-highest: #E6EEF9;
   --color-on-primary: #ffffff;
@@ -20,7 +20,7 @@
   --color-inverse-on-surface: #F7FAFF;
   --color-on-surface-variant: #475569;
   --color-inverse-primary: #B8D0FF;
-  --color-background: #FFF8F1;
+  --color-background: #FFFFFF;
   --color-on-error: #ffffff;
   --color-surface-container-low: #FFF1E5;
   --color-on-primary-fixed: #001A4A;
@@ -29,7 +29,7 @@
   --color-on-tertiary-container: #2D1400;
   --color-tertiary-container: #FFE0CC;
   --color-tertiary-fixed: #FFE8D8;
-  --color-surface-tint: #073B91;
+  --color-surface-tint: #2563EB;
   --color-primary-fixed-dim: #B8D0FF;
   --color-tertiary-fixed-dim: #FFBC91;
   --color-secondary-fixed: #FFE1CC;
@@ -40,7 +40,7 @@
   --color-tertiary: #FF6B00;
   --color-on-tertiary: #ffffff;
   --color-surface-dim: #E8DFD7;
-  --color-surface: #FFF8F1;
+  --color-surface: #FFFFFF;
   --color-surface-variant: #E9EEF7;
   --color-on-tertiary-fixed: #351300;
   --color-surface-bright: #FFFCF8;
@@ -148,11 +148,8 @@ body {
 }
 
 .mesh-gradient {
-  background-color: #FFF8F1;
-  background-image: radial-gradient(at 0% 0%, rgba(7, 59, 145, 0.10) 0px, transparent 50%),
-                    radial-gradient(at 100% 0%, rgba(255, 107, 0, 0.08) 0px, transparent 50%),
-                    radial-gradient(at 100% 100%, rgba(255, 107, 0, 0.07) 0px, transparent 50%),
-                    radial-gradient(at 0% 100%, rgba(7, 59, 145, 0.08) 0px, transparent 50%);
+  background-color: #FFFFFF;
+  
 }
 
 /* ============================================================
@@ -162,9 +159,9 @@ body {
 :root {
   --header-h: 80px;
   --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
-  --gradient-brand: linear-gradient(135deg, #073B91 0%, #0B5BD3 48%, #FF6B00 100%);
-  --blue: #073B91;
-  --blue-dark: #052B6F;
+  --gradient-brand: var(--blue);
+  --blue: #2563EB;
+  --blue-dark: #1D4ED8;
   --blue-soft: #EAF1FF;
   --green: #0F9F6E;
   --green-light: #34D399;
@@ -172,7 +169,8 @@ body {
   --orange-dark: #E65600;
   --orange-soft: #FFF1E5;
   --red: #FF6B00;
-  --whatsapp: #FF6B00;
+  --whatsapp: #25D366;
+  --whatsapp-hover: #1EBE5D;
   --text-primary: #162033;
   --text-secondary: #475569;
   --text-muted: #7B8797;
@@ -230,13 +228,13 @@ body {
 .btn--whatsapp {
   background-color: var(--whatsapp);
   color: #fff;
-  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.34);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.34);
 }
 
 .btn--whatsapp:hover {
-  background-color: var(--orange-dark);
+  background-color: var(--whatsapp-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.44);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.44);
 }
 
 .btn--whatsapp:active {
@@ -291,10 +289,7 @@ body {
 }
 
 .hero__gradient {
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--blue);
 }
 
 /* Subtitle */
@@ -431,7 +426,7 @@ HERO CARDS — Fanned Stack (Mockup Layout)
   position: absolute;
   width: 360px;
   height: 360px;
-  background: radial-gradient(circle, rgba(7, 59, 145, 0.20) 0%, rgba(255, 107, 0, 0.08) 44%, rgba(7, 59, 145, 0) 72%);
+  background: rgba(30, 58, 138, 0.1);
   filter: blur(40px);
   z-index: 0;
   pointer-events: none;
@@ -561,7 +556,7 @@ HERO CARDS — Fanned Stack (Mockup Layout)
   position: absolute;
   inset: auto 0 0 0;
   height: 50%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  background: rgba(0, 0, 0, 0.25);
   pointer-events: none;
 }
 
@@ -728,7 +723,7 @@ HERO CARDS — Fanned Stack (Mockup Layout)
   color: #fff;
   border-radius: 50%;
   border: 3px solid #fff;
-  box-shadow: 0 4px 16px rgba(255, 107, 0, 0.42);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.42);
   transition:
     transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.25s;
@@ -737,11 +732,11 @@ HERO CARDS — Fanned Stack (Mockup Layout)
 
 .whatsapp-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 22px rgba(255, 107, 0, 0.52);
+  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.52);
 }
 
 .popular {
-  background: #FFF8F1; /* Distinct soft background to make cards pop */
+  background: #FFFFFF; /* Distinct soft background to make cards pop */
   padding: 72px 0 88px;
   border-top: 1px solid #E5ECF7;
   border-bottom: 1px solid #E5ECF7;
@@ -1032,7 +1027,7 @@ HERO CARDS — Fanned Stack (Mockup Layout)
   align-items: center;
   justify-content: center;
   border: 3px solid #fff;
-  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.38);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.38);
   transition:
     transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.2s;
@@ -1041,7 +1036,7 @@ HERO CARDS — Fanned Stack (Mockup Layout)
 
 .pop-card__whatsapp:hover {
   transform: scale(1.12);
-  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
 }
 
 /* Scroll reveal */
@@ -1078,13 +1073,13 @@ HERO CARDS — Fanned Stack (Mockup Layout)
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(255, 107, 0, 0.32);
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.32);
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
   flex-shrink: 0;
 }
 
 .pop-card__whatsapp-btn-clean:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 14px rgba(255, 107, 0, 0.44);
+  box-shadow: 0 6px 14px rgba(37, 211, 102, 0.44);
   color: #fff;
 }

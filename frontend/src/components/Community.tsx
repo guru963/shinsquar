@@ -81,7 +81,7 @@ const Community: React.FC = () => {
   return (
     <section 
       id="community" 
-      className="min-h-[100svh] lg:h-[100vh] flex flex-col justify-center py-12 px-margin-mobile md:px-margin-desktop bg-[#FFF8F1] relative overflow-hidden"
+      className="min-h-[100svh] lg:h-[100vh] flex flex-col justify-center py-12 px-margin-mobile md:px-margin-desktop bg-[#FFFFFF] relative overflow-hidden"
     >
       {/* Decorative blurred background shapes */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
@@ -136,7 +136,7 @@ const Community: React.FC = () => {
               className="w-[280px] flex-shrink-0 snap-start bg-white border border-[#D9E2EF] rounded-3xl shadow-sm hover:shadow-[0_12px_30px_rgba(7,59,145,0.10)] hover:-translate-y-1 transition duration-300 flex flex-col h-[380px] overflow-hidden"
             >
               {/* Top 3/4: Cover Image */}
-              <div className="relative h-[290px] w-full overflow-hidden bg-[#FFF8F1]">
+              <div className="relative h-[290px] w-full overflow-hidden bg-[#FFFFFF]">
                 <img 
                   src={neighbor.image} 
                   alt={neighbor.name}
@@ -173,7 +173,7 @@ const Community: React.FC = () => {
 
                 {/* Chat Button */}
                 <button 
-                  className="flex-shrink-0 w-10 h-10 bg-primary hover:bg-[#052B6F] text-white rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(7,59,145,0.25)] transition cursor-pointer" 
+                  className="flex-shrink-0 w-10 h-10 bg-primary hover:bg-[#1D4ED8] text-white rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(7,59,145,0.25)] transition cursor-pointer" 
                   aria-label="Chat now"
                 >
                   <MessageSquare size={16} />

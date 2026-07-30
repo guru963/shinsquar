@@ -75,13 +75,13 @@ const Navbar: React.FC = () => {
                 <div className="space-y-0.5">
                   <button 
                     onClick={() => setIsLocationOpen(false)}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-xs md:text-sm font-semibold text-[#073B91] bg-[#EAF1FF] hover:bg-[#DCE8FF] transition cursor-pointer"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-xs md:text-sm font-semibold text-[#2563EB] bg-[#EAF1FF] hover:bg-[#DCE8FF] transition cursor-pointer"
                   >
                     <span className="flex items-center gap-2">
                       <MapPin size={14} className="text-[#FF6B00]" />
                       Durg, CG
                     </span>
-                    <Check size={14} className="text-[#073B91]" />
+                    <Check size={14} className="text-[#2563EB]" />
                   </button>
 
                   {[

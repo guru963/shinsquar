@@ -14,7 +14,7 @@ const AboutSection: React.FC = () => {
                 About Us
                 <span className="text-white text-2xl font-semibold tracking-normal block mt-1">Your locality, made smarter</span>
               </h2>
-              <div className="space-y-4 text-secondary-fixed text-base max-w-md opacity-85 leading-relaxed">
+              <div className="space-y-4 text-white text-base max-w-md opacity-85 leading-relaxed">
                 <p>
                   Locall is your trusted hyperlocal platform connecting you directly with the best local shops, home service providers (plumbers, electricians, etc.), and exclusive deals. 
                 </p>
@@ -45,7 +45,7 @@ const AboutSection: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-headline-lg font-bold text-white mb-2" style={{ fontFamily: "var(--font-display)" }}>Truly Hyperlocal</h4>
-                <p className="text-secondary-fixed opacity-70 text-body-md">
+                <p className="text-white opacity-70 text-body-md">
                   Focused strictly on your locality. Local means quicker response times and on-time service.
                 </p>
               </div>
@@ -58,7 +58,7 @@ const AboutSection: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-headline-lg font-bold text-white mb-2" style={{ fontFamily: "var(--font-display)" }}>Easy Discovery</h4>
-                <p className="text-secondary-fixed opacity-70 text-body-md">
+                <p className="text-white opacity-70 text-body-md">
                   Find and contact verified plumbers, electricians, or technicians in your neighborhood in under 60 seconds.
                 </p>
               </div>
@@ -86,7 +86,7 @@ const AboutSection: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-headline-lg font-bold text-white mb-2" style={{ fontFamily: "var(--font-display)" }}>Direct Savings</h4>
-                <p className="text-secondary-fixed opacity-70 text-body-md">
+                <p className="text-white opacity-70 text-body-md">
                   Book directly with local stores and home service providers. Zero middleman markup means better prices for you.
                 </p>
               </div>

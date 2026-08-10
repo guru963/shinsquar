@@ -6,6 +6,7 @@ import logo from "../assets/logo.png";
 /* ── navigation items ── */
 const navItems = [
   { label: "Home", scrollTo: "hero" },
+  { label: "Shops", href: "/regular-shops" },
   { label: "Deals", scrollTo: "deals" },
   { label: "About", scrollTo: "about" },
   { label: "Team", scrollTo: "founder" },
@@ -22,19 +23,27 @@ const Navbar: React.FC = () => {
   const handleNav = (item: (typeof navItems)[0]) => {
     setIsOpen(false);
 
-    // If we're not on the home page, navigate there first
-    if (location.pathname !== "/") {
-      navigate("/");
-      setTimeout(() => {
-        const el = document.getElementById(item.scrollTo);
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 150);
+    // If the item has an href, navigate directly to it
+    if ('href' in item && item.href) {
+      navigate(item.href);
       return;
     }
 
-    // Already on home — scroll directly
-    const el = document.getElementById(item.scrollTo);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    // If we're not on the home page, navigate there first
+    if ('scrollTo' in item && item.scrollTo) {
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          const el = document.getElementById(item.scrollTo!);
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 150);
+        return;
+      }
+
+      // Already on home — scroll directly
+      const el = document.getElementById(item.scrollTo);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
@@ -115,7 +124,7 @@ const Navbar: React.FC = () => {
             {navItems.map((item) => (
               <a
                 key={item.label}
-                href={`/#${item.scrollTo}`}
+                href={'href' in item && item.href ? item.href : `/#${item.scrollTo}`}
                 onClick={(e) => { e.preventDefault(); handleNav(item); }}
                 className="hover:text-[#FF6B00] transition cursor-pointer text-sm"
                 style={{ fontFamily: "Poppins" }}
@@ -141,7 +150,7 @@ const Navbar: React.FC = () => {
           {navItems.map((item) => (
             <a
               key={item.label}
-              href={`/#${item.scrollTo}`}
+              href={'href' in item && item.href ? item.href : `/#${item.scrollTo}`}
               onClick={(e) => { e.preventDefault(); handleNav(item); }}
               className="text-[#162033] hover:text-[#FF6B00] transition cursor-pointer"
               style={{ fontFamily: "Poppins" }}

@@ -1,254 +1,128 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
+import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { X, Send, Loader2 } from "lucide-react";
-import { SHOPS, PRODUCTS } from "../data";
-import denim from "../assets/denim.png";
-
-// ─── WhatsApp Cloud API Config ───────────────────────────────────────────────
-const WA_PHONE_NUMBER_ID = "978729701999437";
-const WA_ACCESS_TOKEN = "EAAM9dwY8JEYBRCjjhoJZBgPUtQGqNHXL2khaTbZCq6cghZBC0X3soquRw2TmZBHShnziZBvqVfQ1qoEZATWynSli1edGtechePnIYUnDBtbggCZCrhnFgCwBFW8U33zAibI84GuIHvGuSa2Aw7ds1GWoZCCJcL22eNAcVmI6msGAD5ZCFxGUZCH1L9hQZBMOEzBhovulHrbYBcpApRX8kz0HR5qarg212xa1x6iyldEndTX6rZBVwfYahMPIZA3kTl0jrDKUc4kdr8ji1d5jXHFqkwQBxSr7I2AZDZD";
-// ─────────────────────────────────────────────────────────────────────────────
-
-interface CouponModalProps {
-  product: any;
-  shopName: string;
-  onClose: () => void;
-}
-
-const CouponModal: React.FC<CouponModalProps> = ({ product, shopName, onClose }) => {
-  const [recipientPhone, setRecipientPhone] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [errorMsg, setErrorMsg] = useState("");
-
-  const generateCoupon = () => {
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const randomLetter = letters[Math.floor(Math.random() * letters.length)];
-    const randomNumber = Math.floor(100 + Math.random() * 900);
-    return `SHIN${randomLetter}${randomNumber}`;
-  };
-
-  const sendViaCloudAPI = async () => {
-    const cleanPhone = recipientPhone.replace(/\D/g, "");
-    if (cleanPhone.length < 10 || cleanPhone.length > 15) {
-      setErrorMsg("Please enter a valid phone number with country code (e.g. 919876543210)");
-      return;
-    }
-
-    setStatus("sending");
-    setErrorMsg("");
-
-    const coupon = generateCoupon();
-
-    try {
-      const response = await fetch(
-        `https://graph.facebook.com/v22.0/${WA_PHONE_NUMBER_ID}/messages`,
-        {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${WA_ACCESS_TOKEN}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            messaging_product: "whatsapp",
-            to: cleanPhone,
-            type: "template",
-            template: {
-              name: "shinsquare",
-              language: { code: "en" },
-              components: [
-                {
-                  type: "body",
-                  parameters: [
-                    { type: "text", text: shopName },
-                    { type: "text", text: product.name },
-                    { type: "text", text: coupon },
-                    { type: "text", text: product.discount }
-                  ]
-                }
-              ]
-            }
-          })
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data?.error?.message || "Failed to send message");
-      }
-
-      setStatus("success");
-    } catch (err: any) {
-      setStatus("error");
-      setErrorMsg(err.message || "Something went wrong. Please try again.");
-    }
-  };
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 backdrop-blur-sm">
-      <div className="bg-white rounded-[32px] border border-outline-variant/20 shadow-2xl w-full max-w-md p-8 relative text-left">
-        {/* Close */}
-        <button
-          onClick={onClose}
-          className="absolute top-6 right-6 text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
-        >
-          <X size={20} />
-        </button>
-
-        <h3 className="text-display-lg font-bold text-on-surface mb-2">Send Coupon</h3>
-        <p className="text-body-md text-on-surface-variant mb-6">
-          Enter the customer's WhatsApp number to send the coupon directly.
-        </p>
-
-        {/* Product Preview */}
-        <div className="flex items-center gap-4 bg-surface-container-low border border-outline-variant/20 rounded-2xl p-4 mb-6">
-          <img src={denim} className="w-16 h-16 object-cover rounded-xl" alt={product.name} />
-          <div>
-            <p className="font-bold text-on-surface text-body-lg">{product.name}</p>
-            <p className="text-body-md text-on-surface-variant">{shopName}</p>
-            <span className="text-label-sm bg-error text-on-primary px-2.5 py-0.5 rounded-md mt-1 inline-block">
-              {product.discount}
-            </span>
-          </div>
-        </div>
-
-        {status === "success" ? (
-          <div className="text-center py-6">
-            <div className="text-5xl mb-4">✨</div>
-            <p className="text-emerald-600 font-bold text-body-lg">Coupon Sent Successfully!</p>
-            <p className="text-body-md text-on-surface-variant mt-2">
-              The coupon was delivered to +{recipientPhone.replace(/\D/g, "")} via WhatsApp.
-            </p>
-            <button
-              onClick={onClose}
-              className="mt-6 w-full bg-primary text-on-primary py-3 rounded-full text-body-md font-bold hover:bg-primary/95 transition-all shadow-md cursor-pointer"
-            >
-              Done
-            </button>
-          </div>
-        ) : (
-          <>
-            {/* Phone Input */}
-            <label className="block text-body-md font-bold text-on-surface mb-2">
-              Recipient's WhatsApp Number
-            </label>
-            <div className="flex items-center border border-outline-variant/40 rounded-xl overflow-hidden mb-2 focus-within:ring-2 focus-within:ring-primary focus-within:border-transparent">
-              <span className="bg-surface-container px-4 py-3.5 text-body-md text-on-surface-variant border-r border-outline-variant/40">
-                +
-              </span>
-              <input
-                type="tel"
-                placeholder="919876543210 (with country code)"
-                value={recipientPhone}
-                onChange={(e) => setRecipientPhone(e.target.value)}
-                className="flex-1 px-4 py-3.5 text-body-md outline-none text-on-surface placeholder:text-on-surface-variant/40"
-              />
-            </div>
-            <p className="text-label-sm text-on-surface-variant/60 mb-6">
-              Include country code without +. E.g. 91 for India.
-            </p>
-
-            {/* Error */}
-            {status === "error" && (
-              <div className="bg-error-container border border-error/20 text-error text-body-md rounded-xl px-4 py-3 mb-6">
-                {errorMsg}
-              </div>
-            )}
-            {errorMsg && status === "idle" && (
-              <div className="bg-error-container border border-error/20 text-error text-body-md rounded-xl px-4 py-3 mb-6">
-                {errorMsg}
-              </div>
-            )}
-
-            {/* Send Button */}
-            <button
-              onClick={sendViaCloudAPI}
-              disabled={status === "sending"}
-              className="w-full flex items-center justify-center gap-2 bg-emerald-600 text-white py-4 rounded-full font-bold text-body-md disabled:opacity-60 hover:bg-emerald-700 transition-colors shadow-md cursor-pointer"
-            >
-              {status === "sending" ? (
-                <>
-                  <Loader2 size={18} className="animate-spin" />
-                  Sending...
-                </>
-              ) : (
-                <>
-                  <Send size={16} />
-                  Send Coupon
-                </>
-              )}
-            </button>
-          </>
-        )}
-      </div>
-    </div>
-  );
-};
-
-// ─── Main Component ───────────────────────────────────────────────────────────
-
+import { useShopById, useOffersByShopId } from "../hooks/useShops";
+import { SHOP_CATEGORIES, CATEGORY_ICONS } from "../types";
 import SEO from "../components/SEO";
 
+/* ─── Loading Skeleton ───────────────────────────────────────────────────── */
+const DetailSkeleton: React.FC = () => (
+  <div className="animate-pulse">
+    <div className="bg-white p-8 rounded-[40px] border border-outline-variant/30 shadow-sm mb-12">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+        <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-surface-container-high" />
+        <div className="flex-1 space-y-4 w-full">
+          <div className="h-10 bg-surface-container-high rounded-full w-2/3 mx-auto md:mx-0" />
+          <div className="h-5 bg-surface-container-high rounded-full w-1/2 mx-auto md:mx-0" />
+          <div className="h-5 bg-surface-container-high rounded-full w-1/3 mx-auto md:mx-0" />
+          <div className="h-12 bg-surface-container-high rounded-full w-48 mx-auto md:mx-0 mt-6" />
+        </div>
+      </div>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="bg-white p-8 rounded-[32px] border border-outline-variant/30 h-60" />
+      <div className="bg-white p-8 rounded-[32px] border border-outline-variant/30 h-60" />
+    </div>
+  </div>
+);
+
+/* ─── Info Row ───────────────────────────────────────────────────────────── */
+const InfoRow: React.FC<{ icon: string; label: string; value: string; filled?: boolean }> = ({ icon, label, value, filled }) => (
+  <div className="flex items-start gap-3 py-3 border-b border-outline-variant/20 last:border-0">
+    <span
+      className="material-symbols-outlined text-[20px] text-primary mt-0.5 shrink-0"
+      style={filled ? { fontVariationSettings: '"FILL" 1' } : undefined}
+    >
+      {icon}
+    </span>
+    <div className="min-w-0">
+      <p className="text-[11px] font-bold text-on-surface-variant/60 uppercase tracking-wider">{label}</p>
+      <p className="text-body-md text-on-surface font-medium mt-0.5 break-words">{value}</p>
+    </div>
+  </div>
+);
+
+/* ─── Main Component ─────────────────────────────────────────────────────── */
 const ShopDetails: React.FC = () => {
   const { id } = useParams();
-  const shop = SHOPS.find((s) => s.id === id);
-  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+  const { shop, loading, error } = useShopById(id);
+  const { offers, loading: offersLoading } = useOffersByShopId(id);
 
-  if (!shop) {
+  if (loading) {
     return (
-      <div className="p-20 text-center font-bold text-display-lg">Shop Not Found</div>
+      <div className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-12">
+            <Link to="/regular-shops" className="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary font-bold transition-colors">
+              <span className="material-symbols-outlined text-[20px] font-bold">arrow_back</span>
+              Back to Shops
+            </Link>
+          </div>
+          <DetailSkeleton />
+        </div>
+      </div>
     );
   }
+
+  if (error || !shop) {
+    return (
+      <div className="bg-background min-h-screen flex flex-col items-center justify-center px-margin-mobile">
+        <span className="material-symbols-outlined text-[80px] text-outline-variant mb-4" style={{ fontVariationSettings: '"FILL" 1' }}>
+          store_mall_directory
+        </span>
+        <h1 className="text-display-lg font-bold text-on-surface mb-2">Shop Not Found</h1>
+        <p className="text-body-md text-on-surface-variant mb-8">
+          {error || "This shop doesn't exist or may have been removed."}
+        </p>
+        <Link
+          to="/regular-shops"
+          className="bg-primary text-on-primary font-bold px-8 py-3 rounded-full hover:bg-primary/95 transition-all shadow-md"
+        >
+          Browse All Shops
+        </Link>
+      </div>
+    );
+  }
+
+  const categoryLabel = SHOP_CATEGORIES[shop.shop_category] || shop.shop_category;
+  const categoryIcon = CATEGORY_ICONS[shop.shop_category] || 'storefront';
+  const mapsUrl = shop.latitude && shop.longitude
+    ? `https://www.google.com/maps/dir/?api=1&destination=${shop.latitude},${shop.longitude}`
+    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(shop.shop_address)}`;
 
   const shopSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": shop.name,
+    "name": shop.shop_name,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": shop.fullAddress || shop.location,
+      "streetAddress": shop.shop_address,
       "addressLocality": "Durg",
       "addressRegion": "Chhattisgarh",
-      "postalCode": "491001",
+      "postalCode": shop.pincode || "491001",
       "addressCountry": "IN",
     },
-    "telephone": shop.phone,
-    "url": `https://shinsquare.com/regular-shops/${shop.id}`,
-    "image": "https://shinsquare.com/logo.png",
-    "geo": {
+    "url": `https://locall.co.in/regular-shops/${shop.id}`,
+    "image": shop.logo_url || "https://locall.co.in/logo.png",
+    "geo": shop.latitude && shop.longitude ? {
       "@type": "GeoCoordinates",
-      "latitude": 21.1904,
-      "longitude": 81.2849,
-    },
-    "sameAs": ["https://shinsquare.com/regular-shops"],
+      "latitude": shop.latitude,
+      "longitude": shop.longitude,
+    } : undefined,
+    "openingHours": shop.shop_timings,
     "priceRange": "₹",
     "currenciesAccepted": "INR",
-    "paymentAccepted": "Cash, UPI",
-    "areaServed": {
-      "@type": "City",
-      "name": "Durg, Chhattisgarh",
-    },
   };
 
   return (
     <div className="bg-background min-h-screen pb-24 px-margin-mobile md:px-margin-desktop pt-24 text-left">
       <SEO
-        title={`${shop.name} — Deals & Coupons in Durg`}
-        description={`Get live coupons, discounts and details for ${shop.name} at ${shop.fullAddress || shop.location}, Durg, Chhattisgarh. Save on every purchase.`}
+        title={`${shop.shop_name} — ${categoryLabel} in Durg`}
+        description={`Visit ${shop.shop_name} at ${shop.shop_address}, Durg, Chhattisgarh. ${categoryLabel} — open ${shop.shop_timings || 'daily'}.`}
         schema={shopSchema}
-        canonical={`https://shinsquare.com/regular-shops/${shop.id}`}
+        canonical={`https://locall.co.in/regular-shops/${shop.id}`}
       />
-      {/* Coupon Modal */}
-      {selectedProduct && (
-        <CouponModal
-          product={selectedProduct}
-          shopName={shop.name}
-          onClose={() => setSelectedProduct(null)}
-        />
-      )}
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* BACK BUTTON */}
         <div className="mb-12">
           <Link
@@ -261,105 +135,245 @@ const ShopDetails: React.FC = () => {
         </div>
 
         {/* SHOP HEADER */}
-        <div className="bg-white p-8 rounded-[40px] border border-outline-variant/30 shadow-sm mb-12">
+        <div className="bg-white p-8 rounded-[40px] border border-outline-variant/30 shadow-sm mb-10">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-            <img
-              src={shop.image}
-              alt={shop.name}
-              className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg"
-            />
+            {/* Logo */}
+            {shop.logo_url ? (
+              <img
+                src={shop.logo_url}
+                alt={shop.shop_name}
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg"
+              />
+            ) : (
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-primary-fixed flex items-center justify-center border-4 border-white shadow-lg">
+                <span className="material-symbols-outlined text-[56px] text-primary/50" style={{ fontVariationSettings: '"FILL" 1' }}>
+                  storefront
+                </span>
+              </div>
+            )}
+
             <div className="flex-1 text-center md:text-left">
-              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+              <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
                 <h1 className="text-display-lg md:text-display-xl font-display-xl text-on-surface">
-                  {shop.name}
+                  {shop.shop_name}
                 </h1>
-                <div className="flex justify-center gap-3">
-                  <span className="text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1 rounded-full text-label-sm font-bold flex items-center gap-1 w-fit">
-                    <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: '"FILL" 1' }}>fiber_manual_record</span>
-                    Live
+                <div className="flex justify-center gap-2 flex-wrap">
+                  {shop.verified && (
+                    <span className="text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1 rounded-full text-label-sm font-bold flex items-center gap-1 w-fit">
+                      <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: '"FILL" 1' }}>verified</span>
+                      Verified
+                    </span>
+                  )}
+                  <span className="text-primary bg-primary-fixed border border-primary/10 px-3 py-1 rounded-full text-label-sm font-bold flex items-center gap-1 w-fit">
+                    <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: '"FILL" 1' }}>{categoryIcon}</span>
+                    {categoryLabel}
                   </span>
                 </div>
               </div>
 
-              {/* ADDRESS */}
-              <div className="flex items-center justify-center md:justify-start gap-2 mt-6 text-body-lg text-on-surface-variant font-medium">
+              {/* Address */}
+              <div className="flex items-center justify-center md:justify-start gap-2 mt-5 text-body-lg text-on-surface-variant font-medium">
                 <span className="material-symbols-outlined text-[22px] text-primary">location_on</span>
-                {shop.fullAddress}
+                {shop.shop_address}
               </div>
 
-              {/* PHONE */}
-              <div className="flex items-center justify-center md:justify-start gap-2 mt-3 text-body-lg text-on-surface-variant font-medium">
-                <span className="material-symbols-outlined text-[22px] text-primary">call</span>
-                {shop.phone}
-              </div>
+              {/* Timings */}
+              {shop.shop_timings && (
+                <div className="flex items-center justify-center md:justify-start gap-2 mt-3 text-body-lg text-on-surface-variant font-medium">
+                  <span className="material-symbols-outlined text-[22px] text-primary">schedule</span>
+                  {shop.shop_timings}
+                </div>
+              )}
 
-              {/* ACTION BUTTON */}
-              <div className="mt-8 flex justify-center md:justify-start">
-                <button className="bg-primary hover:bg-primary/95 text-on-primary font-bold px-8 py-3 rounded-full transition-all flex items-center gap-2 text-body-md shadow-md cursor-pointer">
-                  <span className="material-symbols-outlined">forum</span>
-                  Contact for offers
-                </button>
+              {/* Owner */}
+              {shop.profiles?.name && (
+                <div className="flex items-center justify-center md:justify-start gap-2 mt-3 text-body-lg text-on-surface-variant font-medium">
+                  <span className="material-symbols-outlined text-[22px] text-primary">person</span>
+                  Owned by {shop.profiles.name}
+                </div>
+              )}
+
+              {/* Action Buttons */}
+              <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-3">
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-primary hover:bg-primary/95 text-on-primary font-bold px-8 py-3 rounded-full transition-all flex items-center gap-2 text-body-md shadow-md"
+                >
+                  <span className="material-symbols-outlined">directions</span>
+                  Get Directions
+                </a>
+                {shop.profiles?.email && (
+                  <a
+                    href={`mailto:${shop.profiles.email}`}
+                    className="bg-white hover:bg-surface-container-low text-on-surface font-bold px-8 py-3 rounded-full transition-all flex items-center gap-2 text-body-md shadow-sm border border-outline-variant/40"
+                  >
+                    <span className="material-symbols-outlined">mail</span>
+                    Contact
+                  </a>
+                )}
               </div>
             </div>
           </div>
         </div>
 
-        {/* OFFERS */}
-        <div>
-          <h2 className="text-display-lg font-display-xl text-on-surface mb-8">
+        {/* DETAILS CARDS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Shop Details */}
+          <div className="bg-white p-8 rounded-[32px] border border-outline-variant/30 shadow-sm">
+            <h2 className="text-headline-lg font-bold text-on-surface mb-6 flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: '"FILL" 1' }}>info</span>
+              Shop Details
+            </h2>
+            <div className="space-y-0">
+              <InfoRow icon="storefront" label="Shop Type" value={shop.shop_type ? shop.shop_type.charAt(0).toUpperCase() + shop.shop_type.slice(1) : '—'} filled />
+              <InfoRow icon="category" label="Category" value={categoryLabel} filled />
+              <InfoRow icon="schedule" label="Timings" value={shop.shop_timings || 'Not specified'} />
+              <InfoRow icon="pin_drop" label="Pincode" value={shop.pincode || '—'} />
+              {shop.latitude && shop.longitude && (
+                <InfoRow icon="my_location" label="Coordinates" value={`${shop.latitude.toFixed(4)}, ${shop.longitude.toFixed(4)}`} />
+              )}
+            </div>
+          </div>
+
+          {/* Owner Details */}
+          <div className="bg-white p-8 rounded-[32px] border border-outline-variant/30 shadow-sm">
+            <h2 className="text-headline-lg font-bold text-on-surface mb-6 flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: '"FILL" 1' }}>badge</span>
+              Owner Details
+            </h2>
+            <div className="space-y-0">
+              <InfoRow icon="person" label="Owner Name" value={shop.profiles?.name || '—'} filled />
+              <InfoRow icon="mail" label="Email" value={shop.profiles?.email || '—'} />
+              <InfoRow icon="location_on" label="Full Address" value={shop.shop_address || '—'} filled />
+            </div>
+
+            {/* Map Embed Placeholder */}
+            {shop.latitude && shop.longitude && (
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 block w-full bg-surface-container-low hover:bg-surface-container border border-outline-variant/30 rounded-2xl p-6 text-center transition-colors group"
+              >
+                <span className="material-symbols-outlined text-[36px] text-primary group-hover:scale-110 transition-transform inline-block" style={{ fontVariationSettings: '"FILL" 1' }}>
+                  map
+                </span>
+                <p className="text-body-md text-on-surface-variant font-medium mt-2">View on Google Maps →</p>
+              </a>
+            )}
+          </div>
+        </div>
+
+        {/* OFFERS SECTION */}
+        <div className="mt-12">
+          <h2 className="text-display-lg font-display-xl text-on-surface mb-8 flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary text-[28px]" style={{ fontVariationSettings: '"FILL" 1' }}>local_offer</span>
             Offers in shop
           </h2>
 
-          {/* OFFER LIST */}
-          <div className="space-y-6">
-            {PRODUCTS.map((product) => (
-              <div
-                key={product.id}
-                className="bg-white p-6 rounded-[32px] border border-outline-variant/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row gap-6 items-center"
-              >
-                {/* IMAGE */}
-                <img
-                  src={denim}
-                  className="w-full md:w-40 h-40 rounded-2xl object-cover"
-                  alt={product.name}
-                />
+          {offersLoading ? (
+            <div className="animate-pulse space-y-4">
+              <div className="h-40 bg-white border border-outline-variant/30 rounded-[32px]" />
+              <div className="h-40 bg-white border border-outline-variant/30 rounded-[32px]" />
+            </div>
+          ) : offers.length > 0 ? (
+            <div className="space-y-6">
+              {offers.map((offer) => {
+                // Parse media JSON or string
+                const media = (() => {
+                  const val = offer.image_url;
+                  if (!val) return { primary: null };
+                  if (val.startsWith('{')) {
+                    try {
+                      const parsed = JSON.parse(val);
+                      return { primary: parsed.primary || null };
+                    } catch (e) {}
+                  }
+                  return { primary: val };
+                })();
 
-                {/* INFO */}
-                <div className="flex-1 text-center md:text-left">
-                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-                    <h3 className="text-headline-lg font-bold text-on-surface">
-                      {product.name}
-                    </h3>
-                    <span className="bg-error text-on-primary px-3 py-1 rounded-md text-label-sm font-bold">
-                      {product.discount}
-                    </span>
-                  </div>
-                  <p className="text-body-md text-on-surface-variant mt-3 max-w-2xl mx-auto md:mx-0">
-                    {product.desc}
-                  </p>
-                </div>
+                const whatsappText = encodeURIComponent(
+                  `Hello, I am interested in the offer "${offer.title}" (${offer.discount}) at "${shop.shop_name}".`
+                );
+                const whatsappUrl = `https://wa.me/917587315025?text=${whatsappText}`;
 
-                {/* PRICE + BUTTON */}
-                <div className="w-full md:w-auto flex flex-col items-center md:items-end gap-3 shrink-0">
-                  <div className="flex items-center gap-2">
-                    <span className="text-on-surface-variant/50 line-through text-body-md">
-                      Rs.{product.oldPrice}
-                    </span>
-                    <span className="text-headline-lg font-bold text-on-surface">
-                      Rs.{product.price}
-                    </span>
-                  </div>
-
-                  <button
-                    onClick={() => setSelectedProduct(product)}
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-full text-body-md font-bold w-full md:w-auto transition-colors shadow-md cursor-pointer"
+                return (
+                  <div
+                    key={offer.id}
+                    className="bg-white p-6 rounded-[32px] border border-outline-variant/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row gap-6 items-center"
                   >
-                    Get coupon code
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+                    {/* IMAGE */}
+                    {media.primary ? (
+                      <img
+                        src={media.primary}
+                        className="w-full md:w-40 h-40 rounded-2xl object-cover"
+                        alt={offer.title}
+                      />
+                    ) : (
+                      <div className="w-full md:w-40 h-40 rounded-2xl bg-primary-fixed flex items-center justify-center shrink-0">
+                        <span className="material-symbols-outlined text-[48px] text-primary/40" style={{ fontVariationSettings: '"FILL" 1' }}>
+                          local_offer
+                        </span>
+                      </div>
+                    )}
+
+                    {/* INFO */}
+                    <div className="flex-1 text-center md:text-left">
+                      <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
+                        <h3 className="text-headline-lg font-bold text-on-surface">
+                          {offer.title}
+                        </h3>
+                        <span className="bg-error text-on-primary px-3 py-1 rounded-md text-label-sm font-bold">
+                          {offer.discount}
+                        </span>
+                      </div>
+                      <p className="text-body-md text-on-surface-variant mt-3 max-w-2xl mx-auto md:mx-0">
+                        {offer.description}
+                      </p>
+                      {offer.expiration_date && (
+                        <p className="text-label-sm text-on-surface-variant/60 mt-3 flex items-center gap-1 justify-center md:justify-start">
+                          <span className="material-symbols-outlined text-[14px]">event</span>
+                          Expires: {offer.expiration_date}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* PRICE + BUTTON */}
+                    <div className="w-full md:w-auto flex flex-col items-center md:items-end gap-3 shrink-0">
+                      <div className="flex items-center gap-2">
+                        {offer.old_price && (
+                          <span className="text-on-surface-variant/50 line-through text-body-md">
+                            {offer.old_price.startsWith('₹') ? offer.old_price : `₹${offer.old_price}`}
+                          </span>
+                        )}
+                        {offer.new_price && (
+                          <span className="text-headline-lg font-bold text-on-surface">
+                            {offer.new_price.startsWith('₹') ? offer.new_price : `₹${offer.new_price}`}
+                          </span>
+                        )}
+                      </div>
+
+                      <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-full text-body-md font-bold w-full md:w-auto transition-colors shadow-md text-center cursor-pointer"
+                      >
+                        Claim Offer
+                      </a>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="bg-white p-8 rounded-[32px] border border-outline-variant/30 text-center text-on-surface-variant/80">
+              <span className="material-symbols-outlined text-[48px] text-outline-variant mb-2">local_offer</span>
+              <p className="text-body-md">No active offers or campaigns for this shop right now.</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

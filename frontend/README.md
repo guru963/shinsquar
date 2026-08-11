@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-This templates provides a minimal setup to get React working inVite with HMR and some ESLint rules.
+This templates provides a minimal setup to get React working inVite w ith HMR and some ESLint rules.
 
 Currently, two official plugins are available:
 

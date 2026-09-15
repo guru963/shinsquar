@@ -64,6 +64,7 @@ const Footer: React.FC = () => {
               <li><a href="/#about" onClick={(e) => { e.preventDefault(); scrollTo("about"); }} className="hover:text-[#2563EB] transition-colors">About Us</a></li>
               <li><Link to="/regular-shops" className="hover:text-[#2563EB] transition-colors">Regular Shops</Link></li>
               <li><Link to="/experience-based" className="hover:text-[#2563EB] transition-colors">Experience Based</Link></li>
+              <li><Link to="/privacy-policy" onClick={() => window.scrollTo(0,0)} className="hover:text-[#2563EB] transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
 

@@ -12,6 +12,7 @@ import ShopDetails from './pages/RegularshopDetails.tsx'
 import WorkerDetails from './pages/WorkerDetails.tsx'
 import ResetPassword from './pages/ResetPassword.tsx'
 import NotFound from './pages/NotFound.tsx'
+import PrivacyPolicy from './pages/PrivacyPolicy.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')!).render(
       <Route path="/regular-shops/:id" element={<ShopDetails />} />
       <Route path="/household-workers/:id" element={<WorkerDetails />} />
       <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
     <Footer />

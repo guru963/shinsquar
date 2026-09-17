@@ -65,6 +65,7 @@ const Footer: React.FC = () => {
               <li><Link to="/regular-shops" className="hover:text-[#2563EB] transition-colors">Regular Shops</Link></li>
               <li><Link to="/experience-based" className="hover:text-[#2563EB] transition-colors">Experience Based</Link></li>
               <li><Link to="/privacy-policy" onClick={() => window.scrollTo(0,0)} className="hover:text-[#2563EB] transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/delete-account" onClick={() => window.scrollTo(0,0)} className="hover:text-[#2563EB] transition-colors">Delete Account</Link></li>
             </ul>
           </div>
 

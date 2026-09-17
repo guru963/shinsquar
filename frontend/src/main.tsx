@@ -13,6 +13,7 @@ import WorkerDetails from './pages/WorkerDetails.tsx'
 import ResetPassword from './pages/ResetPassword.tsx'
 import NotFound from './pages/NotFound.tsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.tsx'
+import DeleteAccount from './pages/DeleteAccount.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
@@ -27,6 +28,7 @@ createRoot(document.getElementById('root')!).render(
       <Route path="/household-workers/:id" element={<WorkerDetails />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/delete-account" element={<DeleteAccount />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
     <Footer />

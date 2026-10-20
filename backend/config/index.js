@@ -19,6 +19,9 @@ module.exports = {
   port: process.env.PORT || 3000,
   whatsappVerifyToken: process.env.WHATSAPP_VERIFY_TOKEN || "mywhatsappsecret123",
   whatsappAccessToken: process.env.WHATSAPP_ACCESS_TOKEN || "",
-  whatsappPhoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID || "",
-  whatsappAppSecret: process.env.WHATSAPP_APP_SECRET || "" // Optional, but enables signature verification if provided
+  whatsappPhoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID || "1287449947790575",
+  whatsappAppSecret: process.env.WHATSAPP_APP_SECRET || "",
+  whatsappTemplateName: process.env.WHATSAPP_TEMPLATE_NAME || "locall_product_promotion",
+  whatsappTemplateId: process.env.WHATSAPP_TEMPLATE_ID || "1080561444856471",
+  whatsappTemplateLanguage: process.env.WHATSAPP_TEMPLATE_LANGUAGE || "en_US"
 };

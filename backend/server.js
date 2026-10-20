@@ -33,6 +33,8 @@ app.get("/health", (req, res) => {
       phoneNumberIdConfigured: !!config.whatsappPhoneNumberId && config.whatsappPhoneNumberId !== "your_phone_number_id",
       verifyTokenConfigured: !!config.whatsappVerifyToken,
       accessTokenConfigured: !!config.whatsappAccessToken && config.whatsappAccessToken !== "your_permanent_access_token",
+      templateConfigured: !!config.whatsappTemplateName,
+      templateName: config.whatsappTemplateName,
       appSecretConfigured: !!config.whatsappAppSecret,
     },
   });

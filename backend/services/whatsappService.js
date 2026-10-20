@@ -9,8 +9,11 @@ const BASE_URL = `https://graph.facebook.com/${GRAPH_API_VERSION}`;
  * Wraps outgoing Graph API requests for sending messages, buttons, templates, and reading receipts.
  */
 class WhatsAppService {
-  constructor() {
-    this.client = axios.create({
+  /**
+   * Dynamic axios client to ensure current access token is always used.
+   */
+  get client() {
+    return axios.create({
       baseURL: BASE_URL,
       headers: {
         Authorization: `Bearer ${config.whatsappAccessToken}`,
@@ -20,7 +23,15 @@ class WhatsAppService {
   }
 
   /**
-   * Helper to handle and format errors thrown during Meta Graph API requests.
+   * Helper to sanitize phone numbers (removes spaces, +, dashes).
+   */
+  sanitizePhoneNumber(phone) {
+    if (!phone) return "";
+    return phone.toString().replace(/[^0-9]/g, "");
+  }
+
+  /**
+   * Helper to format errors thrown during Meta Graph API requests.
    */
   handleError(methodName, error) {
     console.error(`[WhatsAppService Error] ${methodName} failed:`);
@@ -35,15 +46,16 @@ class WhatsAppService {
 
   /**
    * Send a simple text message.
-   * @param {string} to - Recipient phone number (with country code, e.g. "15555555555").
+   * @param {string} to - Recipient phone number (with country code, e.g. "917587315025").
    * @param {string} textBody - Text content of the message.
    */
   async sendText(to, textBody) {
     try {
+      const recipient = this.sanitizePhoneNumber(to);
       const response = await this.client.post(`/${config.whatsappPhoneNumberId}/messages`, {
         messaging_product: "whatsapp",
         recipient_type: "individual",
-        to,
+        to: recipient,
         type: "text",
         text: { body: textBody },
       });
@@ -63,6 +75,7 @@ class WhatsAppService {
    */
   async sendInteractiveButtons(to, bodyText, buttons, headerText = null, footerText = null) {
     try {
+      const recipient = this.sanitizePhoneNumber(to);
       if (!buttons || buttons.length === 0) {
         throw new Error("Buttons list cannot be empty");
       }
@@ -73,11 +86,6 @@ class WhatsAppService {
       const formattedButtons = buttons.map((btn, index) => {
         if (!btn.id || !btn.title) {
           throw new Error(`Button at index ${index} must have 'id' and 'title' properties`);
-        }
-        if (btn.title.length > 20) {
-          console.warn(
-            `[WhatsAppService Warning] Button title "${btn.title}" exceeds 20 characters and will be truncated.`
-          );
         }
         return {
           type: "reply",
@@ -104,7 +112,7 @@ class WhatsAppService {
       const response = await this.client.post(`/${config.whatsappPhoneNumberId}/messages`, {
         messaging_product: "whatsapp",
         recipient_type: "individual",
-        to,
+        to: recipient,
         type: "interactive",
         interactive: interactivePayload,
       });
@@ -116,29 +124,75 @@ class WhatsAppService {
   }
 
   /**
-   * Send a pre-approved message template. Required to initiate conversations outside 24h window.
+   * Send a pre-approved message template.
+   * Required to initiate conversations outside the 24h service window.
+   * Includes automatic language fallback (e.g. en_US <-> en).
    * @param {string} to - Recipient phone number.
    * @param {string} templateName - Name of the pre-approved template.
-   * @param {string} languageCode - Language code (e.g. "en_US").
-   * @param {Array} components - Optional components (body parameters, button parameters, etc.)
+   * @param {string} languageCode - Language code (e.g. "en_US" or "en").
+   * @param {Array} components - Optional components (body parameters, header, etc.)
    */
   async sendTemplate(to, templateName, languageCode = "en_US", components = []) {
-    try {
-      const response = await this.client.post(`/${config.whatsappPhoneNumberId}/messages`, {
+    const recipient = this.sanitizePhoneNumber(to);
+    const buildPayload = (lang) => {
+      const payload = {
         messaging_product: "whatsapp",
         recipient_type: "individual",
-        to,
+        to: recipient,
         type: "template",
         template: {
           name: templateName,
-          language: { code: languageCode },
-          components: components,
+          language: { code: lang },
         },
-      });
+      };
+      if (components && components.length > 0) {
+        payload.template.components = components;
+      }
+      return payload;
+    };
+
+    try {
+      const response = await this.client.post(
+        `/${config.whatsappPhoneNumberId}/messages`,
+        buildPayload(languageCode)
+      );
       return response.data;
     } catch (error) {
+      // Check if the error is due to language code mismatch (e.g. created as 'en' instead of 'en_US')
+      const errorMsg = error.response?.data?.error?.message || "";
+      if (
+        (errorMsg.toLowerCase().includes("does not exist in") ||
+         errorMsg.toLowerCase().includes("language")) &&
+        (languageCode === "en_US" || languageCode === "en")
+      ) {
+        const fallbackLang = languageCode === "en_US" ? "en" : "en_US";
+        console.log(
+          `[WhatsAppService] Retrying template "${templateName}" with fallback language "${fallbackLang}"...`
+        );
+        try {
+          const retryRes = await this.client.post(
+            `/${config.whatsappPhoneNumberId}/messages`,
+            buildPayload(fallbackLang)
+          );
+          return retryRes.data;
+        } catch (retryError) {
+          this.handleError("sendTemplate", retryError);
+        }
+      }
       this.handleError("sendTemplate", error);
     }
+  }
+
+  /**
+   * Shortcut to send the Locall product promotion template.
+   * @param {string} to - Recipient phone number.
+   * @param {Array} components - Template variable components (if any).
+   * @param {string} languageCode - Language code, defaults to config.whatsappTemplateLanguage.
+   */
+  async sendProductPromotion(to, components = [], languageCode = null) {
+    const template = config.whatsappTemplateName || "locall_product_promotion";
+    const lang = languageCode || config.whatsappTemplateLanguage || "en_US";
+    return this.sendTemplate(to, template, lang, components);
   }
 
   /**
@@ -154,7 +208,6 @@ class WhatsAppService {
       });
       return response.data;
     } catch (error) {
-      // Do not crash the app if marking read fails; log a warning instead.
       console.warn(`[WhatsAppService Warning] Failed to mark message ${messageId} as read:`, error.message);
     }
   }

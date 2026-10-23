@@ -129,7 +129,7 @@ const webhookController = {
    */
   sendPromotion: async (req, res) => {
     try {
-      const { to, components, languageCode, templateName } = req.body;
+      const { to, params, p1, p2, p3, components, languageCode, templateName } = req.body;
       if (!to) {
         return res.status(400).json({
           success: false,
@@ -137,17 +137,30 @@ const webhookController = {
         });
       }
 
+      let templateParams = params;
+      if (!templateParams && (p1 || p2 || p3)) {
+        templateParams = [p1 || "Customer", p2 || "Special Deals", p3 || "Locall"];
+      } else if (!templateParams && (!components || components.length === 0)) {
+        templateParams = ["Customer", "Special Deals", "Locall"];
+      }
+
+      let finalComponents = components;
+      if (!finalComponents || finalComponents.length === 0) {
+        finalComponents = whatsapp.buildBodyParameters(templateParams);
+      }
+
       const template = templateName || config.whatsappTemplateName || "locall_product_promotion";
       const result = await whatsapp.sendTemplate(
         to,
         template,
         languageCode || config.whatsappTemplateLanguage || "en_US",
-        components || []
+        finalComponents
       );
 
       return res.status(200).json({
         success: true,
         message: `Template "${template}" sent successfully to ${to}`,
+        paramsSent: templateParams || null,
         data: result,
       });
     } catch (error) {
@@ -161,7 +174,7 @@ const webhookController = {
   },
 
   /**
-   * GET /test-promotion?to=91...
+   * GET /test-promotion?to=91...&p1=...&p2=...&p3=...
    * Convenience GET endpoint for easy browser/quick testing.
    */
   testPromotion: async (req, res) => {
@@ -169,21 +182,26 @@ const webhookController = {
     if (!to) {
       return res.status(400).json({
         success: false,
-        message: "Please provide a recipient phone number in query param, e.g. /test-promotion?to=917587315025",
+        message: "Please provide a recipient phone number in query param, e.g. /test-promotion?to=919361012740",
         configuredTemplate: config.whatsappTemplateName,
         configuredPhoneNumberId: config.whatsappPhoneNumberId,
       });
     }
 
+    const p1 = req.query.p1 || "Customer";
+    const p2 = req.query.p2 || "Special Deals";
+    const p3 = req.query.p3 || "Locall";
+
     try {
-      const result = await whatsapp.sendProductPromotion(to);
+      const result = await whatsapp.sendProductPromotion(to, [p1, p2, p3]);
       return res.status(200).json({
         success: true,
-        message: `Test promotion sent successfully to ${to}!`,
+        message: `Promotion template "${config.whatsappTemplateName}" sent successfully to ${to}!`,
+        paramsSent: [p1, p2, p3],
         data: result,
       });
     } catch (error) {
-      return res.status(500).json({
+      return res.status(error.response?.status || 500).json({
         success: false,
         error: error.message,
         details: error.response?.data || null,

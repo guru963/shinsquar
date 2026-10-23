@@ -124,6 +124,23 @@ class WhatsAppService {
   }
 
   /**
+   * Helper to format string parameters into a WhatsApp template body component.
+   * @param {Array<string>} params - Array of parameter strings for {{1}}, {{2}}, etc.
+   */
+  buildBodyParameters(params) {
+    if (!params || !Array.isArray(params) || params.length === 0) return [];
+    return [
+      {
+        type: "body",
+        parameters: params.map((val) => ({
+          type: "text",
+          text: String(val),
+        })),
+      },
+    ];
+  }
+
+  /**
    * Send a pre-approved message template.
    * Required to initiate conversations outside the 24h service window.
    * Includes automatic language fallback (e.g. en_US <-> en).
@@ -184,14 +201,26 @@ class WhatsAppService {
   }
 
   /**
-   * Shortcut to send the Locall product promotion template.
+   * Shortcut to send the Locall product promotion template with 3 parameters.
    * @param {string} to - Recipient phone number.
-   * @param {Array} components - Template variable components (if any).
+   * @param {Array<string>|Array<object>} paramsOrComponents - Array of parameter strings ['Customer', 'Special Deals', 'Locall'] or raw components.
    * @param {string} languageCode - Language code, defaults to config.whatsappTemplateLanguage.
    */
-  async sendProductPromotion(to, components = [], languageCode = null) {
+  async sendProductPromotion(to, paramsOrComponents = ["Customer", "Special Deals", "Locall"], languageCode = null) {
     const template = config.whatsappTemplateName || "locall_product_promotion";
     const lang = languageCode || config.whatsappTemplateLanguage || "en_US";
+
+    let components = [];
+    if (Array.isArray(paramsOrComponents) && paramsOrComponents.length > 0) {
+      if (typeof paramsOrComponents[0] === "string") {
+        components = this.buildBodyParameters(paramsOrComponents);
+      } else {
+        components = paramsOrComponents;
+      }
+    } else {
+      components = this.buildBodyParameters(["Customer", "Special Deals", "Locall"]);
+    }
+
     return this.sendTemplate(to, template, lang, components);
   }
 

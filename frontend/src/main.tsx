@@ -28,7 +28,11 @@ createRoot(document.getElementById('root')!).render(
       <Route path="/household-workers/:id" element={<WorkerDetails />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/privacy-policy/locall-app" element={<PrivacyPolicy defaultTab="locall-app" />} />
+      <Route path="/privacy-policy/partner" element={<PrivacyPolicy defaultTab="partner" />} />
       <Route path="/delete-account" element={<DeleteAccount />} />
+      <Route path="/delete-account/locall-app" element={<DeleteAccount defaultTab="locall-app" />} />
+      <Route path="/delete-account/partner" element={<DeleteAccount defaultTab="partner" />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
     <Footer />

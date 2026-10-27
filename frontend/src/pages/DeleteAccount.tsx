@@ -202,7 +202,9 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ defaultTab }) => {
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-2" style={{ fontFamily: "var(--font-display)" }}>
               Locall — Account Deletion
             </h1>
-            <p className="text-xl text-on-surface-variant mb-6">Delete Your Locall User Account</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-on-surface mt-4 mb-6" style={{ fontFamily: "var(--font-display)" }}>
+              Delete Your Locall User Account
+            </h2>
 
             <div className="prose prose-on-surface max-w-none space-y-6">
               <p>
@@ -217,17 +219,17 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ defaultTab }) => {
               <h2 className="text-2xl font-bold mt-10 mb-4" style={{ fontFamily: "var(--font-display)" }}>1. How to Request Account Deletion</h2>
               <p>To request deletion of your Locall user account:</p>
               <ol className="list-decimal pl-6 space-y-2 mb-4">
-                <li>Send an email to <strong><a href="mailto:contact@locall.co.in" className="text-primary hover:underline">contact@locall.co.in</a></strong>.</li>
-                <li>Use the subject line <strong>Locall User Account Deletion</strong>.</li>
+                <li>Send an email to <a href="mailto:contact@locall.co.in" className="text-primary hover:underline">contact@locall.co.in</a>.</li>
+                <li>Use the subject line Locall User Account Deletion.</li>
                 <li>Include the mobile number registered with your Locall account, including the country code.</li>
                 <li>Clearly state that you want your Locall user account deleted.</li>
               </ol>
               <p>
                 If you have a registered email address associated with your account, please send your request from that address where possible.
               </p>
-              <div className="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl text-amber-900 text-sm font-medium">
+              <p>
                 Do not include your password or one-time password (OTP) in your email.
-              </div>
+              </p>
 
               <h2 className="text-2xl font-bold mt-10 mb-4" style={{ fontFamily: "var(--font-display)" }}>2. Verification of Your Request</h2>
               <p>
@@ -262,7 +264,7 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ defaultTab }) => {
               </ul>
               <p>
                 Any information retained for these purposes will be handled in accordance with applicable law and Locall's{' '}
-                <Link to="/privacy-policy?tab=locall-app" className="text-primary hover:underline font-medium">Privacy Policy</Link>.
+                <Link to="/privacy-policy?tab=locall-app" className="text-primary hover:underline">Privacy Policy</Link>.
               </p>
 
               <h2 className="text-2xl font-bold mt-10 mb-4" style={{ fontFamily: "var(--font-display)" }}>5. Information Shared With Shops or Third Parties</h2>
@@ -278,7 +280,7 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ defaultTab }) => {
                 If you cannot access your registered email address or need assistance with your account deletion request, contact us at:
               </p>
               <p>
-                <strong>Email:</strong> <a href="mailto:contact@locall.co.in" className="text-primary hover:underline font-medium">contact@locall.co.in</a>
+                <strong>Email:</strong> <a href="mailto:contact@locall.co.in" className="text-primary hover:underline">contact@locall.co.in</a>
               </p>
               <p>
                 Please include your registered mobile number so we can help locate your account. We may request additional information to verify account ownership.
@@ -286,14 +288,14 @@ const DeleteAccount: React.FC<DeleteAccountProps> = ({ defaultTab }) => {
 
               <h2 className="text-2xl font-bold mt-10 mb-4" style={{ fontFamily: "var(--font-display)" }}>7. Contact Us</h2>
               <div className="bg-surface-container-low p-6 rounded-xl mt-4 space-y-2">
-                <p><strong>Company:</strong><br/>Localstack Market Private Limited</p>
-                <p><strong>Address:</strong><br/>Shankar Nagar, Durg, Chhattisgarh – 491001, India</p>
-                <p><strong>Email:</strong><br/><a href="mailto:contact@locall.co.in" className="text-primary hover:underline">contact@locall.co.in</a></p>
-                <p><strong>Website:</strong><br/><a href="https://www.locall.co.in/" className="text-primary hover:underline">https://www.locall.co.in/</a></p>
+                <p><strong>Localstack Market Private Limited</strong></p>
+                <p>Shankar Nagar, Durg, Chhattisgarh – 491001, India</p>
+                <p><strong>Email:</strong> <a href="mailto:contact@locall.co.in" className="text-primary hover:underline">contact@locall.co.in</a></p>
+                <p><strong>Website:</strong> <a href="https://www.locall.co.in/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://www.locall.co.in/</a></p>
               </div>
               <p className="mt-4">
                 For more information about how Locall handles personal information, please read our{' '}
-                <Link to="/privacy-policy?tab=locall-app" className="text-primary hover:underline font-semibold">Privacy Policy</Link>.
+                <Link to="/privacy-policy?tab=locall-app" className="text-primary hover:underline">Privacy Policy</Link>.
               </p>
             </div>
           </div>

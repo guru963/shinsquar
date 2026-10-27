@@ -539,17 +539,15 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ defaultTab }) => {
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-2" style={{ fontFamily: "var(--font-display)" }}>
               Locall — Privacy Policy
             </h1>
-            <p className="text-xl text-on-surface-variant mb-6">Locall Mobile Application</p>
             
-            <div className="flex flex-col sm:flex-row sm:gap-6 mb-10 text-sm font-medium text-on-surface-variant">
-              <p><strong>Last Updated:</strong> 26 October 2026</p>
+            <div className="flex flex-col sm:flex-row sm:gap-6 mt-4 mb-10 text-sm font-medium text-on-surface-variant">
+              <p><strong>Last updated:</strong> 26 October 2026</p>
             </div>
 
             <div className="prose prose-on-surface max-w-none space-y-6">
               <h2 className="text-2xl font-bold mt-10 mb-4" style={{ fontFamily: "var(--font-display)" }}>1. Introduction</h2>
               <p>
-                Locall is a hyperlocal platform operated by <strong>Localstack Market Private Limited</strong>. We connect
-                users with local shops, household workers, service providers, and offers in their local area.
+                Locall is a hyperlocal platform operated by Localstack Market Private Limited. We connect users with local shops, household workers, service providers, and offers in their local area.
               </p>
               <p>
                 This Privacy Policy explains how Locall collects, uses, stores, and shares information when you use our mobile application and related services.
@@ -562,20 +560,18 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ defaultTab }) => {
               <p>
                 Depending on how you use Locall and which features are available, we may collect the following types of information:
               </p>
-              <ul className="list-disc pl-6 space-y-2 mb-4">
-                <li>
-                  <strong>Personal Information:</strong> Information such as your name, mobile number, email address, and profile details that you provide when creating or using an account.
-                </li>
-                <li>
-                  <strong>Location Information:</strong> Your device location, if you grant location permission, or a location you enter manually. We use this information to help you discover nearby shops, offers, household workers, and local service providers.
-                </li>
-                <li>
-                  <strong>User-Generated Information:</strong> Information you submit through the app, such as enquiries, feedback, ratings, reviews, photographs, and other content.
-                </li>
-                <li>
-                  <strong>Technical Information:</strong> Information such as your device type, operating system, app version, diagnostic information, and usage data, where collected through the app or its integrated services.
-                </li>
-              </ul>
+              <p>
+                <strong>Personal Information:</strong> Information such as your name, mobile number, email address, and profile details that you provide when creating or using an account.
+              </p>
+              <p>
+                <strong>Location Information:</strong> Your device location, if you grant location permission, or a location you enter manually. We use this information to help you discover nearby shops, offers, household workers, and local service providers.
+              </p>
+              <p>
+                <strong>User-Generated Information:</strong> Information you submit through the app, such as enquiries, feedback, ratings, reviews, photographs, and other content.
+              </p>
+              <p>
+                <strong>Technical Information:</strong> Information such as your device type, operating system, app version, diagnostic information, and usage data, where collected through the app or its integrated services.
+              </p>
 
               <h2 className="text-2xl font-bold mt-10 mb-4" style={{ fontFamily: "var(--font-display)" }}>3. How We Use Your Information</h2>
               <p>We may use your information to:</p>
@@ -604,17 +600,15 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ defaultTab }) => {
               <h2 className="text-2xl font-bold mt-10 mb-4" style={{ fontFamily: "var(--font-display)" }}>5. How We Share Your Information</h2>
               <p>Locall does not sell your personal information.</p>
               <p>We may share relevant information in the following circumstances:</p>
-              <ul className="list-disc pl-6 space-y-2 mb-4">
-                <li>
-                  <strong>With Local Businesses and Service Providers:</strong> When you contact a shop, household worker, or service provider through Locall, information necessary to respond to your enquiry may be shared with that business or provider.
-                </li>
-                <li>
-                  <strong>With Service Providers:</strong> We may share information with third-party companies that help us operate, maintain, secure, or improve Locall, where such services are used.
-                </li>
-                <li>
-                  <strong>For Legal and Security Reasons:</strong> We may disclose information where required by applicable law or legal process, or where reasonably necessary to protect users, our platform, or our legal rights.
-                </li>
-              </ul>
+              <p>
+                <strong>With Local Businesses and Service Providers:</strong> When you contact a shop, household worker, or service provider through Locall, information necessary to respond to your enquiry may be shared with that business or provider.
+              </p>
+              <p>
+                <strong>With Service Providers:</strong> We may share information with third-party companies that help us operate, maintain, secure, or improve Locall, where such services are used.
+              </p>
+              <p>
+                <strong>For Legal and Security Reasons:</strong> We may disclose information where required by applicable law or legal process, or where reasonably necessary to protect users, our platform, or our legal rights.
+              </p>
               <p>
                 Information you submit as a public review, rating, or photograph may be visible to other users or businesses, depending on the features of the app.
               </p>
@@ -661,7 +655,7 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ defaultTab }) => {
               </p>
               <p>
                 To request deletion, visit our{' '}
-                <Link to="/delete-account?tab=locall-app" className="text-primary hover:underline font-semibold">Account Deletion page</Link>{' '}
+                <Link to="/delete-account?tab=locall-app" className="text-primary hover:underline">Account Deletion page</Link>{' '}
                 and follow the instructions provided there.
               </p>
               <p>
@@ -688,13 +682,16 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ defaultTab }) => {
               </p>
 
               <h2 className="text-2xl font-bold mt-10 mb-4" style={{ fontFamily: "var(--font-display)" }}>13. Contact Us</h2>
+              <p>
+                If you have questions, concerns, or requests regarding this Privacy Policy or your personal information, you can contact us at:
+              </p>
               <div className="bg-surface-container-low p-6 rounded-xl mt-4 space-y-2">
-                <p><strong>Company:</strong><br/>Localstack Market Private Limited</p>
-                <p><strong>Registered Address:</strong><br/>Shankar Nagar, Durg, Chhattisgarh – 491001, India</p>
-                <p><strong>Email:</strong><br/><a href="mailto:contact@locall.co.in" className="text-primary hover:underline">contact@locall.co.in</a></p>
-                <p><strong>Website:</strong><br/><a href="https://www.locall.co.in/" className="text-primary hover:underline">https://www.locall.co.in/</a></p>
+                <p><strong>Localstack Market Private Limited</strong></p>
+                <p>Shankar Nagar, Durg, Chhattisgarh – 491001, India</p>
+                <p><strong>Email:</strong> <a href="mailto:contact@locall.co.in" className="text-primary hover:underline">contact@locall.co.in</a></p>
+                <p><strong>Website:</strong> <a href="https://www.locall.co.in/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://www.locall.co.in/</a></p>
               </div>
-              <p className="mt-4 text-sm text-on-surface-variant">
+              <p className="mt-4">
                 We will review and respond to privacy-related requests in accordance with applicable law.
               </p>
             </div>
